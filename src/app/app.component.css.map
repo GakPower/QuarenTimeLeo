@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"version":3,"sourceRoot":"","sources":["app.component.scss"],"names":[],"mappings":"AAAA;EACE;;;AAGF;EACE;;;AAGF;EACE","file":"app.component.css"}
+=======
+{"version":3,"sourceRoot":"","sources":["app.component.scss"],"names":[],"mappings":"AAAA;EACE;;;AAGF;EACE;;;AAGF;EACE","file":"app.component.css"}
+>>>>>>> fc1aa0b75f97f6e89d69244d83fcd03b30721194
