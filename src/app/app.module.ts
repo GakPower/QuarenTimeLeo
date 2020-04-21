@@ -7,11 +7,13 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { PictureCardComponent } from './Components/Secondary/picture-card/picture-card.component';
+import { WatchItComponent } from './Components/Secondary/watch-it/watch-it.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PictureCardComponent
+    PictureCardComponent,
+    WatchItComponent
   ],
   imports: [
     BrowserModule,
