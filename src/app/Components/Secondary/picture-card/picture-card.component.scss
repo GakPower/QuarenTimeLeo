@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 @import url('https://fonts.googleapis.com/css?family=Abel');
@@ -39,6 +40,57 @@ html, body {
 .card:hover .additional {
   width: 100%;
   border-radius: 0 5px 5px 0;
+=======
+#card {
+  position: relative;
+
+  width: 200px;
+  height: 300px;
+  background-image: url('https://lh3.googleusercontent.com/proxy/TjTMWX3lP0xwVTFCNBRUIWdO0p_QgxOJwTGL9NyU4ix-TUXwYlEHYv8EfdAbHSg6x0CRDkykBnNK82agZLe4XyjqnhXPGcleNpGuQB3G2Jio12oEPRyIXwURs_hcQD8Gr255M7amK3_wR-9jP7muSt-Vxed4wuIGfSA');
+  border-radius: 10px;
+
+  &:hover {
+    p {
+       opacity: 1;
+    }
+    background-color: yellow;
+  }
+
+  p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+
+    opacity: 0;
+
+    transition: 300ms opacity;
+  }
+
+  button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 50px;
+    height: 50px;
+
+    border: 0;
+    border-radius: 50%;
+
+    margin: 0 0 5px 5px;
+    background-color: red;
+
+    &:hover {
+      font-size: 2rem;
+      text-align: center;
+      vertical-align: middle;
+
+      padding: 0;
+    }
+  }
+>>>>>>> dfcb839427ed9375dd17f63ce386a629fc4f5930
 }
 
 .card .additional .movie-card {
