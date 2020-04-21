@@ -23,7 +23,11 @@
     "firebase": "^7.14.1",
     "node-sass": "^4.13.1",
     "rxjs": "~6.5.4",
+<<<<<<< HEAD
     "sass-loader": "^8.0.2",
+=======
+    "simplebar": "^5.1.0",
+>>>>>>> 0522dcab9520d62ca343b4d36d4d797dbbe985f1
     "tslib": "^1.10.0",
     "webpack": "^4.42.1",
     "zone.js": "~0.10.2"
