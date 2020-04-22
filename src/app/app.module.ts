@@ -9,13 +9,15 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { PictureCardComponent } from './Components/Secondary/picture-card/picture-card.component';
 import { WatchItComponent } from './Components/Secondary/watch-it/watch-it.component';
 import { TopTenComponent } from './Components/Secondary/top-10/top-ten/top-ten.component';
+import { TopTenMovieComponent } from './Components/Secondary/top-10/top-ten-movie/top-ten-movie.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PictureCardComponent,
     WatchItComponent,
-    TopTenComponent
+    TopTenComponent,
+    TopTenMovieComponent
   ],
   imports: [
     BrowserModule,

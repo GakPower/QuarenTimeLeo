@@ -1,5 +1,6 @@
 ::ng-deep :root {
-  --primary: #F55 ;
+  --primary: #F55
+;
 }
 
 p {
@@ -9,5 +10,4 @@ p {
 app-watch-it {
   background-color: #3a3b5b;
 }
-
 /*# sourceMappingURL=app.component.css.map */

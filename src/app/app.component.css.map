@@ -1,5 +1,9 @@
-<<<<<<< HEAD
-{"version":3,"sourceRoot":"","sources":["app.component.scss"],"names":[],"mappings":"AAAA;EACE;;;AAGF;EACE;;;AAGF;EACE","file":"app.component.css"}
-=======
-{"version":3,"sourceRoot":"","sources":["app.component.scss"],"names":[],"mappings":"AAAA;EACE;;;AAGF;EACE;;;AAGF;EACE","file":"app.component.css"}
->>>>>>> fc1aa0b75f97f6e89d69244d83fcd03b30721194
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,CAAC,KAAK,CAAC;EACd,SAAS,CAAA;AAAC;CACX;;AAED,AAAA,CAAC,CAAC;EACA,MAAM,EAAE,CAAC;CACV;;AAED,AAAA,YAAY,CAAA;EACV,gBAAgB,EAAE,OAAO;CAC1B",
+    "sources": [
+        "app.component.scss"
+    ],
+    "names": [],
+    "file": "app.component.css"
+}
