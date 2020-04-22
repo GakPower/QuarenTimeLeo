@@ -2,5 +2,16 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #4E4E6B ;
+  background-color: #323232;
+}
+
+button {
+  padding: 0;
+  &::-moz-focus-inner {
+    border: 0;
+  }
+}
+
+p {
+  margin: 0;
 }
