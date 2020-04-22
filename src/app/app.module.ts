@@ -8,6 +8,10 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { PictureCardComponent } from './Components/Secondary/picture-card/picture-card.component';
 import { WatchItComponent } from './Components/Secondary/watch-it/watch-it.component';
+import { PollComponent } from './Components/Secondary/poll/poll.component';
+import { ProfileComponent } from './Components/Primary/profile/profile.component';
+
+import { CardComponent } from './Components/Secondary/card/card.component';
 import { TopTenComponent } from './Components/Secondary/top-10/top-ten/top-ten.component';
 import { TopTenMovieComponent } from './Components/Secondary/top-10/top-ten-movie/top-ten-movie.component';
 
@@ -17,7 +21,12 @@ import { TopTenMovieComponent } from './Components/Secondary/top-10/top-ten-movi
     PictureCardComponent,
     WatchItComponent,
     TopTenComponent,
-    TopTenMovieComponent
+    TopTenMovieComponent,
+    PollComponent,
+    ProfileComponent,
+    CardComponent,
+    WatchItComponent,
+    TopTenComponent
   ],
   imports: [
     BrowserModule,
