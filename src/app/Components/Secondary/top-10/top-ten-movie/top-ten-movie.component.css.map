@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,aAAa,CAAC;EACV,MAAM,EAAE,GAAG;EACX,KAAK,EAAE,IAAI;EACX,gBAAgB,EAAE,yBAAyB;EAC3C,QAAQ,EAAE,QAAQ;EAClB,WAAW,EAAE,CAAC;CACjB",
+    "sources": [
+        "top-ten-movie.component.scss"
+    ],
+    "names": [],
+    "file": "top-ten-movie.component.css"
+}

@@ -1,5 +1,9 @@
-<<<<<<< HEAD
-{"version":3,"sourceRoot":"","sources":["watch-it.component.scss"],"names":[],"mappings":"AAEA;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;EACA;;AAEA;EACI","file":"watch-it.component.css"}
-=======
-{"version":3,"sourceRoot":"","sources":["watch-it.component.scss"],"names":[],"mappings":"AAEA;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;EACA;;AAEA;EACI","file":"watch-it.component.css"}
->>>>>>> fc1aa0b75f97f6e89d69244d83fcd03b30721194
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,QAAQ,CAAA;EACJ,OAAO,EAAE,IAAI;EACb,YAAY,EAAE,OAAkB;EAChC,MAAM,EAAE,IAAI;EACZ,KAAK,EAAE,MAAM;EACb,qBAAqB,EAAE,OAAO;EAC9B,gBAAgB,EAAE,OAAO;EACzB,WAAW,EAAE,GAAG;EAChB,UAAU,EAAE,sBAAsB;EAClC,aAAa,EAAE,IAAI;CACtB;;AAED,AAAA,eAAe,CAAA;EACX,KAAK,EAAE,MAAM;EACb,MAAM,EAAE,IAAI;EACZ,WAAW,EAAE,GAAI;EACjB,gBAAgB,EAAE,OAAO;EACzB,aAAa,EAAE,IAAI;CAKtB;;AAVD,AAOI,eAPW,CAOX,EAAE,CAAA;EACE,UAAU,EAAE,MAAM;CACrB",
+    "sources": [
+        "watch-it.component.scss"
+    ],
+    "names": [],
+    "file": "watch-it.component.css"
+}
