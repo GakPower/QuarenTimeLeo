@@ -11,6 +11,7 @@ import { WatchItComponent } from './Components/Secondary/watch-it/watch-it.compo
 import { PollComponent } from './Components/Secondary/poll/poll.component';
 import { ProfileComponent } from './Components/Primary/profile/profile.component';
 import { CardComponent } from './Components/Secondary/card/card.component';
+import { TopTenComponent } from './Components/Secondary/top-10/top-ten/top-ten.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,9 @@ import { CardComponent } from './Components/Secondary/card/card.component';
     WatchItComponent,
     PollComponent,
     ProfileComponent,
-    CardComponent
+    CardComponent,
+    WatchItComponent,
+    TopTenComponent
   ],
   imports: [
     BrowserModule,
