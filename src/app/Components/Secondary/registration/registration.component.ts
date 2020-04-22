@@ -24,13 +24,21 @@ export class RegistrationComponent implements OnInit {
 
 
 register(): void {
+  this.errorMessage = '';
+  var saveusername:string = this.user.get('username').value;//we need to save this in a variable because of scope
   if(this.user.get('password').value.length < 8){//check for custom made response input error
 this.errorMessage = 'PASSWORD TOO SHORT, MINIMUM OF 8 CHARACTERS';
   }else if(this.user.get('password').value === this.user.get('repeat').value){//check for custom made response input error
   this.auth.createUserWithEmailAndPassword(this.user.get('email').value, this.user.get('password').value)
-  .then((credential) => { 
-    credential.user.sendEmailVerification()//send confirmation email
+  .then((credential) => {
+    credential.user.updateProfile({
+      displayName: saveusername,
+    }) .then(() => {
+      console.log(credential.user.displayName),
+      credential.user.sendEmailVerification()//send confirmation email
     .catch((e) => console.log(e));
+    })
+    
     //when router functioning we redirect the user to another page 
                     })
                       .catch((e) => {
@@ -50,7 +58,6 @@ this.errorMessage = 'PASSWORD TOO SHORT, MINIMUM OF 8 CHARACTERS';
                     }
                     this.user.reset();//reset all the values in the form
 }
-
 
 
 
