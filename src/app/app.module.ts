@@ -8,30 +8,24 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { PictureCardComponent } from './Components/Secondary/picture-card/picture-card.component';
 import { WatchItComponent } from './Components/Secondary/watch-it/watch-it.component';
-<<<<<<< HEAD
 import { RegistrationComponent } from './Components/Secondary/registration/registration.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';//imported for filling forms
-=======
 import { PollComponent } from './Components/Secondary/poll/poll.component';
 import { ProfileComponent } from './Components/Primary/profile/profile.component';
 import { CardComponent } from './Components/Secondary/card/card.component';
 import { TopTenComponent } from './Components/Secondary/top-10/top-ten/top-ten.component';
->>>>>>> 0a2655c95155d431ad7f5194b225f424f9551a24
 
 @NgModule({
   declarations: [
     AppComponent,
     PictureCardComponent,
     WatchItComponent,
-<<<<<<< HEAD
-    RegistrationComponent
-=======
+    RegistrationComponent,
     PollComponent,
     ProfileComponent,
     CardComponent,
     WatchItComponent,
     TopTenComponent
->>>>>>> 0a2655c95155d431ad7f5194b225f424f9551a24
   ],
   imports: [
     BrowserModule,
