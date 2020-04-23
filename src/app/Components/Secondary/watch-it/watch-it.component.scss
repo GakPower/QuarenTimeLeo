@@ -5,7 +5,8 @@
     height: 75vh;
     width: 36vw;
     background-color: #c2bebe;
-    box-shadow: inset 0 0 20px #000; 
+
+    box-shadow: inset 0 0 20px #000;
     border-radius: 10px;
     overflow: auto;
 }
@@ -13,14 +14,16 @@
 .watchMe-header{
     width: 36vw;
     height: auto;
-    background-color: cornsilk;
+    //background-color: cornsilk;
+    background-color: var(--accent);
     border-radius: 10px;
 
     h1{
-        font-family: 'Source Sans Pro', sans-serif;
-        text-align: center;
+      font-family: 'Source Sans Pro', sans-serif;
+      color: var(--text);
+      text-align: center;
     }
-    
+
 }
 
 app-picture-card{

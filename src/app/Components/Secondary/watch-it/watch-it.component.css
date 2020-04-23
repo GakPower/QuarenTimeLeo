@@ -12,11 +12,12 @@
 .watchMe-header {
   width: 36vw;
   height: auto;
-  background-color: cornsilk;
+  background-color: var(--accent);
   border-radius: 10px;
 }
 .watchMe-header h1 {
   font-family: "Source Sans Pro", sans-serif;
+  color: var(--text);
   text-align: center;
 }
 

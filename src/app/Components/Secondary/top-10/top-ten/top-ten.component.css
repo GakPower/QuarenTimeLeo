@@ -5,7 +5,8 @@ body {
 }
 
 .top10Header {
-  background-color: cornsilk;
+  background-color: var(--accent);
+  color: var(--text);
   border-radius: 10px;
   width: 28.5vw;
   text-align: center;
