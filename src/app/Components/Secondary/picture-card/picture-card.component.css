@@ -135,4 +135,7 @@ img {
   font-size: 0.9em;
 }
 
+  background-color: #d6d3d3;
+  background: linear-gradient(#a3a2a2, #afaeae);
+  box-shadow: 0 16px 32px -16px rgba(3, 3, 3, 0.438);
 /*# sourceMappingURL=picture-card.component.css.map */
