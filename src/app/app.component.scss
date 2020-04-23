@@ -1,10 +1,16 @@
 ::ng-deep :root {
   --primary: #A1A1CA;
   --secondary: #78A0CF;
-  --background: #3C3F41;
+  --background: #252525;
+  //--background: #3C3F41;
   --text: whitesmoke;
-  --secondaryFont: 'Source Sans Pro', sans-serif;
-  --primaryFont: 'Montserrat', sans-serif;
+  //--secondaryFont: 'Source Sans Pro', sans-serif;
+  --primaryFont: 'Acme', sans-serif;
+  //--secondaryFont: 'Montserrat', sans-serif;
+  --secondaryFont: 'Josefin Sans', sans-serif;
+  //--primaryFont: 'Bangers', cursive;
+  --accent: purple;
+
 }
 
 p {
@@ -13,7 +19,7 @@ p {
 
 app-watch-it{
   background-color: #252525;
-  
+
 }
 
 app-top-ten{

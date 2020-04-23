@@ -52,7 +52,6 @@ button {
   display: block;
   outline: none;
   background: none;
-  outline: none;
 }
 button:hover {
   background: white;

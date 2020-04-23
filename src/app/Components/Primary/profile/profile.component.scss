@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Comic+Neue&display=swap');
 #container {
   display: flex;
   flex-direction: column;
@@ -6,6 +7,9 @@
   height: 100%;
 
   background-color: var(--background);
+
+  position: absolute;
+  top: 110px;
 
   #profile {
     display: flex;
@@ -166,10 +170,15 @@
         border: 1px solid white;
         border-radius: 10px;
 
-        span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        p {
           position: absolute;
           top: 12px;
-          left: 100px;
+          left: 50%;
+          transform: translateX(-50%);
 
           font-family: var(--primaryFont);
           font-size: 1.2rem;
@@ -192,8 +201,8 @@
           height 300ms;
 
         &.clicked {
-          width: 800px;
-          height: 500px;
+          width: 600px;
+          height: 300px;
         }
 
         #editFields {
@@ -202,14 +211,99 @@
           align-items: center;
           justify-content: center;
 
-          width: 50%;
-          height: 50%;
-          background-color: red;
+          width: 80%;
+          height: 80%;
+
+          position: relative;
+
+          #avatarDiv {
+            #avatar {
+              position: absolute;
+              top: 80px;
+              left: 50%;
+              transform: translateX(-50%);
+
+              cursor: pointer;
+              user-select: none;
+
+              transition: 300ms left;
+
+              &:hover {
+                #emoji1 {
+                  filter: blur(4px) sepia(60%) brightness(1.5);
+                }
+                #overlayPlus {
+                  opacity: 1;
+                }
+              }
+              &.clickedAvatar {
+                left: 100px;
+              }
+              #overlayPlus {
+                position: absolute;
+                transform: translate(-50%, -55%);
+                font-family: 'Comic Neue', cursive;
+                font-size: 5rem;
+                color: white;
+                opacity: 0;
+
+                transition: 300ms opacity;
+              }
+              #emoji1 {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+
+                text-align: center;
+                border-radius: 50%;
+
+                width: 100px;
+                height: 100px;
+
+                font-size: 4rem;
+
+                transition: 300ms filter;
+              }
+            }
+
+            #emojiSelector {
+            }
+          }
 
           input {
-            width: 80%;
-            height: 30px;
-            margin: 10px
+            margin-top: 100px;
+            height: 40px;
+            width: 250px;
+
+            //border-radius: 10px;
+            border: 0;
+            border-bottom: 1px solid var(--secondary);
+            background-color: transparent;
+
+            color: var(--text);
+            font-size: 1.2rem;
+            font-family: var(--secondaryFont);
+
+            padding-left: 10px;
+          }
+          button {
+            margin-top: 20px;
+            background-color: transparent;
+            border: 1px solid var(--secondary);
+            border-radius: 10px;
+
+            color: var(--text);
+            font-size: 1.2rem;
+            font-family: var(--secondaryFont);
+
+            padding: 10px;
+
+            cursor: pointer;
+
+            &:hover {
+              background-color: var(--primary);
+            }
           }
         }
       }

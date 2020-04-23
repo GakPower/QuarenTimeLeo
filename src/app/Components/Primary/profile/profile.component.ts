@@ -9,7 +9,7 @@ export class ProfileComponent {
 
   user = {
     name: 'Name',
-    avatar: '😀',
+    avatar: '😈',
     email: 'test@gmail.com'
   };
 
@@ -20,6 +20,8 @@ export class ProfileComponent {
   selectedTopic = -1;
 
   clickedProfile = false;
+
+  clickedAvatar = false;
 
   constructor() { }
 
