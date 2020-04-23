@@ -19,6 +19,7 @@ import { SearchBarComponent } from './Components/Secondary/top-nav-bar/search-ba
 import { NavButtonsComponent } from './Components/Secondary/top-nav-bar/nav-buttons/nav-buttons.component';
 
 import { TopTenMovieComponent } from './Components/Secondary/top-10/top-ten-movie/top-ten-movie.component';
+import { TopicComponent } from './Components/Secondary/topic/topic.component';
 import { LoginComponent } from './Components/Secondary/login/login.component';
 import { RestorepasswordComponent } from './Components/Secondary/restorepassword/restorepassword.component';
 import { StartpageComponent } from './Components/Secondary/startpage/startpage.component';
@@ -43,6 +44,8 @@ import { StartpageComponent } from './Components/Secondary/startpage/startpage.c
     LoginComponent,
     RestorepasswordComponent,
     StartpageComponent,
+    TopTenComponent,
+    TopicComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,7 @@ import { StartpageComponent } from './Components/Secondary/startpage/startpage.c
     AngularFireAuthModule,
     AngularFirestoreModule,
     FormsModule,
-     ReactiveFormsModule
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
