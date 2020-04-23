@@ -1,0 +1,17 @@
+<div>
+    <form ngNativeValidate [formGroup]="user" (ngSubmit)="login()">
+        <h1>Login</h1>
+       
+        <label><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" formControlName="email" required>
+
+    <label><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" formControlName="password" required>
+
+    <label class="error"><b>{{errorMessage}}</b></label>
+    <div class="page-bottom">
+    <a routerLink="/resetpass">Forgot your password?</a>
+    <button type="submit" >Login</button>
+</div>    
+</form>
+</div>

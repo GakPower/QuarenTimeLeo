@@ -1,9 +1,9 @@
 #container {
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--background);
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background);
 }
 #container #profile {
   display: flex;
@@ -11,14 +11,14 @@
   margin-left: 50px;
 }
 #container #profile #emoji {
-  border-radius: 50%;
-  font-size: 7rem;
-  width: 100px;
-  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 50px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  font-size: 7rem;
 }
 #container #profile #info {
   display: flex;
@@ -37,23 +37,128 @@
   align-items: center;
   justify-content: center;
   margin: 40px;
-  height: 400px;
 }
 #container #myList > p {
   align-self: flex-start;
+  margin-bottom: 5px;
   font-family: var(--primaryFont);
   font-size: 2rem;
   color: var(--text);
-  margin-bottom: 5px;
 }
-#container #myList #items {
-  width: 95%;
-  height: 80%;
-  background-color: white;
+#container #myList #topicsDiv {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 90%;
+  margin-bottom: 10px;
+}
+#container #myList #topicsDiv #topics {
   display: flex;
   overflow-x: auto;
+  width: 100%;
 }
-#container #myList #items app-card {
+#container #myList #topicsDiv #topics > app-topic {
+  flex-shrink: 0;
+}
+#container #myList #topicsDiv #plus {
+  margin-left: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 300ms transform;
+}
+#container #myList #topicsDiv #plus:hover {
+  transform: scale(1.05);
+}
+#container #myList #topicsDiv #plus #original-icon {
+  fill: var(--text);
+}
+#container #myList #cards {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+  width: 90%;
+  border: 2px solid white;
+  border-radius: 10px;
+  overflow-x: auto;
+}
+#container #myList #cards > app-card {
+  flex-shrink: 0;
+}
+#container #myList #favouriteTitle {
+  align-self: flex-start;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-family: var(--primaryFont);
+  font-size: 2rem;
+  color: var(--text);
+}
+#container #myList #favourite {
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  width: 90%;
+  overflow-x: auto;
+}
+#container #myList #favourite > app-card {
+  flex-shrink: 0;
+}
+#container #settingsDiv {
+  display: flex;
+  flex-direction: column;
+  margin: 0 40px 40px 40px;
+}
+#container #settingsDiv p {
+  align-self: flex-start;
+  margin-bottom: 5px;
+  font-family: var(--primaryFont);
+  font-size: 2rem;
+  color: var(--text);
+}
+#container #settingsDiv #settings {
+  display: flex;
+  flex-direction: column;
+}
+#container #settingsDiv #settings > div {
+  position: relative;
+  width: 300px;
+  height: 50px;
+  margin: 5px;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+#container #settingsDiv #settings > div span {
+  position: absolute;
+  top: 12px;
+  left: 100px;
+  font-family: var(--primaryFont);
+  font-size: 1.2rem;
+  color: var(--text);
+  user-select: none;
+}
+#container #settingsDiv #settings #editProfile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 300ms, height 300ms;
+}
+#container #settingsDiv #settings #editProfile.clicked {
+  width: 800px;
+  height: 500px;
+}
+#container #settingsDiv #settings #editProfile #editFields {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 50%;
+  background-color: red;
+}
+#container #settingsDiv #settings #editProfile #editFields input {
+  width: 80%;
+  height: 30px;
   margin: 10px;
 }
 

@@ -12,6 +12,16 @@ p {
 }
 
 app-watch-it {
-  background-color: #3a3b5b;
+  background-color: #252525;
 }
+
+app-top-ten {
+  background-color: #252525;
+}
+
+.mainContent {
+  display: grid;
+  grid-template-columns: 35% 30% 35%;
+}
+
 /*# sourceMappingURL=app.component.css.map */
