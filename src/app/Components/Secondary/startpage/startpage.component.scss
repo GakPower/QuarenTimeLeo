@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700'); 
+
+.container-page {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: lightblue;
+display: flex;
+    flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 50px auto;
+}
+
+button {
+    margin: 10px auto;
+    padding: 7px 0;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: white;
+    width: 200px;
+    height: 30px;
+    display: block;
+    outline: none;
+    background: none;
+    outline: none;
+    &:hover {
+      background: white;
+      color: lightblue;
+      border: 1px solid lightblue;
+      cursor: pointer;
+    }
+  }
+
+  .container-buttons {
+      margin: 90px auto;
+  }

@@ -1,5 +1,10 @@
 ::ng-deep :root {
-  --primary: #F55 ;
+  --primary: #A1A1CA;
+  --secondary: #78A0CF;
+  --background: #3C3F41;
+  --text: whitesmoke;
+  --secondaryFont: "Source Sans Pro", sans-serif;
+  --primaryFont: "Montserrat", sans-serif;
 }
 
 p {
@@ -7,7 +12,16 @@ p {
 }
 
 app-watch-it {
-  background-color: #3a3b5b;
+  background-color: #252525;
+}
+
+app-top-ten {
+  background-color: #252525;
+}
+
+.mainContent {
+  display: grid;
+  grid-template-columns: 35% 30% 35%;
 }
 
 /*# sourceMappingURL=app.component.css.map */

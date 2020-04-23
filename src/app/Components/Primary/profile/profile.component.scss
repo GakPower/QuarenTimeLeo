@@ -1,0 +1,83 @@
+#container {
+  width: 100vw;
+  height: 100vh;
+
+  background-color: var(--background);
+
+  display: flex;
+  flex-direction: column;
+
+  #profile {
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+
+    #emoji {
+      border-radius: 50%;
+
+      font-size: 7rem;
+
+      width: 100px;
+      height: 100px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin: 50px;
+    }
+
+    #info {
+      display: flex;
+      flex-direction: column;
+
+      &>p {
+        font-family: var(--primaryFont);
+        color: var(--text);
+      }
+
+      #name {
+        font-size: 4rem;
+      }
+    }
+  }
+
+  #myList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 40px;
+
+    height: 400px;
+
+    &>p {
+      align-self: flex-start;
+      font-family: var(--primaryFont);
+      font-size: 2rem;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+
+    #items {
+      width: 95%;
+      height: 80%;
+      background-color: white;
+
+      display: flex;
+      overflow-x: auto;
+
+      //&>div {
+      //  flex-shrink: 0;
+      //  width: 150px;
+      //  height: 90%;
+      //  background-color: red;
+      //
+      //  margin: 10px;
+      //}
+      app-card {
+        margin: 10px;
+      }
+    }
+  }
+}

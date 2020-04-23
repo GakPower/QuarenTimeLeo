@@ -2,7 +2,18 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #4E4E6B;
+  background-color: #252525;
+}
+
+button {
+  padding: 0;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+
+p {
+  margin: 0;
 }
 
 /*# sourceMappingURL=styles.css.map */
