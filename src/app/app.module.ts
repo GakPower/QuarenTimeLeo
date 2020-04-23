@@ -31,7 +31,10 @@ const routes = [
   {path: '', component: StartpageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegistrationComponent},
-  {path: ':username/poll', component: PollComponent}  
+  {path: 'resetpass', component: RestorepasswordComponent},
+  {path: ':username/poll', component: PollComponent},
+  { path: '**',   redirectTo: '', pathMatch: 'full' }
+   // PATH TO MAIN COMPONENT  
 /*  {path: 'register', component: RegisterComponent},
   {path: 'chat', component: ChatComponent},
   { path: '',   redirectTo: '/login', pathMatch: 'full' },
