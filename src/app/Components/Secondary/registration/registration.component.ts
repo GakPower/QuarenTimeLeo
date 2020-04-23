@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import * as firebase from 'firebase';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -17,7 +19,7 @@ export class RegistrationComponent implements OnInit {
     repeat: new FormControl()
     });
 
-  constructor(public auth: AngularFireAuth) { }
+  constructor(public auth: AngularFireAuth, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -34,9 +36,9 @@ this.errorMessage = 'PASSWORD TOO SHORT, MINIMUM OF 8 CHARACTERS';
     credential.user.updateProfile({
       displayName: saveusername,
     }) .then(() => {
-      console.log(credential.user.displayName),
-      credential.user.sendEmailVerification()//send confirmation email
-    .catch((e) => console.log(e));
+     // console.log(credential.user.displayName),  // testing purposes
+      credential.user.sendEmailVerification().catch((e) => console.log(e));  //send email verification                                                 
+      this.router.navigate([`../${saveusername}/poll`]);                    // THE QUOTATION ARE IMPORTANT !!!!
     })
     
     //when router functioning we redirect the user to another page 
