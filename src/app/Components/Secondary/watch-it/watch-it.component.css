@@ -1,15 +1,12 @@
 .wrapper {
-  display: -ms-grid;
   display: grid;
   border-color: #f0a3a3;
   height: 75vh;
   width: 28.5vw;
-  -ms-grid-columns: 50% 50%;
-      grid-template-columns: 50% 50%;
-  background-color: #61627C;
+  grid-template-columns: 50% 50%;
+  background-color: #8f8c8c;
   margin-left: 2em;
-  -webkit-box-shadow: inset 0 0 20px #4E4E6B;
-          box-shadow: inset 0 0 20px #4E4E6B;
+  box-shadow: inset 0 0 20px #000;
   border-radius: 10px;
 }
 
@@ -17,11 +14,11 @@
   width: 28.5vw;
   height: auto;
   margin-left: 2em;
-  background-color: #EADEDA;
+  background-color: cornsilk;
   border-radius: 10px;
 }
-
 .watchMe-header h1 {
   text-align: center;
 }
+
 /*# sourceMappingURL=watch-it.component.css.map */

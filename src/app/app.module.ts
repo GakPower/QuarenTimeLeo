@@ -13,10 +13,17 @@ import { PollComponent } from './Components/Secondary/poll/poll.component';
 import { ProfileComponent } from './Components/Primary/profile/profile.component';
 import { CardComponent } from './Components/Secondary/card/card.component';
 import { TopTenComponent } from './Components/Secondary/top-10/top-ten/top-ten.component';
+
+import { TopNavBarComponent } from './Components/Secondary/top-nav-bar/top-nav-bar.component';
+import { SearchBarComponent } from './Components/Secondary/top-nav-bar/search-bar/search-bar.component';
+import { NavButtonsComponent } from './Components/Secondary/top-nav-bar/nav-buttons/nav-buttons.component';
+
 import { TopTenMovieComponent } from './Components/Secondary/top-10/top-ten-movie/top-ten-movie.component';
+import { TopicComponent } from './Components/Secondary/topic/topic.component';
 import { LoginComponent } from './Components/Secondary/login/login.component';
 import { RestorepasswordComponent } from './Components/Secondary/restorepassword/restorepassword.component';
 import { StartpageComponent } from './Components/Secondary/startpage/startpage.component';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +31,9 @@ import { StartpageComponent } from './Components/Secondary/startpage/startpage.c
     PictureCardComponent,
     WatchItComponent,
     TopTenComponent,
+    TopNavBarComponent,
+    SearchBarComponent,
+    NavButtonsComponent,
     TopTenMovieComponent,
     RegistrationComponent,
     PollComponent,
@@ -34,6 +44,8 @@ import { StartpageComponent } from './Components/Secondary/startpage/startpage.c
     LoginComponent,
     RestorepasswordComponent,
     StartpageComponent,
+    TopTenComponent,
+    TopicComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +53,7 @@ import { StartpageComponent } from './Components/Secondary/startpage/startpage.c
     AngularFireAuthModule,
     AngularFirestoreModule,
     FormsModule,
-     ReactiveFormsModule
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
