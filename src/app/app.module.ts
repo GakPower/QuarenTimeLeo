@@ -9,13 +9,19 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { PictureCardComponent } from './Components/Secondary/picture-card/picture-card.component';
 import { WatchItComponent } from './Components/Secondary/watch-it/watch-it.component';
 import { TopTenComponent } from './Components/Secondary/top-10/top-ten/top-ten.component';
+import { TopNavBarComponent } from './Components/Secondary/top-nav-bar/top-nav-bar.component';
+import { SearchBarComponent } from './Components/Secondary/top-nav-bar/search-bar/search-bar.component';
+import { NavButtonsComponent } from './Components/Secondary/top-nav-bar/nav-buttons/nav-buttons.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PictureCardComponent,
     WatchItComponent,
-    TopTenComponent
+    TopTenComponent,
+    TopNavBarComponent,
+    SearchBarComponent,
+    NavButtonsComponent
   ],
   imports: [
     BrowserModule,
