@@ -11,6 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class RestorepasswordComponent implements OnInit {
   errorMessage: string = '';
   successMessage: string = '';
+  successMessage_2: string = '';
   user = new FormGroup({
     email: new FormControl(),
     });
@@ -19,9 +20,11 @@ export class RestorepasswordComponent implements OnInit {
 sendresetemail(): void {
   this.errorMessage = '';
   this.successMessage = '';
+  this.successMessage_2 = '';
   this.auth.sendPasswordResetEmail(this.user.get('email').value)
   .then(() => {
     this.successMessage = "The email has been successfully sent, follow the link on the email to reset your password.";
+    this.successMessage_2 = "Back to login page";
   })
   .catch((e) => {
     switch (e.code) {

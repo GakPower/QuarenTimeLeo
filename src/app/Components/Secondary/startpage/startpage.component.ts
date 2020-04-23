@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+
 //remember to import and inject the routing modules
 
 @Component({
@@ -8,17 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StartpageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
-  /*btnClick= function () {
-    this.router.navigateByUrl('/user');//where there is user we should insert the route
-};*/
 
-btnClick= function () {//this is only temporary until when we add routing
-  console.log("it works!");
-};
+  onSignup() { 
+    this.router.navigateByUrl('/register');
+  }
+  onLogin() {
+    //console.log("suvvess")
+    this.router.navigateByUrl('/login');
+  };
+
+
 
 }
 
