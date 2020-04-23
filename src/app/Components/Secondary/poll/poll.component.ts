@@ -1,4 +1,8 @@
 import {AfterContentInit, Component, OnInit, ViewChild} from '@angular/core';
+import { Router} from '@angular/router';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-poll',
@@ -24,7 +28,7 @@ export class PollComponent implements OnInit {
     {question: 'hello', answerType: 1, answers: []},
     {question: 'hi', answerType: 2, answers: []},
   ];
-  constructor() {
+  constructor(public auth: AngularFireAuth, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -34,6 +38,8 @@ export class PollComponent implements OnInit {
   }
 
   goToNext() {
+    if(this.current == this.total)
+    this.router.navigate([`../${firebase.auth().currentUser.displayName}/mainpage`]); 
     if (this.current < this.total) {
       this.current++;
     }
