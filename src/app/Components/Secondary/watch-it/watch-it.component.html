@@ -1,29 +1,6 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-    <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-
-</head>
-
 <div class="watchMe-header">
     <h1>Watch Me</h1>
 </div>
-<div class="wrapper" data-simplebar data-simblebar-auto-hide="false">
-    <app-picture-card> </app-picture-card>
-    <app-picture-card> </app-picture-card>
-    <app-picture-card> </app-picture-card>
-    <app-picture-card> </app-picture-card>
-    <app-picture-card> </app-picture-card>
-    <app-picture-card> </app-picture-card>
-    <app-picture-card> </app-picture-card>
-    <app-picture-card> </app-picture-card>
-    <app-picture-card> </app-picture-card>
+<div class="wrapper">
+   <app-picture-card [watchMeList]="watchMeList"> </app-picture-card> 
 </div>
-
-
-<script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
-
-
-</html>

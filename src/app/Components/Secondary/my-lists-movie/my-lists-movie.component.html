@@ -1,0 +1,24 @@
+<ul cdkDropList 
+id = "theWatchedList"
+cdkDropListConnectedTo="theTopTenMovies"
+(cdkDropListDropped)="drop($event)" *ngIf="Option1"> 
+    <li *ngFor="let movie of WatchedList"> 
+    <div class="movie_card" id="bright">
+      <div class="info_section">
+          <div class="movie_header">
+          <img class="locandina" src="{{movie.MoviePic}}"/>
+          <h3>{{movie.MovieName}}</h3>
+        </div>
+        <div class="movie_desc" >
+            <p class="text">
+             {{movie.MovieDesc}}
+            </p>
+          </div>
+        <div class="movie_rating">
+          <h3>{{movie.MovieRating}} </h3>
+        </div>
+      </div>
+      <div class="blur_back" style="background: url({{movie.MovieBackGround}}); width: 80%; background-size: contain;"></div>
+    </div>
+  </li>
+  </ul>
