@@ -14,6 +14,10 @@ import { ProfileComponent } from './Components/Primary/profile/profile.component
 import { CardComponent } from './Components/Secondary/card/card.component';
 import { TopTenComponent } from './Components/Secondary/top-10/top-ten/top-ten.component';
 import { TopTenMovieComponent } from './Components/Secondary/top-10/top-ten-movie/top-ten-movie.component';
+import { MyListsComponent } from './Components/Secondary/my-lists/my-lists.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MyListsMovieComponent } from './Components/Secondary/my-lists-movie/my-lists-movie.component';
+import { MainPageComponent } from './Components/Primary/main-page/main-page.component'; 
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import { TopTenMovieComponent } from './Components/Secondary/top-10/top-ten-movi
     ProfileComponent,
     CardComponent,
     WatchItComponent,
-    TopTenComponent
+    TopTenComponent,
+    MyListsComponent,
+    MyListsMovieComponent,
+    MainPageComponent, 
+    
   ],
   imports: [
     BrowserModule,
@@ -35,7 +43,8 @@ import { TopTenMovieComponent } from './Components/Secondary/top-10/top-ten-movi
     AngularFireAuthModule,
     AngularFirestoreModule,
     FormsModule,
-     ReactiveFormsModule
+    ReactiveFormsModule, 
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
