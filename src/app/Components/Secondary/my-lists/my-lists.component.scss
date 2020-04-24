@@ -3,6 +3,7 @@
 EFFECT FADING OUT FOR SIBLINGS MENU OPTIONS 
 =====
 */
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
 
 .menu:hover .menu__link:not(:hover) {
     color: rgba(155, 155, 153, 0.712);
@@ -150,4 +151,8 @@ body {
 }
 .myLists-menue {
     margin: 1.5em 0;
+}
+h1{
+    font-family: 'Source Sans Pro', sans-serif;
+    text-align: center;
 }

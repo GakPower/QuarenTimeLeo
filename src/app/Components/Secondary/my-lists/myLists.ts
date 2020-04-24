@@ -9,7 +9,7 @@ export const TopTenMovies: Movie[] = [
         MovieRating: 8,
     }
     , {
-        MovieName: 'Tomb ',
+        MovieName: 'Tomb Rider',
         MoviePic: 'https://mr.comingsoon.it/imgdb/locandine/235x336/53750.jpg',
         MovieDesc: 'Lara Croft, the fiercely independent daughter of a missing adventurer, must push herself beyond her limits when she finds herself on the island where her father disappeared.',
         MovieBackGround: 'https://fsmedia.imgix.net/cd/c9/5e/ba/4817/4d9a/93f0/c776ec32ecbc/lara-crofts-neck-looks-unnatural-in-the-new-poster-for-tomb-raider.png',
@@ -20,13 +20,9 @@ export const TopTenMovies: Movie[] = [
         MoviePic: 'https://mr.comingsoon.it/imgdb/locandine/235x336/53715.jpg',
         MovieDesc: "T'Challa, the King of Wakanda, rises to the throne in the isolated, technologically advanced African nation, but his claim is challenged by a vengeful outsider who was a childhood victim of T'Challa's father's mistake.",
         MovieBackGround: 'https://www.gannett-cdn.com/-mm-/c03fd140debe8ad4c05cf81a5cad7ad61a12ce52/c=0-1580-2985-3266&r=x803&c=1600x800/local/-/media/2017/06/09/USATODAY/USATODAY/636326272873599176-Black-Panther-Teaser.jpg',
-
         MovieRating: 5.5,
-    }
-    ,
+    },
 ]
-
-
 export const WatchMeMovies: Movie[] = [
     {
         MovieName: 'The Punisher',

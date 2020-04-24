@@ -29,6 +29,10 @@ import { LoginComponent } from './Components/Secondary/login/login.component';
 import { RestorepasswordComponent } from './Components/Secondary/restorepassword/restorepassword.component';
 import { StartpageComponent } from './Components/Secondary/startpage/startpage.component';
 import { MoviePageComponent } from './Components/Secondary/movie-page/movie-page.component';
+import { MatDialogModule } from '@angular/material/dialog'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 
 const routes = [  
@@ -82,9 +86,12 @@ const routes = [
     FormsModule,
     ReactiveFormsModule, 
     DragDropModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, 
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent], 
+  entryComponents: [MoviePageComponent]
 })
 export class AppModule { }

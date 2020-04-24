@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {Inject } from '@angular/core'; 
 
 @Component({
   selector: 'app-movie-page',
@@ -7,7 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MoviePageComponent implements OnInit {
 
-  constructor() { }
+
+
+  constructor(
+  public dialogRef: MatDialogRef<MoviePageComponent>, 
+  @Inject(MAT_DIALOG_DATA) public data: any) {}
+
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 
   ngOnInit(): void {
   }
