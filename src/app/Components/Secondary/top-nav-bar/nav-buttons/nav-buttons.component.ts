@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, OnInit} from '@angular/core';
+import { Component} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import * as firebase from 'firebase';
 import {Router} from '@angular/router';
@@ -9,13 +9,13 @@ import { environment } from 'src/environments/environment';
   templateUrl: './nav-buttons.component.html',
   styleUrls: ['./nav-buttons.component.scss']
 })
-export class NavButtonsComponent implements OnInit, AfterContentInit {
+export class NavButtonsComponent {
 
   loggedInUser = false;
 
   constructor(private auth: AngularFireAuth,
               private router: Router) {
-                firebase.initializeApp(environment.firebase);
+    firebase.initializeApp(environment.firebase);
     this.auth.onAuthStateChanged(user => {
       if (user && !this.loggedInUser) {
         this.loggedInUser = true;
@@ -32,14 +32,8 @@ export class NavButtonsComponent implements OnInit, AfterContentInit {
     }
   }
 
-  ngOnInit(): void {
-  }
-
   logout() {
     this.auth.signOut();
-  }
-
-  ngAfterContentInit(): void {
   }
 
 }
