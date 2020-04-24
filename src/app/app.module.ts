@@ -23,7 +23,7 @@ import { TopTenMovieComponent } from './Components/Secondary/top-10/top-ten-movi
 import { MyListsComponent } from './Components/Secondary/my-lists/my-lists.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MyListsMovieComponent } from './Components/Secondary/my-lists-movie/my-lists-movie.component';
-import { MainPageComponent } from './Components/Primary/main-page/main-page.component'; 
+import { MainPageComponent } from './Components/Primary/main-page/main-page.component';
 import { TopicComponent } from './Components/Secondary/topic/topic.component';
 import { LoginComponent } from './Components/Secondary/login/login.component';
 import { RestorepasswordComponent } from './Components/Secondary/restorepassword/restorepassword.component';
@@ -35,18 +35,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
-const routes = [  
+const routes = [
   {path: '', component: StartpageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegistrationComponent},
   {path: 'resetpass', component: RestorepasswordComponent},
   {path: ':username/poll', component: PollComponent},
+  {path: ':username/mainpage', component: MainPageComponent},
+  {path: 'profile', component: ProfileComponent},
   { path: '**',   redirectTo: '', pathMatch: 'full' }
-   // PATH TO MAIN COMPONENT  
-/*  {path: 'register', component: RegisterComponent},
-  {path: 'chat', component: ChatComponent},
-  { path: '',   redirectTo: '/login', pathMatch: 'full' },
-  { path: '**',   redirectTo: '/login', pathMatch: 'full' },*/
 ];
 
 
@@ -68,8 +65,7 @@ const routes = [
     TopTenComponent,
     MyListsComponent,
     MyListsMovieComponent,
-    MainPageComponent, 
-    
+    MainPageComponent,
     LoginComponent,
     RestorepasswordComponent,
     StartpageComponent,
@@ -84,7 +80,7 @@ const routes = [
     AngularFireAuthModule,
     AngularFirestoreModule,
     FormsModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
     DragDropModule,
     ReactiveFormsModule, 
     MatDialogModule,

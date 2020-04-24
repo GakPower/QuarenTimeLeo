@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 
-//remember to import and inject the routing modules
-
 @Component({
   selector: 'app-startpage',
   templateUrl: './startpage.component.html',
@@ -15,15 +13,11 @@ export class StartpageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSignup() { 
+  onSignup() {
     this.router.navigateByUrl('/register');
   }
   onLogin() {
-    //console.log("suvvess")
     this.router.navigateByUrl('/login');
-  };
-
-
-
+  }
 }
 

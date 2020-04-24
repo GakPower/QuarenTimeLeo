@@ -40,18 +40,33 @@
     <div id="settings">
 
       <div id="preferences">
-        <span>Preferences</span>
+        <p>Preferences</p>
       </div>
 
       <div id="editProfile" [class.clicked]="clickedProfile"
-      (click)="clickedProfile = !clickedProfile">
-        <span>Edit Profile</span>
+      (click)="clickedProfile = true">
+        <p>Edit Profile</p>
         <div id="editFields" *ngIf="clickedProfile">
-          <input aria-label="" placeholder="name" [value]="user.name">
-          <input aria-label="" placeholder="password">
-          <input aria-label="" placeholder="confPassword">
+          <div id="avatarDiv">
+            <div id="avatar" (click)="clickedAvatar = !clickedAvatar"
+                 [class.clickedAvatar] = clickedAvatar>
+              <div id="emoji1">{{user.avatar}}</div>
+              <div id="overlayPlus">+</div>
+            </div>
+<!--            <div id="emojiSelector">-->
+<!--              😂😂😂😂😂😂😂😂😂😂😂😂😂-->
+<!--            </div>-->
+          </div>
+
+          <input aria-label="" [value]="user.name">
           <button>Save</button>
         </div>
+      </div>
+      <div>
+        <p>Change Password</p>
+      </div>
+      <div>
+        <p>Notifications</p>
       </div>
 
     </div>
