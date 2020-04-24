@@ -3,7 +3,7 @@ id="theTopTenMovies"
 cdkDropListConnectedTo="theWatchedList"
 (cdkDropListDropped)="drop($event)"> 
 
-  <li *ngFor="let movie of topTenMovies" cdkDrag > 
+  <li *ngFor="let movie of topTenMovies" cdkDrag  mat-raised-button (click)="openMoviePage(movie)"> 
   <div class="movie_card" id="bright">
     <div class="info_section">
         <div class="movie_header">

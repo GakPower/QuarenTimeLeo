@@ -2,7 +2,7 @@
 id = "theWatchedList"
 cdkDropListConnectedTo="theTopTenMovies"
 (cdkDropListDropped)="drop($event)" *ngIf="Option1"> 
-    <li *ngFor="let movie of WatchedList"> 
+    <li *ngFor="let movie of WatchedList" mat-raised-button (click)="openMoviePage(movie)"> 
     <div class="movie_card" id="bright">
       <div class="info_section">
           <div class="movie_header">
@@ -18,7 +18,7 @@ cdkDropListConnectedTo="theTopTenMovies"
           <h3>{{movie.MovieRating}} </h3>
         </div>
       </div>
-      <div class="blur_back" style="background: url({{movie.MovieBackGround}}); width: 80%; background-size: contain;"></div>
+      <div class="blur_back" style="background: url({{movie.MovieBackGround}}); width: 80%; background-size: cover;"></div>
     </div>
   </li>
   </ul>
