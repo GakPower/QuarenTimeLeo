@@ -2,6 +2,7 @@ import {AfterContentInit, Component, OnInit} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import * as firebase from 'firebase';
 import {Router} from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-nav-buttons',
@@ -14,6 +15,7 @@ export class NavButtonsComponent implements OnInit, AfterContentInit {
 
   constructor(private auth: AngularFireAuth,
               private router: Router) {
+                firebase.initializeApp(environment.firebase);
     this.auth.onAuthStateChanged(user => {
       if (user && !this.loggedInUser) {
         this.loggedInUser = true;
@@ -24,7 +26,7 @@ export class NavButtonsComponent implements OnInit, AfterContentInit {
       // console.log(user);
     });
 
-    if (this.auth.currentUser) {
+    if (firebase.auth().currentUser) {
       this.loggedInUser = true;
       // this.router.navigate(['test/mainpage']);
     }
