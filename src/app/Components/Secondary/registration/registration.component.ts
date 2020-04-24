@@ -35,13 +35,14 @@ register(): void {
   } else if(this.user.get('password').value === this.user.get('repeat').value){//check for custom made response input error
       this.auth.createUserWithEmailAndPassword(this.user.get('email').value, this.user.get('password').value)
         .then((credential) => {
+          this.auth.signOut();
           credential.user.updateProfile({
           displayName: saveusername,
           }) .then(() => {
-                // console.log(credential.user.displayName),  // testing purposes
-              credential.user.sendEmailVerification().catch((e) => console.log(e));  //send email verification
-              this.router.navigate([`../${saveusername}/poll`]);                    // THE QUOTATION ARE IMPORTANT !!!!
-              })
+            // console.log(credential.user.displayName),  // testing purposes
+            credential.user.sendEmailVerification().catch((e) => console.log(e));  //send email verification
+            this.router.navigate([`/login`]); // THE QUOTATION ARE IMPORTANT !!!!
+          });
 
         //when router functioning we redirect the user to another page
         })

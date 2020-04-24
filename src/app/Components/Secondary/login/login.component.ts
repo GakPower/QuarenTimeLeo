@@ -23,18 +23,18 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     this.errorMessage = '';
-    
+
     this.auth.signInWithEmailAndPassword(this.user.get('email').value, this.user.get('password').value)//logging in
       .then((credential) => {
-        if(credential.user.emailVerified){
-          this.router.navigate([`../${credential.user.displayName}/mainpage`]); 
-        }   else {//if the account is not verified we log out the user
+        if (credential.user.emailVerified){
+          this.router.navigate([`/poll`]);
+        } else { //if the account is not verified we log out the user
             this.errorMessage = 'YOUR ACCOUNT IS NOT VERIFIED, CHECK YOUR EMAIL';
             this.auth.signOut().catch((e) => console.log(e));
           }
       })
       .catch((e) => this.errorMessage = "INCORRECT EMAIL/PASSWORD COMBINATION!");
-    
+
       this.user.reset();//reset all the values in the form
-  } 
+  }
 }

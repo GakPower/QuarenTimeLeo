@@ -38,8 +38,9 @@ export class PollComponent implements OnInit {
   }
 
   goToNext() {
-    if(this.current == this.total)
-    this.router.navigate([`../${firebase.auth().currentUser.displayName}/mainpage`]); 
+    if (this.current === this.total) {
+      this.router.navigate([`/mainpage`]);
+    }
     if (this.current < this.total) {
       this.current++;
     }

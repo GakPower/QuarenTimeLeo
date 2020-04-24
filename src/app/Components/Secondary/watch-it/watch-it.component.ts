@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie } from '../my-lists/listOption';
 import { WatchMeMovies } from '../my-lists/myLists';
 
 import 'simplebar'; // or "import SimpleBar from 'simplebar';" if you want to use it manually.
-import 'simplebar/dist/simplebar.css'; 
+import 'simplebar/dist/simplebar.css';
 
 @Component({
   selector: 'app-watch-it',
@@ -12,7 +11,7 @@ import 'simplebar/dist/simplebar.css';
 })
 export class WatchItComponent implements OnInit {
 
-  watchMeList = WatchMeMovies; 
+  watchMeList = WatchMeMovies;
 
   constructor() { }
 

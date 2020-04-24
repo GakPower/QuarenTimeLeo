@@ -1,4 +1,4 @@
-import { Movie } from '../my-lists/listOption';
+import { Movie } from './listOption';
 
 export const TopTenMovies: Movie[] = [
     {
@@ -18,7 +18,7 @@ export const TopTenMovies: Movie[] = [
     , {
         MovieName: 'Black Panther',
         MoviePic: 'https://mr.comingsoon.it/imgdb/locandine/235x336/53715.jpg',
-        MovieDesc: "T'Challa, the King of Wakanda, rises to the throne in the isolated, technologically advanced African nation, but his claim is challenged by a vengeful outsider who was a childhood victim of T'Challa's father's mistake.",
+        MovieDesc: 'T\'Challa, the King of Wakanda, rises to the throne in the isolated, technologically advanced African nation, but his claim is challenged by a vengeful outsider who was a childhood victim of T\'Challa\'s father\'s mistake.',
         MovieBackGround: 'https://www.gannett-cdn.com/-mm-/c03fd140debe8ad4c05cf81a5cad7ad61a12ce52/c=0-1580-2985-3266&r=x803&c=1600x800/local/-/media/2017/06/09/USATODAY/USATODAY/636326272873599176-Black-Panther-Teaser.jpg',
         MovieRating: 5.5,
     },
@@ -27,7 +27,7 @@ export const WatchMeMovies: Movie[] = [
     {
         MovieName: 'The Punisher',
         MoviePic: 'https://i.pinimg.com/originals/55/ef/b3/55efb32599cd43388fae851773b134bd.jpg',
-        MovieDesc: "After exacting revenge on the people responsible for the deaths of his wife and children, Frank Castle uncovers a conspiracy that runs deeper than New York's criminal underworld.",
+        MovieDesc: 'After exacting revenge on the people responsible for the deaths of his wife and children, Frank Castle uncovers a conspiracy that runs deeper than New York\'s criminal underworld.',
         MovieBackGround: '',
         MovieRating: 8,
 
@@ -35,7 +35,7 @@ export const WatchMeMovies: Movie[] = [
     {
         MovieName: 'Divergent',
         MoviePic: 'https://images-na.ssl-images-amazon.com/images/I/71oka2eUBvL._AC_SL1064_.jpg',
-        MovieDesc: "In a world divided by factions based on virtues, Tris learns she's Divergent and won't fit in. When she discovers a plot to destroy Divergents, Tris and the mysterious Four must find out what makes Divergents dangerous before it's too late.",
+        MovieDesc: 'In a world divided by factions based on virtues, Tris learns she\'s Divergent and won\'t fit in. When she discovers a plot to destroy Divergents, Tris and the mysterious Four must find out what makes Divergents dangerous before it\'s too late.',
         MovieBackGround: '',
         MovieRating: 8,
 
@@ -43,7 +43,7 @@ export const WatchMeMovies: Movie[] = [
     {
         MovieName: 'Avengers',
         MoviePic: 'https://www.mauvais-genres.com/26247/avengers-endgame-original-movie-poster-15x21-in-2019-anthony-russo-robert-downey-jr.jpg',
-        MovieDesc: "After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe",
+        MovieDesc: 'After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos\' actions and restore balance to the universe',
         MovieBackGround: '',
         MovieRating: 8,
 
@@ -51,7 +51,7 @@ export const WatchMeMovies: Movie[] = [
     {
         MovieName: 'The Punisher',
         MoviePic: 'https://i.pinimg.com/originals/55/ef/b3/55efb32599cd43388fae851773b134bd.jpg',
-        MovieDesc: "After exacting revenge on the people responsible for the deaths of his wife and children, Frank Castle uncovers a conspiracy that runs deeper than New York's criminal underworld.",
+        MovieDesc: 'After exacting revenge on the people responsible for the deaths of his wife and children, Frank Castle uncovers a conspiracy that runs deeper than New York\'s criminal underworld.',
         MovieBackGround: '',
         MovieRating: 8,
 
@@ -59,7 +59,7 @@ export const WatchMeMovies: Movie[] = [
     {
         MovieName: 'The Punisher',
         MoviePic: 'https://i.pinimg.com/originals/55/ef/b3/55efb32599cd43388fae851773b134bd.jpg',
-        MovieDesc: "After exacting revenge on the people responsible for the deaths of his wife and children, Frank Castle uncovers a conspiracy that runs deeper than New York's criminal underworld.",
+        MovieDesc: 'After exacting revenge on the people responsible for the deaths of his wife and children, Frank Castle uncovers a conspiracy that runs deeper than New York\'s criminal underworld.',
         MovieBackGround: '',
         MovieRating: 8,
 
@@ -86,7 +86,7 @@ export const WatchMeMovies: Movie[] = [
         MovieRating: 7.6,
     },
 
-]
+];
 
 export const WatchedMovies: Movie[] = [
     {
@@ -110,5 +110,4 @@ export const WatchedMovies: Movie[] = [
         MovieBackGround: 'https://wallpaperaccess.com/full/2062125.jpg',
         MovieRating: 7.6,
     },
-
-]
+];
