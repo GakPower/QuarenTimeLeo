@@ -1,4 +1,31 @@
 <div id="container">
+
+  <div class="usercontainer">
+    <div class="rela-block">
+      <div class="profile-pic" id="profile_pic"
+        style="background: url(https://i.ya-webdesign.com/images/evil-cartoon-face-png-7.png); background-size: contain;">
+      </div>
+      <div class="profile-name-container">
+        <svg  id="edit" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+          width="24" height="24" viewBox="0 0 172 172">
+          <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none"
+            font-size="none" style="mix-blend-mode: normal">
+            <path d="M0,172v-172h172v172z" fill="none"></path>
+            <g id="original-icon" fill="#000000">
+              <path
+                d="M27.52,68.8c-11.395,0 -20.64,9.245 -20.64,20.64c0,11.395 9.245,20.64 20.64,20.64c11.395,0 20.64,-9.245 20.64,-20.64c0,-11.395 -9.245,-20.64 -20.64,-20.64zM86,68.8c-11.395,0 -20.64,9.245 -20.64,20.64c0,11.395 9.245,20.64 20.64,20.64c11.395,0 20.64,-9.245 20.64,-20.64c0,-11.395 -9.245,-20.64 -20.64,-20.64zM144.48,68.8c-11.395,0 -20.64,9.245 -20.64,20.64c0,11.395 9.245,20.64 20.64,20.64c11.395,0 20.64,-9.245 20.64,-20.64c0,-11.395 -9.245,-20.64 -20.64,-20.64z">
+              </path>
+            </g>
+          </g>
+        </svg>
+        
+        <div class="user-name" id="user_name">{{user.name}}</div>
+        <div class="user-desc" id="user_description">{{user.email}}</div>
+      </div>
+    </div>
+  </div>
+  <!--
   <div id="profile">
     <div id="emoji">{{user.avatar}}</div>
     <div id="info">
@@ -6,33 +33,82 @@
       <p>{{user.email}}</p>
     </div>
   </div>
+   ================================================================ -->
 
-  <div id="myList">
+
+
+  <div id="myList" class="myList-overflow">
     <p>My List</p>
     <div id="topicsDiv">
       <div id="topics">
-        <app-topic *ngFor="let topic of topics; let i = index" [title]="topic.title"
-                   (delete)="removeTopic(i)" (clicked)="clickedTopic(i)"
-                   [isSelected]="selectedTopic === i" [color]="topic.color">
+        <app-topic *ngFor="let topic of topics; let i = index" [title]="topic.title" (delete)="removeTopic(i)"
+          (clicked)="clickedTopic(i)" [isSelected]="selectedTopic === i" [color]="topic.color">
         </app-topic>
       </div>
 
-      <svg (click)="addTopic()"
-        id="plus" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-        width="64" height="64"
-        viewBox="0 0 172 172"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g id="original-icon" fill="#000000"><path d="M86,8.13074c-19.95469,0 -39.90938,7.59114 -55.09375,22.77551c-30.36875,30.36875 -30.36875,79.81875 0,110.1875c15.18437,15.18437 35.20625,22.84375 55.09375,22.84375c19.8875,0 39.90937,-7.65938 55.09375,-22.84375c30.36875,-30.36875 30.36875,-79.81875 0,-110.1875c-15.18438,-15.18437 -35.13906,-22.77551 -55.09375,-22.77551zM86,16.125c17.87188,0 35.7448,6.85208 49.45105,20.42395c27.14375,27.27812 27.14375,71.62397 0,98.9021c-27.27812,27.27812 -71.62187,27.27812 -98.76562,0c-27.27812,-27.27812 -27.28022,-71.62397 -0.13647,-98.9021c13.70625,-13.57187 31.57917,-20.42395 49.45105,-20.42395zM86,56.4375c-2.28437,0 -4.03125,1.74687 -4.03125,4.03125v21.5h-21.5c-2.28438,0 -4.03125,1.74688 -4.03125,4.03125c0,2.28437 1.74687,4.03125 4.03125,4.03125h21.5v21.5c0,2.28437 1.74688,4.03125 4.03125,4.03125c2.28437,0 4.03125,-1.74688 4.03125,-4.03125v-21.5h21.5c2.28437,0 4.03125,-1.74688 4.03125,-4.03125c0,-2.28437 -1.74688,-4.03125 -4.03125,-4.03125h-21.5v-21.5c0,-2.28438 -1.74688,-4.03125 -4.03125,-4.03125z"></path></g></g>
+      <svg (click)="addTopic()" id="plus" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64" height="64"
+        viewBox="0 0 172 172">
+        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+          stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+          font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+          <path d="M0,172v-172h172v172z" fill="none"></path>
+          <g id="original-icon" fill="#000000">
+            <path
+              d="M86,8.13074c-19.95469,0 -39.90938,7.59114 -55.09375,22.77551c-30.36875,30.36875 -30.36875,79.81875 0,110.1875c15.18437,15.18437 35.20625,22.84375 55.09375,22.84375c19.8875,0 39.90937,-7.65938 55.09375,-22.84375c30.36875,-30.36875 30.36875,-79.81875 0,-110.1875c-15.18438,-15.18437 -35.13906,-22.77551 -55.09375,-22.77551zM86,16.125c17.87188,0 35.7448,6.85208 49.45105,20.42395c27.14375,27.27812 27.14375,71.62397 0,98.9021c-27.27812,27.27812 -71.62187,27.27812 -98.76562,0c-27.27812,-27.27812 -27.28022,-71.62397 -0.13647,-98.9021c13.70625,-13.57187 31.57917,-20.42395 49.45105,-20.42395zM86,56.4375c-2.28437,0 -4.03125,1.74687 -4.03125,4.03125v21.5h-21.5c-2.28438,0 -4.03125,1.74688 -4.03125,4.03125c0,2.28437 1.74687,4.03125 4.03125,4.03125h21.5v21.5c0,2.28437 1.74688,4.03125 4.03125,4.03125c2.28437,0 4.03125,-1.74688 4.03125,-4.03125v-21.5h21.5c2.28437,0 4.03125,-1.74688 4.03125,-4.03125c0,-2.28437 -1.74688,-4.03125 -4.03125,-4.03125h-21.5v-21.5c0,-2.28438 -1.74688,-4.03125 -4.03125,-4.03125z">
+            </path>
+          </g>
+        </g>
       </svg>
     </div>
-    <div id="cards" *ngIf="selectedTopic != -1" [style.border-color]="topics[selectedTopic].color">
-      <app-card *ngFor="let card of cards; let i = index" (delete)="removeCard(i)"></app-card>
-    </div>
+    <div id="cards" style="overflow: auto;" *ngIf="selectedTopic != -1"
+      [style.border-color]="topics[selectedTopic].color">
+      <!-- <app-card *ngFor="let card of cards; let i = index" (delete)="removeCard(i)"></app-card> -->
 
-    <p id="favouriteTitle">Favourite</p>
-    <div id="favourite">
-      <app-card *ngFor="let card of cards; let i = index" (delete)="removeCard(i)"></app-card>
+
+      <div class="movie-card" *ngFor="let movie of WatchList"
+        style="background: url({{movie.MoviePic}}); background-size: cover;">
+        <div class="overlay">
+          <div class="card-header">
+            <div class="release-date">
+              <p style="font-size: 12px">Recomended: Highly</p>
+            </div>
+            <div class="movie-content">
+              <div class="content">
+                <h1>{{movie.MovieName}}</h1>
+                <p class="movie-text">{{movie.MovieDesc}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
   </div>
+
+  <!-- <p id="favouriteTitle">Favourite</p>
+  <div id="favourite">
+     <app-card *ngFor="let card of cards; let i = index" (delete)="removeCard(i)"></app-card> 
+    <div class="movie-card" *ngFor="let movie of WatchList"
+      style="background: url({{movie.MoviePic}}); background-size: cover;">
+      <div class="overlay">
+        <div class="card-header">
+          <div class="release-date">
+            <p style="font-size: 12px">Recomended: Highly</p>
+          </div>
+          <div class="movie-content">
+            <div class="content">
+              <h1>{{movie.MovieName}}</h1>
+              <p class="movie-text">{{movie.MovieDesc}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>-->
+
+
+
 
   <div id="settingsDiv">
 
@@ -43,19 +119,17 @@
         <p>Preferences</p>
       </div>
 
-      <div id="editProfile" [class.clicked]="clickedProfile"
-      (click)="clickedProfile = true">
+      <div id="editProfile" [class.clicked]="clickedProfile" (click)="clickedProfile = true">
         <p>Edit Profile</p>
         <div id="editFields" *ngIf="clickedProfile">
           <div id="avatarDiv">
-            <div id="avatar" (click)="clickedAvatar = !clickedAvatar"
-                 [class.clickedAvatar] = clickedAvatar>
+            <div id="avatar" (click)="clickedAvatar = !clickedAvatar" [class.clickedAvatar]=clickedAvatar>
               <div id="emoji1">{{user.avatar}}</div>
               <div id="overlayPlus">+</div>
             </div>
-<!--            <div id="emojiSelector">-->
-<!--              😂😂😂😂😂😂😂😂😂😂😂😂😂-->
-<!--            </div>-->
+            <!--            <div id="emojiSelector">-->
+            <!--              😂😂😂😂😂😂😂😂😂😂😂😂😂-->
+            <!--            </div>-->
           </div>
 
           <input aria-label="" [value]="user.name">
@@ -71,5 +145,4 @@
 
     </div>
   </div>
-
 </div>

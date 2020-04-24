@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {WatchMeMovies  } from '../../Secondary/my-lists/myLists'; 
 
 @Component({
   selector: 'app-profile',
@@ -8,14 +9,16 @@ import { Component, OnInit } from '@angular/core';
 export class ProfileComponent {
 
   user = {
-    name: 'Name',
+    name: 'User Userson',
     avatar: '😈',
     email: 'test@gmail.com'
   };
 
   topics = [
-    {title: 'Watch List', color: '#64c7d9'},
+    {title: 'Watch List', color: '#64c7d9'}, {title: 'Favourite', color: 'red'} ,{title: 'Black List', color: 'purple'} , {title: 'watched', color: 'purple'}
   ];
+
+  WatchList = WatchMeMovies; 
   cards = ['15661', '65161', '78913'];
   selectedTopic = -1;
 
