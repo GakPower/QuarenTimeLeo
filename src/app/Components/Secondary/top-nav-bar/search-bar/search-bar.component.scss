@@ -31,7 +31,7 @@
     background: var(--accent);
     border-radius: 50%;
     transition: all 1s;
-    z-index: 4;
+    z-index: 6;
     box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
     &:hover {
       cursor: pointer;
@@ -62,7 +62,7 @@
       height: 25px;
       border-radius: 50%;
       border: 2px solid white;
-      transition: all .5s;
+      transition: all 500ms;
     }
   }
   input {
@@ -73,7 +73,7 @@
     right: 0;
     left: 0;
     bottom: 0;
-    width: 50px;
+    width: 160px;
     height: 50px;
     outline: none;
     border: none;
@@ -84,7 +84,7 @@
     box-shadow: 0 0 5px 0 black,
     0 20px 25px 0 rgba(0, 0, 0, 0.2);
     transition: all 1s;
-    opacity: 0;
+    opacity: 1;
     z-index: 5;
     font-weight: bolder;
     letter-spacing: 0.1em;
@@ -99,7 +99,7 @@
     &:focus ~ .search {
       right: -250px;
       background: var(--primary);
-      z-index: 6;
+      //z-index: 6;
       &::before {
         top: 0;
         left: 0;

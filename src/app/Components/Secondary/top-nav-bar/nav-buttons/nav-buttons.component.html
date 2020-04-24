@@ -1,14 +1,14 @@
-<ul id="buttons-container" *ngIf="loggedInUser">
+<ul id="buttons-container">
   <li>
       <i class="fa fa-random" aria-hidden="true"></i>
   </li>
   <li routerLink="/profile">
       <i class="fa fa-user-circle" aria-hidden="true"></i>
   </li>
-  <li routerLink="test/mainpage">
+  <li routerLink="/mainpage">
     <i class="fa fa-home" aria-hidden="true"></i>
   </li>
-  <li routerLink="/login" (click)="logout()">
+  <li routerLink="/" (click)="logout()">
     <i class="fa fa-sign-out" aria-hidden="true"></i>
   </li>
 </ul>

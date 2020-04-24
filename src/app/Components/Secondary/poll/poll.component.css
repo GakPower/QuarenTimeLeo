@@ -6,6 +6,7 @@
   width: 900px;
   height: 800px;
   background-color: var(--text);
+  margin-top: 120px;
 }
 #poll > svg {
   position: absolute;
@@ -29,7 +30,7 @@
   transform: rotate(-20deg);
 }
 #poll #ticket {
-  bottom: 15%;
+  bottom: 20%;
   right: 7%;
   transform: scale(2);
 }
@@ -158,7 +159,9 @@
   width: 50px;
   height: 50px;
   border: 0;
+  border-radius: 50%;
   background-color: transparent;
+  cursor: pointer;
 }
 #poll #container button svg {
   width: 50px;
@@ -173,6 +176,27 @@
 #poll #container #next {
   right: 0;
   transform: rotate(180deg);
+}
+
+#title {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  text-align: center;
+  font-size: 40px;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  font-family: var(--primaryFont);
+}
+#title p {
+  color: white;
+}
+#title #wasteTime {
+  color: var(--primary);
+  font-size: 20px;
+  font-family: var(--secondaryFont);
 }
 
 /*# sourceMappingURL=poll.component.css.map */

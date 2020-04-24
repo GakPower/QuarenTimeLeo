@@ -31,16 +31,17 @@ import { StartpageComponent } from './Components/Secondary/startpage/startpage.c
 import { MoviePageComponent } from './Components/Secondary/movie-page/movie-page.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {LoggedInGuard} from './Components/Class/logged-in-guard.service';
 
 const routes = [
   {path: '', component: StartpageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegistrationComponent},
   {path: 'resetpass', component: RestorepasswordComponent},
-  {path: ':username/poll', component: PollComponent},
-  {path: ':username/mainpage', component: MainPageComponent},
-  {path: 'profile', component: ProfileComponent},
-  { path: '**',   redirectTo: '', pathMatch: 'full' }
+  {path: 'poll', canActivate: [LoggedInGuard], component: PollComponent},
+  {path: 'mainpage', canActivate: [LoggedInGuard], component: MainPageComponent},
+  {path: 'profile', canActivate: [LoggedInGuard], component: ProfileComponent},
+  {path: '**',   redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({
