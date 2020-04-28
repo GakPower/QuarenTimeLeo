@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { WatchMeMovies } from '../my-lists/myLists';
 
 import 'simplebar'; // or "import SimpleBar from 'simplebar';" if you want to use it manually.
 import 'simplebar/dist/simplebar.css';
+import {Movie} from '../../Class/Movie/movie';
+import {MovieAPI} from '../../Class/MovieAPI/movie-api';
 
 @Component({
   selector: 'app-watch-it',
@@ -11,11 +12,15 @@ import 'simplebar/dist/simplebar.css';
 })
 export class WatchItComponent implements OnInit {
 
-  watchMeList = WatchMeMovies;
+  // watchMeList = WatchMeMovies;
+  movies: Movie[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
+    MovieAPI.search('avengers').then(result => {
+      this.movies = result;
+    });
   }
 
 }

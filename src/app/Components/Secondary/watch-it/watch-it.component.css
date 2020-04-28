@@ -8,6 +8,10 @@
   border-radius: 10px;
   overflow: auto;
   margin-left: 2.4em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 
 .watchMe-header {

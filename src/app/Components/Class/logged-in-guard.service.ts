@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
-import * as firebase from 'firebase';
+import { CanActivate } from '@angular/router';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {loggedIn} from '@angular/fire/auth-guard';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +14,6 @@ export class LoggedInGuard implements CanActivate {
   }
 
   canActivate(): boolean {
-    console.log(this.loggedIn);
     return this.loggedIn;
   }
 }

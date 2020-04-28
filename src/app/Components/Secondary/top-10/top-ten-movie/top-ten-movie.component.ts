@@ -1,19 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie } from '../../my-lists/listOption';
-import { TopTenMovies } from '../../my-lists/myLists';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
 import { MoviePageComponent } from '../../movie-page/movie-page.component';
-
-export interface Dialogdata{
- 
-  MovieName: String; 
-  MoviePic: String; 
-  Moviedesc: String; 
-  MovieBackGround: String; 
-  MovieRating: number; 
-
-  }
+import {MovieAPI} from '../../../Class/MovieAPI/movie-api';
+import {Movie} from '../../../Class/Movie/movie';
 
 @Component({
   selector: 'app-top-ten-movie',
@@ -22,34 +12,29 @@ export interface Dialogdata{
 })
 export class TopTenMovieComponent implements OnInit {
 
-  
-  topTenMovies = TopTenMovies;
+  topTenMovies: Movie[];
 
-  constructor(public dialog: MatDialog) { }
-
-
-
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
+    MovieAPI.getMostPopular().then(movies => {
+      this.topTenMovies = movies;
+    });
   }
   openMoviePage(movie: Movie): void {
-    const dialogRef = this.dialog.open(MoviePageComponent, {
-      data: {
-        MovieName: movie.MovieName, MovieDesc: movie.MovieDesc, MoviePic: movie.MoviePic, 
-        MovieBackGround: movie.MovieBackGround, MovieRating: movie.MovieRating
-      }
-      
+    this.dialog.open(MoviePageComponent, {
+      data: movie
     });
-    console.log(movie.MovieName)
   }
 
   drop(event: CdkDragDrop<any[]>) {
-    if (event.previousContainer !== event.previousContainer) {
-      transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+    if (event.previousContainer === event.container) {
+      console.log('same');
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      moveItemInArray(this.topTenMovies, event.previousIndex, event.currentIndex);
+      console.log('dif');
+      transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
     }
-
   }
 
 }

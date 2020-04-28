@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {WatchMeMovies  } from '../../Secondary/my-lists/myLists'; 
+import { Component, } from '@angular/core';
+import {Movie} from '../../Class/Movie/movie';
 
 @Component({
   selector: 'app-profile',
@@ -18,7 +18,7 @@ export class ProfileComponent {
     {title: 'Watch List', color: '#64c7d9'}, {title: 'Favourite', color: 'red'} ,{title: 'Black List', color: 'purple'} , {title: 'watched', color: 'purple'}
   ];
 
-  WatchList = WatchMeMovies; 
+  WatchList: Movie[] = [];
   cards = ['15661', '65161', '78913'];
   selectedTopic = -1;
 
