@@ -111,3 +111,17 @@ export const WatchedMovies: Movie[] = [
         MovieRating: 7.6,
     },
 ];
+
+export const AvatarList: String[] = [
+    'https://i.ya-webdesign.com/images/evil-cartoon-face-png-7.png',
+    'https://clipart.info/images/ccovers/1496184258Devil-Emoji-png-transparent-Icon.png',
+    'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm208batch7-adj-08.png?w=1000&dpr=1&fit=default&crop=default&auto=null&fm=png&q=75&vib=3&con=3&usm=15&bg=transparent&ixlib=js-2.2.1&s=4c4750f39121db877cd01a663e1c9073',
+    'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm208batch7-adj-10.png?w=1000&dpr=1&fit=default&crop=default&auto=null&fm=png&q=75&vib=3&con=3&usm=15&bg=transparent&ixlib=js-2.2.1&s=b33466e6aaa3519e3570eff05614aa0a',
+    'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm208batch7-adj-09.png?w=1000&dpr=1&fit=default&crop=default&auto=null&fm=png&q=75&vib=3&con=3&usm=15&bg=transparent&ixlib=js-2.2.1&s=bdad6d5b0b529765d41000ef8cffcaad', 
+    'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm208batch7-adj-07.png?w=800&dpr=1&fit=default&crop=default&auto=null&fm=png&q=75&vib=3&con=3&usm=15&bg=transparent&ixlib=js-2.2.1&s=d4b00f5a0e6bafec320d64942840c50f',
+    'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v482batch2-ning-05.png?w=1000&dpr=1&fit=default&crop=default&auto=null&fm=png&q=75&vib=3&con=3&usm=15&bg=transparent&ixlib=js-2.2.1&s=6d13ec2b3bc8b1392f6e32154f9961c7',
+    'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v824-te-40.png?w=1000&dpr=1&fit=default&crop=default&auto=null&fm=png&q=75&vib=3&con=3&usm=15&bg=transparent&ixlib=js-2.2.1&s=cfccd0f6fdf1486ca8e107781cfe7cd5',
+    'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v824-te-29.png?w=1000&dpr=1&fit=default&crop=default&auto=null&fm=png&q=75&vib=3&con=3&usm=15&bg=transparent&ixlib=js-2.2.1&s=8f921ef17843cd8d907dd0b2be4b06ed',
+    
+    
+]

@@ -37,4 +37,7 @@ export class LoginComponent implements OnInit {
 
       this.user.reset();//reset all the values in the form
   }
+  onSignup() {
+    this.router.navigateByUrl('/register');
+  }
 }

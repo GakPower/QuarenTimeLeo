@@ -1,3 +1,4 @@
+<!-- Old Topics  
 <svg (click)="emitDeleteEvent()" *ngIf="editing"
      id="delete" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
      width="40" height="40"
@@ -28,4 +29,33 @@
     <div [style.background-color]="colors[3]" (click)="changeColor(3)"></div>
   </div>
 
+</div> -->
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+<div class="content">
+
+  <!-- card -->
+  <div class="card">
+    <svg id="edit" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172">
+      <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+        stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-size="none"
+        style="mix-blend-mode: normal">
+        <path d="M0,172v-172h172v172z" fill="none"></path>
+        <g id="original-icon" fill="#dfdfdf">
+          <path
+            d="M27.52,68.8c-11.395,0 -20.64,9.245 -20.64,20.64c0,11.395 9.245,20.64 20.64,20.64c11.395,0 20.64,-9.245 20.64,-20.64c0,-11.395 -9.245,-20.64 -20.64,-20.64zM86,68.8c-11.395,0 -20.64,9.245 -20.64,20.64c0,11.395 9.245,20.64 20.64,20.64c11.395,0 20.64,-9.245 20.64,-20.64c0,-11.395 -9.245,-20.64 -20.64,-20.64zM144.48,68.8c-11.395,0 -20.64,9.245 -20.64,20.64c0,11.395 9.245,20.64 20.64,20.64c11.395,0 20.64,-9.245 20.64,-20.64c0,-11.395 -9.245,-20.64 -20.64,-20.64z">
+          </path>
+        </g>
+      </g>
+    </svg>
+
+    <div class="icon" [style.background-color]="color"></div>
+    <p class="title">{{title}}</p>
+    <p class="text">Helper text for animation</p>
+
+  </div>
+  <!-- end card -->
+  <!-- end card -->
 </div>

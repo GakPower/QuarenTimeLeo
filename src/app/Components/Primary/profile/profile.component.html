@@ -3,12 +3,10 @@
 
   <div class="usercontainer">
     <div class="rela-block">
-      <div class="profile-pic" id="profile_pic"
-        style="background: url(https://i.ya-webdesign.com/images/evil-cartoon-face-png-7.png); background-size: contain;">
+      <div class="profile-pic" id="profile_pic" style="background: url({{user.avatar}}); background-size: contain;">
       </div>
       <div class="profile-name-container">
-        <svg  id="edit" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-          width="24" height="24" viewBox="0 0 172 172">
+        <svg id="edit" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172">
           <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none"
             font-size="none" style="mix-blend-mode: normal">
@@ -20,7 +18,7 @@
             </g>
           </g>
         </svg>
-        
+
         <div class="user-name" id="user_name">{{user.name}}</div>
         <div class="user-desc" id="user_description">{{user.email}}</div>
       </div>
@@ -38,7 +36,7 @@
 
 
 
-  <div id="myList" class="myList-overflow">
+  <div id="myList" class="myList-overflow" style="scrollbar-width: 16px; scrollbar-color: transparent transparent;" >
     <p>My List</p>
     <div id="topicsDiv">
       <div id="topics">
@@ -61,11 +59,9 @@
         </g>
       </svg>
     </div>
-    <div id="cards" style="overflow: auto;" *ngIf="selectedTopic != -1"
-      [style.border-color]="topics[selectedTopic].color">
+    <div id="cards" style="overflow: auto; scrollbar-width: thin; scrollbar-color: #252525 transparent;"
+      *ngIf="selectedTopic != -1" [style.border-color]="topics[selectedTopic].color">
       <!-- <app-card *ngFor="let card of cards; let i = index" (delete)="removeCard(i)"></app-card> -->
-
-
       <div class="movie-card" *ngFor="let movie of WatchList"
         style="background: url({{movie.MoviePic}}); background-size: cover;">
         <div class="overlay">
@@ -114,23 +110,22 @@
   <div id="settingsDiv">
 
     <p>Settings</p>
-    <div id="settings">
+    <div>
 
-      <div id="preferences">
-        <p>Preferences</p>
-      </div>
 
-      <div id="editProfile" [class.clicked]="clickedProfile" (click)="clickedProfile = true">
-        <p>Edit Profile</p>
+      <button class="settings-btn">Preferences</button>
+
+
+      <div [class.clicked]="clickedProfile" (click)="clickedProfile = true">
+        <button class="settings-btn">Edit profile</button>
         <div id="editFields" *ngIf="clickedProfile">
           <div id="avatarDiv">
-            <div id="avatar" (click)="clickedAvatar = !clickedAvatar" [class.clickedAvatar]=clickedAvatar>
-              <div id="emoji1">{{user.avatar}}</div>
-              <div id="overlayPlus">+</div>
+            <div *ngFor="let Avatar of Avatars"
+              style="width: 100px; height: 95px; margin-right: 10px; margin-left: 5px;  background: url({{Avatar}}); background-size: cover; flex-shrink: 0;"
+              (click)="changeAvatar(Avatar)">
             </div>
-            <!--            <div id="emojiSelector">-->
-            <!--              😂😂😂😂😂😂😂😂😂😂😂😂😂-->
-            <!--            </div>-->
+            <!-- <div id="overlayPlus">+</div> -->
+
           </div>
 
           <input aria-label="" [value]="user.name">
@@ -138,12 +133,16 @@
         </div>
       </div>
       <div>
-        <p>Change Password</p>
+        <button class="settings-btn">Change Password</button>
       </div>
       <div>
-        <p>Notifications</p>
+        <button class="settings-btn">Notifications</button>
       </div>
 
     </div>
+  </div>
+
+  <div style="display: flex; width: 450px; height: 110px; padding: 5px; border: solid 2px white;">
+
   </div>
 </div>

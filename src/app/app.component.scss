@@ -1,16 +1,18 @@
 ::ng-deep :root {
-  --primary: #A1A1CA;
+  --primary: #f0666e;
   --secondary: lightblue;
-  --background: #252525;
+  --background: #222B32;
+  --background-dark: #181c1f; 
   //--background: #3C3F41;
-  --text: whitesmoke;
-  --textDark: #aaaaaa;
+  --text: #D8DEDF; 
+  --textDark: #5B7280;
   //--secondaryFont: 'Source Sans Pro', sans-serif;
   --primaryFont: 'Acme', sans-serif;
   //--secondaryFont: 'Montserrat', sans-serif;
   --secondaryFont: 'Josefin Sans', sans-serif;
   //--primaryFont: 'Bangers', cursive;
-  --accent: #5f9551;
+  --accent: #FE4250;
+  
 
 }
 

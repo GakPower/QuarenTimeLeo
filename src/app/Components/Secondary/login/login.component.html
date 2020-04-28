@@ -1,7 +1,32 @@
-<div id="title">
+ 
+ <div id="title">
   <p>Quarentime</p>
   <p id="wasteTime">Waste time</p>
 </div>
+
+
+<div class="login-page">
+  <div class="form"> 
+    <form class="register-form" >
+      <input type="text" placeholder="name"/>
+      <input type="password" placeholder="password"/>
+      <input type="text" placeholder="email address"/>
+      <button>create</button>
+      <p class="message">Already registered? <a href="#">Sign In</a></p>
+    </form>
+    <form class="login-form" ngNativeValidate [formGroup]="user" (ngSubmit)="login()">
+      <input type="text"  placeholder="Email" formControlName="email" required/>
+      <input type="password" placeholder="Password" formControlName="password" required/>
+      <label class="error"><b>{{errorMessage}}</b></label>
+
+      <button type="submit">login</button>
+      <p class="message" (click)="onSignup()">Not registered? <a href="/register">Create an account</a></p>
+      <p class="forget-Pass" routerLink="/resetpass">Forgot your password?</p>
+    </form>
+  </div>
+</div>
+
+<!-- 
 <div id="container">
     <form ngNativeValidate [formGroup]="user" (ngSubmit)="login()">
         <h1>Login</h1>
@@ -18,4 +43,5 @@
     <button type="submit" >Login</button>
 </div>
 </form>
-</div>
+</div> 
+-->

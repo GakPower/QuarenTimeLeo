@@ -7,9 +7,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #252525;
 
   .rela-block {
-    width: 900px;
+    width: 900px; 
     height: 400px;
     background-color: rgba(255, 255, 255, 0.0);
     display: flex;
@@ -19,16 +20,14 @@
       position: absolute;
       top: 80px;
       padding: 1em;
-
       align-self: center;
       left: 50%;
       transform: translateX(-50%);
       width: 150px;
       height: 150px;
-      
       border-radius: 10%;
-
       z-index: 5;
+      background-size: contain;
     }
     #edit {
       position: absolute;
@@ -52,7 +51,7 @@
       top: 160px; 
       width: 800px;
       height: 250px; 
-      background-color: white; 
+      background-color: var(--text); 
       border-radius: 10px;
       display: flex;
       justify-content: center;
@@ -90,7 +89,7 @@
   width: 100%;
   height: 100%;
 
-  background-color: var(--background);
+  background-color: #252525;
 
   position: absolute;
   top: 110px;
@@ -136,11 +135,12 @@
     align-items: center;
     justify-content: center;
     margin: 40px;
+    scrollbar-width: thin !important;
+
 
     & > p {
       align-self: flex-start;
       margin-bottom: 5px;
-
       font-family: var(--primaryFont);
       font-size: 2rem;
       color: var(--text);
@@ -160,6 +160,7 @@
         display: flex;
         overflow-x: auto;
 
+        scrollbar-width: thin !important;
         width: 100%;
 
         & > app-topic {
@@ -196,6 +197,7 @@
 
       border: 2px solid white;
       border-radius: 10px;
+      background-color: var(--background-dark);
 
       & > .movie-card {
         flex-shrink: 0;
@@ -298,8 +300,19 @@
           position: relative;
 
           #avatarDiv {
+            border: white 2px solid;
+            height: 160px;
+            width: 90%;  
+            margin-top: 10px;
+            display: flex;
+            
+            overflow-x: auto;
+            
+
+
             #avatar {
               position: absolute;
+             
               top: 80px;
               left: 50%;
               transform: translateX(-50%);
@@ -336,6 +349,7 @@
                 left: 50%;
                 transform: translate(-50%, -50%);
 
+
                 text-align: center;
                 border-radius: 50%;
 
@@ -353,7 +367,7 @@
           }
 
           input {
-            margin-top: 100px;
+            margin-top: 20px;
             height: 40px;
             width: 250px;
 
@@ -391,6 +405,9 @@
     }
   }
 }
+
+
+
 
 @import url('https://fonts.googleapis.com/css?family=Open + Sans:300, 400, 700');
 
@@ -479,4 +496,23 @@ a {
   text-decoration: none;
   color: #fff;
   font-weight: bold;
+}
+.settings-btn{
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: var(--accent);
+  border-radius: 20px;
+  width: 300px;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.settings-btn:hover,.settings-btn:active,.settings-btn:focus {
+  background: var(--primary);
 }

@@ -1,7 +1,22 @@
 <div id="title">
-  <p>Quarentime</p>
-  <p id="wasteTime">Waste time</p>
+    <p>Quarentime</p>
+    <p id="wasteTime">Waste time</p>
 </div>
+
+<div class="login-page">
+    <div class="form">
+        <form class="login-form" ngNativeValidate [formGroup]="user" (ngSubmit)="register()" method="post">
+            <input type="text" placeholder="Email address" formControlName="email" required />
+            <input type="text" placeholder="Username" formControlName="username" required />
+            <input type="password" placeholder="Password" formControlName="password" required />
+            <input type="password" placeholder="Confirm password" formControlName="repeat" required />
+            <label class="error"><b>{{errorMessage}}</b></label>
+            <button type="submit">Register</button>
+            <p class="message">Already registered? <a href="/login">Sign In</a></p>
+        </form>
+    </div>
+</div>
+<!-- 
 <div id="container">
     <form ngNativeValidate [formGroup]="user" (ngSubmit)="register()" method="post">
         <h1>Registration</h1>
@@ -24,3 +39,4 @@
 </div>
 </form>
 </div>
+-->

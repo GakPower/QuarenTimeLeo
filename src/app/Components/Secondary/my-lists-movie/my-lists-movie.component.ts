@@ -3,6 +3,7 @@ import { Movie } from '../my-lists/listOption';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
 import { MoviePageComponent } from '../movie-page/movie-page.component';
+import { WatchedMovies} from '../my-lists/myLists'; 
 
 @Component({
   selector: 'app-my-lists-movie',
@@ -12,6 +13,7 @@ import { MoviePageComponent } from '../movie-page/movie-page.component';
 export class MyListsMovieComponent implements OnInit {
   @Input() Option1: boolean; 
   @Input() WatchedList: Movie[]; 
+  watchedMovies = WatchedMovies; 
 
   constructor(public dialog: MatDialog) { }
 
@@ -29,12 +31,14 @@ export class MyListsMovieComponent implements OnInit {
 
   drop(event: CdkDragDrop<any[]>){
 
+
     if(event.previousContainer.id !== event.previousContainer.id){
       transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex); 
+      console.log(event)
 
     } else {
-      moveItemInArray(this.WatchedList, event.previousIndex, event.currentIndex); 
-      
+      moveItemInArray(this.WatchedList, event.previousIndex, event.currentIndex);
+      console.log(event) 
 
     }
   }

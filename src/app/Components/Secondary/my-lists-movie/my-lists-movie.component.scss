@@ -81,6 +81,9 @@ body {
             width: 10em;
             overflow: auto;
 
+            scrollbar-color: #999999 transparent !important;
+            scrollbar-width: thin;
+
             .text {
                 color: #545454;
                 width: auto;
