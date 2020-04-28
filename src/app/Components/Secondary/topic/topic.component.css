@@ -1,3 +1,5 @@
+/* This is previous Anna's and Geourge's topics. 
+
 :host {
   display: flex;
   align-items: center;
@@ -5,24 +7,25 @@
   width: 300px;
   height: 150px;
   position: relative;
+  &:hover {
+    #delete {
+      opacity: 1;
+    }
+  }
+  #delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #f0a3a3;
+    z-index: 5;
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 300ms;
+    #original-icon {
+      fill: whitesmoke;
+    }
+  }
 }
-:host:hover #delete {
-  opacity: 1;
-}
-:host #delete {
-  position: absolute;
-  top: 0;
-  right: 0;
-  color: #f0a3a3;
-  z-index: 5;
-  opacity: 0;
-  cursor: pointer;
-  transition: opacity 300ms;
-}
-:host #delete #original-icon {
-  fill: whitesmoke;
-}
-
 #container {
   border: 1px solid white;
   border-radius: 10px;
@@ -31,29 +34,208 @@
   height: 65%;
   background-color: var(--primary);
   cursor: pointer;
+
+  p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-size: 1.2rem;
+    font-family: var(--primaryFont);
+    color: var(--text);
+  }
+
+  #input {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    border: 1px solid whitesmoke;
+    border-radius: 10px;
+    background-color: transparent;
+  }
+
+  #checkmark {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  #colors {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 10px;
+
+    &>div{
+      border: 1px solid white;
+      border-radius: 50%;
+
+      width: 20px;
+      height: 20px;
+
+      margin: 2px;
+    }
+  }
 }
-#container:hover, #container.selected {
-  box-shadow: 0 0 10px white;
+*/
+body {
+  width: 100vw;
+  background-color: #1d1d1d;
+  margin: 0;
+  font-family: helvetica;
 }
-#container p {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 1.2rem;
-  font-family: var(--primaryFont);
-  color: var(--text);
+
+.wrapper {
+  width: 100vw;
+  margin: 0 auto;
+  height: 400px;
+  background-color: #161616;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: all 0.3s ease;
 }
-#container #input {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid whitesmoke;
+
+@media screen and (max-width: 767px) {
+  .wrapper {
+    height: 700px;
+  }
+}
+.content {
+  max-width: 1024px;
+  width: 100%;
+  padding-right: 4%;
+  padding-top: 25px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 767px) {
+  .content {
+    padding-top: 30px;
+    flex-direction: column;
+  }
+}
+.card {
+  width: 100%;
+  max-width: 300px;
+  min-width: 200px;
+  height: 250px;
+  background-color: #292929;
+  margin-right: 10px;
   border-radius: 10px;
-  background-color: transparent;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.24);
+  border: 2px solid rgba(7, 7, 7, 0.12);
+  font-size: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
-#container #edit {
+
+.icon {
+  margin: 0 auto;
+  width: 100%;
+  height: 80px;
+  max-width: 80px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  transition: all 0.8s ease;
+  background-position: 0px;
+  background-size: 200px;
+}
+
+.material-icons.md-18 {
+  font-size: 18px;
+}
+
+.material-icons.md-24 {
+  font-size: 24px;
+}
+
+.material-icons.md-36 {
+  font-size: 36px;
+}
+
+.material-icons.md-48 {
+  font-size: 48px;
+}
+
+.card .title {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  margin-top: 30px;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+.card .text {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 13px;
+  text-align: center;
+  margin-top: 20px;
+  color: white;
+  font-weight: 200;
+  letter-spacing: 2px;
+  opacity: 0;
+  max-height: 0;
+  transition: all 0.3s ease;
+}
+
+.card:hover .info {
+  height: 90%;
+}
+.card:hover .info #delete {
+  opacity: 1;
+}
+
+.card:hover .text {
+  transition: all 0.3s ease;
+  opacity: 0;
+  max-height: 40px;
+}
+.card:hover .text #delete {
+  opacity: 1;
+}
+
+.card:hover .icon {
+  background-position: -120px;
+  transition: all 0.3s ease;
+}
+.card:hover .icon #delete {
+  opacity: 1;
+}
+
+.card:hover .icon i {
+  background: linear-gradient(90deg, #c2e03c, #ff4848);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+.card:hover .icon i #delete {
+  opacity: 1;
+}
+
+#edit {
   position: absolute;
   top: 0;
   right: 0;
@@ -64,27 +246,22 @@
   cursor: pointer;
   margin-right: 10px;
 }
-#container #edit #original-icon {
+#edit #original-icon {
   fill: var(--text);
 }
-#container #checkmark {
+
+#delete {
   position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 0;
+  right: 0;
+  color: #f0a3a3;
+  z-index: 5;
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity 300ms;
 }
-#container #colors {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-}
-#container #colors > div {
-  border: 1px solid white;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  margin: 2px;
+#delete #original-icon {
+  fill: whitesmoke;
 }
 
 /*# sourceMappingURL=topic.component.css.map */

@@ -81,6 +81,8 @@ body {
   padding: 2px;
   width: 10em;
   overflow: auto;
+  scrollbar-color: #999999 transparent !important;
+  scrollbar-width: thin;
 }
 .movie_card .info_section .movie_desc .text {
   color: #545454;

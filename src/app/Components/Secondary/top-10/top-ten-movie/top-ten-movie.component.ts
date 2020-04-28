@@ -17,7 +17,7 @@ export class TopTenMovieComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    MovieAPI.getMostPopular().then(movies => {
+    MovieAPI.getUpcoming().then(movies => {
       this.topTenMovies = movies;
     });
   }

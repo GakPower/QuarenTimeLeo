@@ -3,6 +3,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { FormControl, FormGroup} from '@angular/forms';
 import { Router} from '@angular/router';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
 
 @Component({
   selector: 'app-login',
@@ -27,11 +29,10 @@ export class LoginComponent implements OnInit {
     console.log(this.user.get('email').value);
     console.log(this.user.get('password').value);
 
-    this.auth.signInWithEmailAndPassword(this.user.get('email').value, this.user.get('password').value)// logging in
-      .then((credential) => {
+    this.auth.signInWithEmailAndPassword(this.user.get('email').value, this.user.get('password').value).then((credential) => {
         console.log('ONE');
         if (credential.user.emailVerified){
-          this.router.navigate([`/poll`]);
+          this.router.navigate([`/profile`]);
         } else { // if the account is not verified we log out the user
           this.errorMessage = 'YOUR ACCOUNT IS NOT VERIFIED, CHECK YOUR EMAIL';
           this.auth.signOut().catch((e) => console.log(e));

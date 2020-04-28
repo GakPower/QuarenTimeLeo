@@ -3,8 +3,8 @@
 
   <div class="usercontainer">
     <div class="rela-block">
-      <div class="profile-pic" id="profile_pic" style="background: url({{user.avatar}}); background-size: contain;">
-      </div>
+<!--      <div class="profile-pic" id="profile_pic" style="background: url({{user.avatar}}); background-size: contain;">-->
+      <div class="profile-pic" id="profile_pic"><span>{{user.avatar}}</span></div>
       <div class="profile-name-container">
         <svg id="edit" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172">
           <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
@@ -60,10 +60,10 @@
       </svg>
     </div>
     <div id="cards" style="overflow: auto; scrollbar-width: thin; scrollbar-color: #252525 transparent;"
-      *ngIf="selectedTopic != -1" [style.border-color]="topics[selectedTopic].color">
+      *ngIf="selectedTopic != -1" [style.border-color]="selectedTopic != -1 ? topics[selectedTopic].color : 'white'">
       <!-- <app-card *ngFor="let card of cards; let i = index" (delete)="removeCard(i)"></app-card> -->
-      <div class="movie-card" *ngFor="let movie of WatchList"
-        style="background: url({{movie.MoviePic}}); background-size: cover;">
+      <div class="movie-card" *ngFor="let movie of movies"
+        style="background: url({{movie.poster}}); background-size: cover;">
         <div class="overlay">
           <div class="card-header">
             <div class="release-date">
@@ -71,8 +71,8 @@
             </div>
             <div class="movie-content">
               <div class="content">
-                <h1>{{movie.MovieName}}</h1>
-                <p class="movie-text">{{movie.MovieDesc}}</p>
+                <h1>{{movie.title}}</h1>
+                <p class="movie-text">{{movie.description}}</p>
               </div>
             </div>
           </div>
@@ -85,7 +85,7 @@
 
   <!-- <p id="favouriteTitle">Favourite</p>
   <div id="favourite">
-     <app-card *ngFor="let card of cards; let i = index" (delete)="removeCard(i)"></app-card> 
+     <app-card *ngFor="let card of cards; let i = index" (delete)="removeCard(i)"></app-card>
     <div class="movie-card" *ngFor="let movie of WatchList"
       style="background: url({{movie.MoviePic}}); background-size: cover;">
       <div class="overlay">
@@ -119,14 +119,14 @@
       <div [class.clicked]="clickedProfile" (click)="clickedProfile = true">
         <button class="settings-btn">Edit profile</button>
         <div id="editFields" *ngIf="clickedProfile">
-          <div id="avatarDiv">
-            <div *ngFor="let Avatar of Avatars"
-              style="width: 100px; height: 95px; margin-right: 10px; margin-left: 5px;  background: url({{Avatar}}); background-size: cover; flex-shrink: 0;"
-              (click)="changeAvatar(Avatar)">
-            </div>
+<!--          <div id="avatarDiv">-->
+<!--            <div *ngFor="let Avatar of Avatars"-->
+<!--              style="width: 100px; height: 95px; margin-right: 10px; margin-left: 5px;  background: url({{Avatar}}); background-size: cover; flex-shrink: 0;"-->
+<!--              (click)="changeAvatar(Avatar)">-->
+<!--            </div>-->
             <!-- <div id="overlayPlus">+</div> -->
 
-          </div>
+<!--          </div>-->
 
           <input aria-label="" [value]="user.name">
           <button>Save</button>

@@ -62,7 +62,7 @@ export abstract class MovieAPI {
     },
   ];
 
-  static getMostPopular(): Promise<any> {
+  static getMostPopular(): Promise<Movie[]> {
     const moviesToReturn = [];
     return fetch('https://api.themoviedb.org/3/movie/popular?api_key=ed03eba5dc6628c738bb9d3a13e7a1e4&language=en-US&page=1')
       .then(response => {
@@ -122,6 +122,37 @@ export abstract class MovieAPI {
             MovieAPI.getGenres(movie.genre_ids), movie.vote_average));
         });
         return movies;
+      });
+  }
+  static getMovie(movieID: number): Promise<Movie> {
+    return fetch(`https://api.themoviedb.org/3/movie/${movieID}?api_key=ed03eba5dc6628c738bb9d3a13e7a1e4&language=en-US`)
+      .then(response => {
+        return response.json();
+      }).then(movie => {
+        return new Movie(movie.id, movie.title, movie.overview,
+          `http://image.tmdb.org/t/p/original${movie.poster_path}`,
+          `http://image.tmdb.org/t/p/original${movie.backdrop_path}`,
+          movie.genres.map(genre => genre.name), movie.vote_average);
+      });
+  }
+  static getUpcoming(): Promise<Movie[]> {
+    const moviesToReturn = [];
+    return fetch('https://api.themoviedb.org/3/movie/upcoming?api_key=ed03eba5dc6628c738bb9d3a13e7a1e4&language=en-US&page=1&region=us')
+      .then(response => {
+        return response.json();
+      })
+      .then(movies => {
+        const results = movies.results;
+        results.forEach(movie => {
+          moviesToReturn.push(new Movie(
+            movie.id, movie.title, movie.overview,
+            `http://image.tmdb.org/t/p/original${movie.poster_path}`,
+            `http://image.tmdb.org/t/p/original${movie.backdrop_path}`,
+            this.getGenres(movie.genre_ids), movie.vote_average
+            )
+          );
+        });
+        return moviesToReturn;
       });
   }
 }
