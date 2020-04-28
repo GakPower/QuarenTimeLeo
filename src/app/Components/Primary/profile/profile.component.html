@@ -40,8 +40,9 @@
     <p>My List</p>
     <div id="topicsDiv">
       <div id="topics">
-        <app-topic *ngFor="let topic of topics; let i = index" [title]="topic.title" (delete)="removeTopic(i)"
+        <app-topic *ngFor="let topic of topics; let i = index" [title]="topic.title" (delete)="removeTopic(i)" [pointer]="i"
           (clicked)="clickedTopic(i)" [isSelected]="selectedTopic === i" [color]="topic.color">
+
         </app-topic>
       </div>
 
@@ -120,10 +121,10 @@
         <button class="settings-btn">Edit profile</button>
         <div id="editFields" *ngIf="clickedProfile">
           <div id="avatarDiv">
-            <div *ngFor="let Avatar of Avatars"
+           <!--  <div *ngFor="let Avatar of Avatars"
               style="width: 100px; height: 95px; margin-right: 10px; margin-left: 5px;  background: url({{Avatar}}); background-size: cover; flex-shrink: 0;"
               (click)="changeAvatar(Avatar)">
-            </div>
+            </div> -->
             <!-- <div id="overlayPlus">+</div> -->
 
           </div>

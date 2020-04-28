@@ -1,14 +1,8 @@
-/* This is previous Anna's and Geourge's topics. 
-
 :host {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 300px;
-  height: 150px;
   position: relative;
   &:hover {
-    #delete {
+    #delete,
+    #checkmark {
       opacity: 1;
     }
   }
@@ -22,10 +16,12 @@
     cursor: pointer;
     transition: opacity 300ms;
     #original-icon {
-      fill: whitesmoke;
+      fill: var(--accent);
     }
   }
 }
+
+/*
 #container {
   border: 1px solid white;
   border-radius: 10px;
@@ -46,16 +42,7 @@
     color: var(--text);
   }
 
-  #input {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    border: 1px solid whitesmoke;
-    border-radius: 10px;
-    background-color: transparent;
-  }
+ 
  
   #checkmark {
     position: absolute;
@@ -201,11 +188,10 @@ body {
 
 .card:hover .info {
   height: 90%;
-  
-    #delete {
-      opacity: 1;
-    }
-  
+
+  #delete {
+    opacity: 1;
+  }
 }
 
 .card:hover .text {
@@ -261,4 +247,45 @@ body {
   #original-icon {
     fill: whitesmoke;
   }
+}
+#checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #f0a3a3;
+  z-index: 5;
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity 300ms;
+  #original-icon {
+    fill: rgb(207, 118, 91);
+  }
+}
+#colors {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  & > div {
+    border: 1px solid white;
+    border-radius: 50%;
+
+    width: 20px;
+    height: 20px;
+
+    margin: 2px;
+  }
+}
+
+.title-edit {
+  width: 70%;
+  margin: 0;
+  text-align: center;
+  margin-top: 30px;
+  color: white;
+  border-radius: 10px;
+  font-weight: 600;
+  background-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 4px;
 }

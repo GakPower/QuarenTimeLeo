@@ -1,36 +1,37 @@
 ::ng-deep :root {
   --primary: #f0666e;
   --secondary: lightblue;
-  --background: #222B32;
-  --background-dark: #181c1f; 
+  --background: #222b32;
+  --background-dark: #181c1f;
   //--background: #3C3F41;
-  --text: #D8DEDF; 
-  --textDark: #5B7280;
+  --text: #d8dedf;
+  --textDark: #5b7280;
   //--secondaryFont: 'Source Sans Pro', sans-serif;
-  --primaryFont: 'Acme', sans-serif;
+  --primaryFont: "Acme", sans-serif;
   //--secondaryFont: 'Montserrat', sans-serif;
-  --secondaryFont: 'Josefin Sans', sans-serif;
+  --secondaryFont: "Josefin Sans", sans-serif;
   //--primaryFont: 'Bangers', cursive;
-  --accent: #FE4250;
-  
 
+  --accent: #fe4250;
 }
 
 p {
   margin: 0;
 }
 
-app-watch-it{
-  background-color: #252525;
-
-}
-
-app-top-ten{
+app-watch-it {
   background-color: #252525;
 }
 
-.mainContent{
+app-top-ten {
+  background-color: #252525;
+}
+
+.mainContent {
   display: grid;
   grid-template-columns: 35% 30% 35%;
 }
 
+.mat-dialog-container {
+  padding: 0 0;
+}

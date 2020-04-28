@@ -2,7 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { MoviePageComponent } from '../movie-page/movie-page.component';
-import {Movie} from '../../Class/Movie/movie';
+import { Movie } from '../../Class/Movie/movie';
+import { ViewEncapsulation } from '@angular/core';
 
 
 @Component({
@@ -13,14 +14,13 @@ import {Movie} from '../../Class/Movie/movie';
 export class PictureCardComponent implements OnInit {
 
   @Input() movie: Movie;
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) { }
 
   openMoviePage(): void {
     this.dialog.open(MoviePageComponent, {
       data: this.movie
     });
   }
-
   ngOnInit(): void {
   }
 

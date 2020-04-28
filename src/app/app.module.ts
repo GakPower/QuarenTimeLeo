@@ -33,6 +33,7 @@ import { MatDialogModule, MatDialogRef, MatDialog } from '@angular/material/dial
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {LoggedInGuard} from './Components/Class/logged-in-guard.service';
 import { SearchContainerComponent } from './Components/Secondary/search-container/search-container.component';
+import { SurveyComponent } from './Components/Primary/survey/survey.component';
 
 const routes = [
   {path: '', component: StartpageComponent},
@@ -70,7 +71,8 @@ const routes = [
     MoviePageComponent,
     TopTenComponent,
     TopicComponent,
-    SearchContainerComponent
+    SearchContainerComponent,
+    SurveyComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
