@@ -12,7 +12,6 @@ export class MainPageComponent implements OnInit {
   input = '';
 
   constructor( ) {
-
   }
 
   ngOnInit(): void {
@@ -20,7 +19,6 @@ export class MainPageComponent implements OnInit {
 
   updateInput(input) {
     this.input = input;
-    console.log(this.input);
   }
 
 }

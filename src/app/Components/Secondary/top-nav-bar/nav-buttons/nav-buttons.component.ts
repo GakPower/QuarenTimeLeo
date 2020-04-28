@@ -1,6 +1,10 @@
 import { Component} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {Router} from '@angular/router';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {User} from 'firebase';
+import {MatDialog} from '@angular/material/dialog';
+import {MoviePageComponent} from '../../movie-page/movie-page.component';
+import {MovieAPI} from '../../../Class/MovieAPI/movie-api';
 
 @Component({
   selector: 'app-nav-buttons',
@@ -9,27 +13,38 @@ import {Router} from '@angular/router';
 })
 export class NavButtonsComponent {
 
+  user: User;
+
   constructor(private auth: AngularFireAuth,
-              private router: Router) {
-    // firebase.initializeApp(environment.firebase);
-    // this.auth.onAuthStateChanged(user => {
-    //   if (user && !this.loggedInUser) {
-    //     this.loggedInUser = true;
-    //     // this.router.navigate(['test/mainpage']);
-    //   } else if (!user) {
-    //     this.loggedInUser = false;
-    //   }
-    //   // console.log(user);
-    // });
-    //
-    // if (firebase.auth().currentUser) {
-    //   this.loggedInUser = true;
-    //   // this.router.navigate(['test/mainpage']);
-    // }
+              private db: AngularFirestore,
+              private dialog: MatDialog) {
+    auth.currentUser.then(value => {
+      this.user = value;
+    });
   }
 
   logout() {
     this.auth.signOut();
+  }
+
+  getRandomMovie() {
+    this.db.collection('users')
+      .doc(this.user.uid)
+      .collection('recommended')
+      .get().subscribe(next => {
+        const movieIDs = [];
+        next.docs.forEach(doc => {
+          movieIDs.push(doc.data().id);
+        });
+
+        const randomIndex = Math.floor(Math.random() * movieIDs.length);
+
+        MovieAPI.getMovie(movieIDs[randomIndex]).then(movie => {
+          this.dialog.open(MoviePageComponent, {
+            data: movie
+          });
+        });
+      });
   }
 
 }

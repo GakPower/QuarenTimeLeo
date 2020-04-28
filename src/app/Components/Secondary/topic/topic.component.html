@@ -1,4 +1,4 @@
-<!-- Old Topics  
+<!-- Old Topics
 <svg (click)="emitDeleteEvent()" *ngIf="editing"
      id="delete" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
      width="40" height="40"
@@ -31,10 +31,7 @@
 
 </div> -->
 
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-
-<div class="content">
+<div class="content" (click)="emitClickedEvent()">
 
   <!-- card -->
   <svg (click)="editTitle()" *ngIf="editing" id="checkmark" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"

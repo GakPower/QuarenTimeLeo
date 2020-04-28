@@ -9,30 +9,6 @@
   margin: 50px auto;
 }
 
-button {
-  margin: 10px auto;
-  padding: 7px 0;
-  border-radius: 10px;
-  border: 1px solid white;
-  color: white;
-  width: 200px;
-  height: 30px;
-  display: block;
-  outline: none;
-  background: none;
-  outline: none;
-}
-button:hover {
-  background: white;
-  color: lightblue;
-  border: 1px solid lightblue;
-  cursor: pointer;
-}
-
-.container-buttons {
-  margin: 90px auto;
-}
-
 #title {
   position: absolute;
   top: 20px;
@@ -52,6 +28,50 @@ button:hover {
   color: var(--primary);
   font-size: 20px;
   font-family: var(--secondaryFont);
+}
+
+.container-buttons {
+  position: relative;
+  z-index: 1;
+  background: #181c1f;
+  max-width: 260px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  border-radius: 20px;
+  margin-top: 200px;
+}
+
+.btn2 {
+  margin-top: 10px;
+}
+
+.btn1,
+.btn2 {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: var(--accent);
+  border-radius: 20px;
+  width: 200px;
+  border: 0;
+  padding: 15px;
+  color: #ffffff;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  transition-property: background-color;
+  transition-duration: 500ms;
+}
+
+.btn2:hover {
+  background-color: var(--primary);
+}
+
+.btn1:hover {
+  background-color: var(--primary);
 }
 
 /*# sourceMappingURL=startpage.component.css.map */

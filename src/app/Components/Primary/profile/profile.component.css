@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Comic+Neue&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Open + Sans:300, 400, 700");
 .usercontainer {
   width: 100%;
@@ -6,6 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #252525;
 }
 .usercontainer .rela-block {
   width: 900px;
@@ -17,14 +17,20 @@
 .usercontainer .rela-block .profile-pic {
   position: absolute;
   top: 80px;
-  padding: 1em;
-  align-self: center;
   left: 50%;
   transform: translateX(-50%);
   width: 150px;
   height: 150px;
   border-radius: 10%;
   z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.usercontainer .rela-block .profile-pic span {
+  font-size: 9rem;
+  text-align: center;
+  padding-top: 20px;
 }
 .usercontainer .rela-block #edit {
   position: absolute;
@@ -45,7 +51,7 @@
   top: 160px;
   width: 800px;
   height: 250px;
-  background-color: white;
+  background-color: var(--text);
   border-radius: 10px;
   display: flex;
   justify-content: center;
@@ -76,7 +82,7 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background-color: var(--background);
+  background-color: #252525;
   position: absolute;
   top: 110px;
 }
@@ -112,6 +118,7 @@
   align-items: center;
   justify-content: center;
   margin: 40px;
+  scrollbar-width: thin !important;
 }
 #container #myList > p {
   align-self: flex-start;
@@ -131,6 +138,7 @@
 #container #myList #topicsDiv #topics {
   display: flex;
   overflow-x: auto;
+  scrollbar-width: thin !important;
   width: 100%;
 }
 #container #myList #topicsDiv #topics > app-topic {
@@ -157,6 +165,7 @@
   width: 90%;
   border: 2px solid white;
   border-radius: 10px;
+  background-color: var(--background-dark);
 }
 #container #myList #cards > .movie-card {
   flex-shrink: 0;
@@ -235,6 +244,14 @@
   height: 80%;
   position: relative;
 }
+#container #settingsDiv #settings #editProfile #editFields #avatarDiv {
+  border: white 2px solid;
+  height: 160px;
+  width: 90%;
+  margin-top: 10px;
+  display: flex;
+  overflow-x: auto;
+}
 #container #settingsDiv #settings #editProfile #editFields #avatarDiv #avatar {
   position: absolute;
   top: 80px;
@@ -275,7 +292,7 @@
   transition: 300ms filter;
 }
 #container #settingsDiv #settings #editProfile #editFields input {
-  margin-top: 100px;
+  margin-top: 20px;
   height: 40px;
   width: 250px;
   border: 0;
@@ -385,6 +402,26 @@ a {
   text-decoration: none;
   color: #fff;
   font-weight: bold;
+}
+
+.settings-btn {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: var(--accent);
+  border-radius: 20px;
+  width: 300px;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.settings-btn:hover, .settings-btn:active, .settings-btn:focus {
+  background: var(--primary);
 }
 
 /*# sourceMappingURL=profile.component.css.map */
