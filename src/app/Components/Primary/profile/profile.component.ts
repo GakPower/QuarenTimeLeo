@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 import { Component, OnInit } from '@angular/core';
 import {WatchMeMovies  } from '../../Secondary/my-lists/myLists'; 
 import {AvatarList} from '../../Secondary/my-lists/myLists'; 
 
+=======
+import { Component, } from '@angular/core';
+import {Movie} from '../../Class/Movie/movie';
+>>>>>>> 43f521ef31b9f3accd15a8b56599114484145365
 
 @Component({
   selector: 'app-profile',
@@ -21,7 +26,11 @@ export class ProfileComponent {
     {title: 'Watch List', color: '#FFC857'}, {title: 'Favourite', color: '#E9724C'} ,{title: 'Black List', color: '#C5283D'} , {title: 'Watched', color: '#255f85'}
   ];
 
+<<<<<<< HEAD
   
+=======
+  WatchList: Movie[] = [];
+>>>>>>> 43f521ef31b9f3accd15a8b56599114484145365
   cards = ['15661', '65161', '78913'];
   selectedTopic = -1;
 

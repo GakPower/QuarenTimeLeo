@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie } from '../my-lists/listOption';
-import { WatchedMovies } from '../my-lists/myLists'; 
-
+import {Movie} from '../../Class/Movie/movie';
 
 @Component({
   selector: 'app-my-lists',
@@ -9,13 +7,12 @@ import { WatchedMovies } from '../my-lists/myLists';
   styleUrls: ['./my-lists.component.scss']
 })
 export class MyListsComponent implements OnInit {
-  Option3: Boolean = false; 
-  Option2: Boolean = false; 
-  Option1: Boolean = true;
+  Option3 = false;
+  Option2 = false;
+  Option1 = true;
 
-  WatchedList = WatchedMovies; 
- 
-  
+  // WatchedList = WatchedMovies;
+  WatchedList: Movie[] = [];
 
   constructor() { }
 
@@ -24,24 +21,22 @@ export class MyListsComponent implements OnInit {
 
   selectOption1(){
 
-    this.Option3 = false, 
-    this.Option2 = false, 
-    this.Option1 = true; 
+    this.Option3 = false,
+    this.Option2 = false,
+    this.Option1 = true;
 
   }
   selectOption2(){
-    this.Option3 = false, 
-    this.Option1 = false, 
-    this.Option2 = true; 
+    this.Option3 = false,
+    this.Option1 = false,
+    this.Option2 = true;
 
   }
   selectOption3(){
 
-    this.Option1 = false, 
-    this.Option2 = false, 
-    this.Option3 = true; 
+    this.Option1 = false,
+    this.Option2 = false,
+    this.Option3 = true;
   }
-
-  
 
 }

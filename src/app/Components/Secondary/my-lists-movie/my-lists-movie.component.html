@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <ul cdkDropList id="theWatchedList" cdkDropListConnectedTo="theTopTenMovies" (cdkDropListDropped)="drop($event)"
   *ngIf="Option1">
   <li *ngFor="let movie of WatchedList" mat-raised-button (click)="openMoviePage(movie)">
@@ -12,12 +13,38 @@
             {{movie.MovieDesc}}
           </p>
         </div>
+=======
+<ul
+  cdkDropList
+  id = "theWatchedList"
+  cdkDropListConnectedTo="theTopTenMovies"
+  (cdkDropListDropped)="drop($event)" *ngIf="Option1">
+    <li *ngFor="let movie of WatchedList" mat-raised-button (click)="openMoviePage(movie)">
+    <div class="movie_card" id="bright">
+      <div class="info_section">
+          <div class="movie_header">
+          <img class="locandina" src="{{movie.poster}}"/>
+          <h3>{{movie.title}}</h3>
+        </div>
+        <div class="movie_desc" >
+            <p class="text">
+             {{movie.description}}
+            </p>
+          </div>
+>>>>>>> 43f521ef31b9f3accd15a8b56599114484145365
         <div class="movie_rating">
-          <h3>{{movie.MovieRating}} </h3>
+          <h3>{{movie.rating}} </h3>
         </div>
       </div>
+<<<<<<< HEAD
       <div class="blur_back" style="background: url({{movie.MovieBackGround}}); width: 80%; background-size: cover;">
       </div>
     </div>
   </li>
 </ul>
+=======
+      <div class="blur_back" style="background: url({{movie.background}}); width: 80%; background-size: cover;"></div>
+    </div>
+  </li>
+  </ul>
+>>>>>>> 43f521ef31b9f3accd15a8b56599114484145365

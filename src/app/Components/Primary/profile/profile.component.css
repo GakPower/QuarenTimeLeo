@@ -1,4 +1,76 @@
 @import url("https://fonts.googleapis.com/css?family=Comic+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Open + Sans:300, 400, 700");
+.usercontainer {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.usercontainer .rela-block {
+  width: 900px;
+  height: 400px;
+  background-color: rgba(255, 255, 255, 0);
+  display: flex;
+  justify-content: center;
+}
+.usercontainer .rela-block .profile-pic {
+  position: absolute;
+  top: 80px;
+  padding: 1em;
+  align-self: center;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 150px;
+  border-radius: 10%;
+  z-index: 5;
+}
+.usercontainer .rela-block #edit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  border: 0;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.usercontainer .rela-block #edit #original-icon {
+  fill: #252525;
+}
+.usercontainer .rela-block .profile-name-container {
+  position: absolute;
+  top: 160px;
+  width: 800px;
+  height: 250px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+}
+.usercontainer .rela-block .user-name {
+  color: #252525;
+  font-family: var(--secondaryFont);
+  font-weight: 500;
+  font-size: 2.2rem;
+  align-self: center;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+}
+.usercontainer .rela-block .user-desc {
+  color: #414040;
+  font-family: var(--secondaryFont);
+  font-weight: 500;
+  font-size: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  top: 140px;
+}
+
 #container {
   display: flex;
   flex-direction: column;
@@ -81,12 +153,12 @@
   display: flex;
   align-items: center;
   margin-bottom: 50px;
+  overflow-x: auto;
   width: 90%;
   border: 2px solid white;
   border-radius: 10px;
-  overflow-x: auto;
 }
-#container #myList #cards > app-card {
+#container #myList #cards > .movie-card {
   flex-shrink: 0;
 }
 #container #myList #favouriteTitle {
@@ -227,6 +299,92 @@
 }
 #container #settingsDiv #settings #editProfile #editFields button:hover {
   background-color: var(--primary);
+}
+
+.row {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  row-gap: 10px;
+}
+
+.movie-card {
+  width: 250px;
+  height: 360px;
+  margin: 1em;
+  position: relative;
+  float: left;
+  overflow: hidden;
+}
+
+.card-header {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.release-date {
+  color: #fff;
+}
+
+.movie-content {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transform: translateY(calc(70px + 1em));
+  transform: translateY(calc(160px + 1em));
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+.content {
+  position: relative;
+  color: #fff;
+  overflow: hidden;
+}
+
+h1 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+p {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+}
+
+.movie-card:hover .movie-content {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+.movie-card:hover .overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  transition: 0.3s;
+}
+
+.release-date p {
+  margin: 0;
+}
+
+.movie-text {
+  padding: 0px 0 25px 0;
+}
+
+a {
+  display: block;
+  padding: 10px 0;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
 }
 
 /*# sourceMappingURL=profile.component.css.map */

@@ -2,5 +2,5 @@
     <h1>Watch Me</h1>
 </div>
 <div class="wrapper">
-   <app-picture-card [watchMeList]="watchMeList"> </app-picture-card> 
+   <app-picture-card *ngFor="let movie of movies" [movie]="movie"></app-picture-card>
 </div>

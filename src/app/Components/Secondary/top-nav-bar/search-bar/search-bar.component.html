@@ -1,4 +1,5 @@
 <div class="container">
-  <input type="text" placeholder="Search...">
+  <input #searchBar type="text" placeholder="Search..." aria-label=""
+         (keydown.enter)="onChange(searchBar.value)">
 <!--  <div class="search"></div>-->
 </div>
