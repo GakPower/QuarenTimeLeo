@@ -30,7 +30,7 @@
   background: var(--accent);
   border-radius: 50%;
   transition: all 1s;
-  z-index: 6;
+  z-index: 4;
   box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
 }
 .container .search:hover {
@@ -82,7 +82,7 @@
   border-radius: 30px;
   box-shadow: 0 0 5px 0 black, 0 20px 25px 0 rgba(0, 0, 0, 0.2);
   transition: all 1s;
-  opacity: 1;
+  opacity: 0;
   z-index: 5;
   font-weight: bolder;
   letter-spacing: 0.1em;
@@ -98,6 +98,8 @@
 .container input:focus ~ .search {
   right: -250px;
   background: var(--primary);
+  z-index: 6;
+  opacity: 0;
 }
 .container input:focus ~ .search::before {
   top: 0;

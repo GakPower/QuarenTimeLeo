@@ -112,6 +112,7 @@ img.cover:hover {
   font-size: 44px;
   margin-bottom: 13px;
   position: relative;
+  line-height: 2.4rem;
 }
 .details .title1 span {
   position: absolute;
@@ -156,7 +157,8 @@ img.cover:hover {
 }
 
 .tag {
-  background: #252525;
+  background: #fff;
+  color: #000;
   border-radius: 10px;
   padding: 3px 8px;
   font-size: 14px;
@@ -166,7 +168,7 @@ img.cover:hover {
 }
 
 .tag:hover {
-  background: #252525;
+  background: #b9b7b7;
 }
 
 .column2 {
