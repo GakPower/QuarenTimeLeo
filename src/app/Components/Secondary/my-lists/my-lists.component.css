@@ -133,6 +133,9 @@ body {
   overflow: auto;
   margin-top: 22px;
 }
+.myLists-Wrapper ::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+}
 
 .myLists-menue {
   background-color: var(--accent);

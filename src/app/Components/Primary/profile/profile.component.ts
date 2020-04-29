@@ -1,5 +1,5 @@
 import { Component, } from '@angular/core';
-import { Movie } from '../../Class/Movie/movie';
+import {Movie} from '../../Class/Movie/movie';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFirestore} from '@angular/fire/firestore';
 import * as firebase from 'firebase/app';
@@ -17,13 +17,10 @@ export class ProfileComponent {
     fireUser: null,
     name: 'User Userson',
     email: '',
-    // avatar: 'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm208batch7-adj-09.png?w=1000&dpr=1&fit=default&crop=default&auto=null&fm=png&q=75&vib=3&con=3&usm=15&bg=transparent&ixlib=js-2.2.1&s=bdad6d5b0b529765d41000ef8cffcaad',
     avatar: '\ud83d\udcbb',
   };
 
-  topics = [
-     //{title: 'Watch List', color: '#FFC857'}, {title: 'Favourite', color: '#E9724C'} , {title: 'Black List', color: '#C5283D'} , {title: 'Watched', color: '#255f85'}
-  ];
+  topics = [];
   colors = [
     '#FFC857',
     '#E9724C',
@@ -65,6 +62,10 @@ export class ProfileComponent {
   }
   removeTopic(index) {
     this.topics.splice(index, 1);
+    this.selectedTopic = -1;
+    this.db.collection('users').doc(this.user.fireUser.uid).update({
+      lists: this.topics
+    });
   }
   clickedTopic(index) {
     this.selectedTopic = index;
