@@ -3,7 +3,7 @@
 
   <div class="usercontainer">
     <div class="rela-block">
-<!--      <div class="profile-pic" id="profile_pic" style="background: url({{user.avatar}}); background-size: contain;">-->
+      <!--      <div class="profile-pic" id="profile_pic" style="background: url({{user.avatar}}); background-size: contain;">-->
       <div class="profile-pic" id="profile_pic"><span>{{user.avatar}}</span></div>
       <div class="profile-name-container">
         <svg id="edit" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172">
@@ -36,12 +36,12 @@
 
 
 
-  <div id="myList" class="myList-overflow" style="scrollbar-width: 16px; scrollbar-color: transparent transparent;" >
-    <p>My List</p>
+  <div id="myList" class="myList-overflow" style="scrollbar-width: 16px; scrollbar-color: transparent transparent;">
+    <p style="font-family: var(--secondaryFont);">My List</p>
     <div id="topicsDiv">
       <div id="topics">
-        <app-topic *ngFor="let topic of topics; let i = index" [title]="topic.title" (delete)="removeTopic(i)" [pointer]="i"
-          (clicked)="clickedTopic(i)" [isSelected]="selectedTopic === i" [color]="topic.color">
+        <app-topic *ngFor="let topic of topics; let i = index" [title]="topic.title" (delete)="removeTopic(i)"
+          [pointer]="i" (clicked)="clickedTopic(i)" [isSelected]="selectedTopic === i" [color]="topic.color">
 
         </app-topic>
       </div>
@@ -68,7 +68,6 @@
         <div class="overlay">
           <div class="card-header">
             <div class="release-date">
-              <p style="font-size: 12px">Recomended: Highly</p>
             </div>
             <div class="movie-content">
               <div class="content">
@@ -110,7 +109,7 @@
 
   <div id="settingsDiv">
 
-    <p>Settings</p>
+    <p style="font-family: var(--secondaryFont);">Settings</p>
     <div>
 
 
@@ -120,22 +119,14 @@
       <div [class.clicked]="clickedProfile" (click)="clickedProfile = true">
         <button class="settings-btn">Edit profile</button>
         <div id="editFields" *ngIf="clickedProfile">
-<<<<<<< HEAD
-          <div id="avatarDiv">
-           <!--  <div *ngFor="let Avatar of Avatars"
-              style="width: 100px; height: 95px; margin-right: 10px; margin-left: 5px;  background: url({{Avatar}}); background-size: cover; flex-shrink: 0;"
-              (click)="changeAvatar(Avatar)">
-            </div> -->
-=======
-<!--          <div id="avatarDiv">-->
-<!--            <div *ngFor="let Avatar of Avatars"-->
-<!--              style="width: 100px; height: 95px; margin-right: 10px; margin-left: 5px;  background: url({{Avatar}}); background-size: cover; flex-shrink: 0;"-->
-<!--              (click)="changeAvatar(Avatar)">-->
-<!--            </div>-->
->>>>>>> 1db8a9cb869af2030a06487d202d3f0a6f5860da
-            <!-- <div id="overlayPlus">+</div> -->
+          <!--          <div id="avatarDiv">-->
+          <!--            <div *ngFor="let Avatar of Avatars"-->
+          <!--              style="width: 100px; height: 95px; margin-right: 10px; margin-left: 5px;  background: url({{Avatar}}); background-size: cover; flex-shrink: 0;"-->
+          <!--              (click)="changeAvatar(Avatar)">-->
+          <!--            </div>-->
+          <!-- <div id="overlayPlus">+</div> -->
 
-<!--          </div>-->
+          <!--          </div>-->
 
           <input aria-label="" [value]="user.name">
           <button>Save</button>
@@ -151,7 +142,8 @@
     </div>
   </div>
 
+  <!-- 
   <div style="display: flex; width: 450px; height: 110px; padding: 5px; border: solid 2px white;">
 
-  </div>
+  </div>-->
 </div>
