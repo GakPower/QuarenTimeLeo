@@ -33,6 +33,9 @@ export class ProfileComponent {
   cards = ['15661', '65161', '78913'];
   selectedTopic = -1;
 
+  sendEmail = false;
+  disabledSendButton = false;
+
   clickedProfile = false;
   // \ud83d\ude06
   clickedAvatar = false;
@@ -46,10 +49,6 @@ export class ProfileComponent {
       this.user.email = value.email;
 
       this.loadLists();
-
-      MovieAPI.getMostPopular().then(movies => {
-        this.movies = movies;
-      });
     });
   }
 
@@ -69,14 +68,12 @@ export class ProfileComponent {
   }
   clickedTopic(index) {
     this.selectedTopic = index;
-    // this.movies = [];
-    // this.topics[index].movieIDs.forEach(movieID => {
-    //   MovieAPI.getMovie(movieID).then(result => {
-    //     this.movies.push(result);
-    //   });
-    // });
-    // console.log(this.movies);
-    console.log(index);
+    this.movies = [];
+    this.topics[index].movieIDs.forEach(movieID => {
+      MovieAPI.getMovie(movieID).then(result => {
+        this.movies.push(result);
+      });
+    });
   }
 
   removeCard(index) {
@@ -99,20 +96,22 @@ export class ProfileComponent {
           const movieIDs = list.movieIDs;
           this.topics.push({ color, title, movieIDs });
         });
-
-        // this.movies = [];
-        // this.topics[0].movieIDs.forEach(movieID => {
-        //   MovieAPI.getMovie(movieID).then(result => {
-        //     this.movies.push(result);
-        //   });
-        // });
-        // console.log(this.movies);
       });
   }
 
-  private getColorIDOf(color: string): number {
-    console.log(color);
-    return this.colors.indexOf(color);
+  sendPassResetEmail() {
+    this.disabledSendButton = true;
+    this.auth.sendPasswordResetEmail(this.user.email).then(() => {
+      this.sendEmail = true;
+      setTimeout(() => {
+        this.sendEmail = false;
+        this.disabledSendButton = false;
+      }, 3000);
+    })
+      .catch(() => {
+        this.sendEmail = false;
+        this.disabledSendButton = false;
+      });
   }
 
 }

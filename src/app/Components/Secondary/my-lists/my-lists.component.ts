@@ -14,9 +14,9 @@ export class MyListsComponent implements OnInit {
 
   // WatchedList = WatchedMovies;
   MostPopularList: Movie[] = [];
-  NewMovies: Movie[] = []; 
+  NewMovies: Movie[] = [];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     MovieAPI.getUpcoming().then(movies => {
@@ -24,7 +24,7 @@ export class MyListsComponent implements OnInit {
     });
 
     MovieAPI.getMostPopular().then(movies => {
-      this.MostPopularList = movies; 
+      this.MostPopularList = movies;
     })
   }
 

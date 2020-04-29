@@ -1,3 +1,5 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 #title {
   position: absolute;
   top: 20px;
@@ -19,59 +21,306 @@
   font-family: var(--secondaryFont);
 }
 
-.questions-list, .answer-list {
-  list-style-type: none;
-}
-
-.answer-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-}
-
-.gener-div {
-  margin-top: 100px;
-  margin-left: 20px;
-}
-
-.question {
-  color: var(--text);
-  font-family: var(--primaryFont);
-  font-size: 1.8rem;
-  font-weight: 500;
-  background-color: var(--background-dark);
-  width: 550;
-  text-align: center;
-  padding: 10px;
-}
-
-.answer {
-  background-color: var(--accent);
-  color: var(--text);
-  font-size: 1.5rem;
-  font-weight: 400;
-  font-family: var(--secondaryFont);
-  width: 100px;
-  padding: 5px;
-  margin: 5px;
-  text-align: center;
-}
-
-#multipleChoice > div {
+.container {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  margin: 10px;
-  width: 400px;
-  height: 70px;
-  background-color: var(--primary);
+}
+
+.instructions {
+  margin-top: 100px;
+  text-align: left;
+  margin-left: 210px;
+}
+
+/****** Style Star Rating Widget *****/
+.rating {
+  border: none;
+  float: left;
+}
+
+.rating > input {
+  display: none;
+}
+
+.rating > label:before {
+  margin-right: 10px;
+  margin-top: 0;
+  font-size: 1em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "";
+}
+
+.rating > .half:before {
+  content: "";
+  position: absolute;
+}
+
+.rating > label {
+  color: #ddd;
+  float: right;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+.rating > input:checked ~ label,
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: #ffd700;
+}
+
+/* hover previous stars in list */
+.rating > input:checked + label:hover,
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label,
+.rating > input:checked ~ label:hover ~ label {
+  color: #ffed85;
+}
+
+a[data-tooltip] {
+  position: relative;
+}
+
+a[data-tooltip]::before,
+a[data-tooltip]::after {
+  position: absolute;
+  display: none;
+  opacity: 0.85;
+}
+
+a[data-tooltip]::before {
+  /*
+   * using data-tooltip instead of title so we
+   * don't have the real tooltip overlapping
+   */
+  content: attr(data-tooltip);
+  background: #000;
+  color: #fff;
+  font-size: 13px;
+  padding: 5px;
+  border-radius: 5px;
+  /* we don't want the text to wrap */
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+a[data-tooltip]::after {
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  content: "";
+}
+
+a[data-tooltip]:hover::before,
+a[data-tooltip]:hover::after {
+  display: block;
+}
+
+/** positioning **/
+/* top tooltip */
+a[data-tooltip][data-placement=top]::before {
+  bottom: 100%;
+  left: 0;
+  margin-bottom: 40px;
+}
+
+a[data-tooltip][data-placement=top]::after {
+  border-top-color: #000;
+  border-bottom: none;
+  bottom: 50px;
+  left: 20px;
+  margin-bottom: 4px;
+}
+
+body {
+  background-color: #0d1b2b;
+  overflow-x: hidden;
+  font-family: roboto;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+
+.flex {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+}
+
+.slider-wrapper div {
+  position: relative;
+}
+
+.slider-wrapper {
+  margin-top: 5vw;
+  margin-left: 11vw;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+.slider-wrapper ::-webkit-scrollbar {
+  width: 12px;
+}
+.slider-wrapper ::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+.slider-wrapper ::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+.slide-image {
+  height: 24vw;
+}
+
+.slide-image img {
+  width: 24vw;
   cursor: pointer;
 }
-#multipleChoice > div:hover, #multipleChoice > div.selected {
-  background-color: var(--secondary);
+
+.slide-content {
+  width: 25vw;
+  color: #fff;
+  padding: 0 18vw 3vw 9vw;
 }
-#multipleChoice > div p {
+
+.slide-title {
+  color: var(--accent);
+  font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: 0.1vw;
+  padding-bottom: 1.4vw;
   font-family: var(--primaryFont);
-  font-size: 1.2rem;
+}
+
+.slide-desc {
+  font-size: 1.2vw;
+  font-weight: 400;
+  letter-spacing: 0.1vw;
+  line-height: 1.55vw;
+  padding-bottom: 1.8vw;
+  color: var(--text);
+  font-family: --secondaryfont;
+}
+
+.slide-text {
+  font-size: 0.8vw;
+  line-height: 1.2vw;
+  opacity: 0.8;
+  padding-bottom: 4vw;
+}
+
+.slide-more {
+  font-weight: 400;
+  letter-spacing: 0.1vw;
+  float: left;
+  font-size: 0.9vw;
+  margin-left: 0;
+}
+
+.slide-bullet {
+  width: 0.5vw;
+  height: 0.5vw;
+  background-color: #0b8bcc;
+  border-radius: 200%;
+  position: relative;
+  margin-left: 0;
+}
+
+.slide-nav {
+  margin-left: 64vw;
+  margin-top: -5.5vw;
+}
+
+div.overlay-blue {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  transition: 0.5s ease all;
+}
+
+div.overlay-blue:hover {
+  background-color: rgba(13, 27, 43, 0.5);
+}
+
+.arrows {
+  width: 3.5vw;
+  margin-top: -5.8vw;
+  margin-left: 72vw;
+  position: relative;
+}
+
+.arrow {
+  display: inline-block;
+  position: absolute;
+  width: 1.2vw;
+  height: 1.2vw;
+  background: transparent;
+  text-indent: -9999px;
+  border-top: 0.15vw solid #fff;
+  border-left: 0.15vw solid #fff;
+  transition: all 0.1s ease-in-out;
+  text-decoration: none;
+  color: transparent;
+}
+
+.arrow:hover {
+  border-color: #0a8acb;
+  border-width: 0.25vw;
+}
+
+.arrow:before {
+  display: block;
+  height: 200%;
+  width: 200%;
+  margin-left: -50%;
+  margin-top: -50%;
+  content: "";
+  transform: rotate(45deg);
+}
+
+.arrow.prev {
+  transform: rotate(-45deg);
+  left: 0;
+}
+
+.arrow.next {
+  transform: rotate(135deg);
+  right: 0;
+}
+
+.total {
+  margin-left: 85vw;
+  z-index: 10;
+  margin-top: -35px;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: var(--primaryFont);
+  color: var(--text);
+}
+
+.submit-button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: var(--accent);
+  border-radius: 20px;
+  width: 120px;
+  border: 0;
+  opacity: 1;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  margin-top: 100px;
+  margin-left: 200px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=survey.component.css.map */

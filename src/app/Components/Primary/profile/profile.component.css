@@ -193,129 +193,27 @@
   flex-direction: column;
   margin: 0 40px 40px 40px;
 }
-#container #settingsDiv p {
+#container #settingsDiv > p {
   align-self: flex-start;
   margin-bottom: 5px;
   font-family: var(--primaryFont);
   font-size: 2rem;
   color: var(--text);
 }
-#container #settingsDiv #settings {
-  display: flex;
-  flex-direction: column;
+#container #settingsDiv #optionsDiv > div {
+  margin-top: 20px;
 }
-#container #settingsDiv #settings > div {
-  position: relative;
-  width: 300px;
-  height: 50px;
-  margin: 5px;
-  border: 1px solid white;
-  border-radius: 10px;
+#container #settingsDiv #optionsDiv #resetPassDiv {
   display: flex;
   align-items: center;
-  justify-content: center;
 }
-#container #settingsDiv #settings > div p {
-  position: absolute;
-  top: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--primaryFont);
+#container #settingsDiv #optionsDiv #resetPassDiv p {
+  color: #01ac01;
+  font-family: var(--secondaryFont);
   font-size: 1.2rem;
-  color: var(--text);
-  user-select: none;
-}
-#container #settingsDiv #settings #editProfile {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: width 300ms, height 300ms;
-}
-#container #settingsDiv #settings #editProfile.clicked {
-  width: 600px;
-  height: 300px;
-}
-#container #settingsDiv #settings #editProfile #editFields {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 80%;
-  height: 80%;
-  position: relative;
-}
-#container #settingsDiv #settings #editProfile #editFields #avatarDiv {
-  border: white 2px solid;
-  height: 160px;
-  width: 90%;
-  margin-top: 10px;
-  display: flex;
-  overflow-x: auto;
-}
-#container #settingsDiv #settings #editProfile #editFields #avatarDiv #avatar {
-  position: absolute;
-  top: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  cursor: pointer;
-  user-select: none;
-  transition: 300ms left;
-}
-#container #settingsDiv #settings #editProfile #editFields #avatarDiv #avatar:hover #emoji1 {
-  filter: blur(4px) sepia(60%) brightness(1.5);
-}
-#container #settingsDiv #settings #editProfile #editFields #avatarDiv #avatar:hover #overlayPlus {
-  opacity: 1;
-}
-#container #settingsDiv #settings #editProfile #editFields #avatarDiv #avatar.clickedAvatar {
-  left: 100px;
-}
-#container #settingsDiv #settings #editProfile #editFields #avatarDiv #avatar #overlayPlus {
-  position: absolute;
-  transform: translate(-50%, -55%);
-  font-family: "Comic Neue", cursive;
-  font-size: 5rem;
-  color: white;
   opacity: 0;
-  transition: 300ms opacity;
-}
-#container #settingsDiv #settings #editProfile #editFields #avatarDiv #avatar #emoji1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  font-size: 4rem;
-  transition: 300ms filter;
-}
-#container #settingsDiv #settings #editProfile #editFields input {
-  margin-top: 20px;
-  height: 40px;
-  width: 250px;
-  border: 0;
-  border-bottom: 1px solid var(--secondary);
-  background-color: transparent;
-  color: var(--text);
-  font-size: 1.2rem;
-  font-family: var(--secondaryFont);
-  padding-left: 10px;
-}
-#container #settingsDiv #settings #editProfile #editFields button {
-  margin-top: 20px;
-  background-color: transparent;
-  border: 1px solid var(--secondary);
-  border-radius: 10px;
-  color: var(--text);
-  font-size: 1.2rem;
-  font-family: var(--secondaryFont);
-  padding: 10px;
-  cursor: pointer;
-}
-#container #settingsDiv #settings #editProfile #editFields button:hover {
-  background-color: var(--primary);
+  margin-left: 10px;
+  transition: opacity 300ms;
 }
 
 .row {
@@ -411,17 +309,22 @@ a {
   background: var(--accent);
   border-radius: 20px;
   width: 300px;
-  border: 0;
+  border: 2px solid var(--accent);
   padding: 15px;
-  color: #FFFFFF;
+  color: var(--text);
   font-size: 14px;
-  transition: all 0.3s ease;
+  transition: all 300ms ease;
   cursor: pointer;
-  margin-top: 20px;
 }
 
 .settings-btn:hover, .settings-btn:active, .settings-btn:focus {
   background: var(--primary);
+}
+
+.settings-btn:disabled {
+  border-color: var(--accentDisabled);
+  background-color: transparent;
+  cursor: default;
 }
 
 /*# sourceMappingURL=profile.component.css.map */

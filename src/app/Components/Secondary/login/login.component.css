@@ -98,20 +98,27 @@ a {
   color: white;
 }
 #title #wasteTime {
-  color: var(--primary);
+  color: var(--accent);
   font-size: 20px;
   font-family: var(--secondaryFont);
 }
 
 .login-page {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100px;
+  text-align: center;
+  box-shadow: 0 0 60px #252525;
+  border-radius: 20px;
   width: 360px;
   padding: 8% 0 0;
-  margin: auto;
 }
 
 .form {
+  z-index: 20;
   position: relative;
-  z-index: 1;
   background: #181C1F;
   max-width: 360px;
   margin: 0 auto 100px;
@@ -158,12 +165,14 @@ a {
   margin: 15px 0 0;
   color: #b3b3b3;
   font-size: 18px;
+  font-family: var(--primaryFont);
 }
 
 .form .message a {
   color: var(--accent);
   text-decoration: none;
   font-size: 18px;
+  font-family: var(--secondaryFont);
 }
 
 .form .register-form {
@@ -215,6 +224,7 @@ a {
   text-decoration: none;
   font-size: 18px;
   color: var(--accent);
+  font-family: var(--secondaryFont);
   cursor: pointer;
 }
 
@@ -234,6 +244,7 @@ body {
   font-size: 14px;
   color: var(--accent);
   font-weight: 400;
+  font-family: var(--primaryFont);
 }
 
 /*# sourceMappingURL=login.component.css.map */

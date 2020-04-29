@@ -8,6 +8,7 @@
   --primaryFont: "Acme", sans-serif;
   --secondaryFont: "Josefin Sans", sans-serif;
   --accent: #fe4250;
+  --accentDisabled: #2a0d0e;
 }
 
 p {
