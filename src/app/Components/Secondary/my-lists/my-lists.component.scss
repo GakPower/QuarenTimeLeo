@@ -147,11 +147,12 @@ body {
     box-shadow: inset 0 0 20px #000;
     border-radius: 10px;
     overflow: auto;
+    scrollbar-color: var(--background-dark) #252525 !important;
+    scrollbar-width: thin !important;
     ::-webkit-scrollbar-thumb{
         border-radius: 10px;
     }
     margin-top: 22px;
-
 }
 .myLists-menue {
     background-color: var(--accent);

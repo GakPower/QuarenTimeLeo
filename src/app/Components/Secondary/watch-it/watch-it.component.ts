@@ -18,7 +18,7 @@ export class WatchItComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    MovieAPI.search('avengers').then(result => {
+    MovieAPI.search('a').then(result => {
       this.movies = result;
     });
   }

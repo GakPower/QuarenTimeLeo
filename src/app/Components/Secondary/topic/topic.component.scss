@@ -170,6 +170,7 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 4px;
+  font-family: var(--secondaryFont); 
 }
 
 .card .text {
@@ -288,4 +289,5 @@ body {
   background-color: transparent;
   text-transform: uppercase;
   letter-spacing: 4px;
+  font-family: var(--secondaryFont);
 }

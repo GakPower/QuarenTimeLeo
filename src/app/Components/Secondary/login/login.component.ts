@@ -34,11 +34,11 @@ export class LoginComponent implements OnInit {
         if (credential.user.emailVerified){
           this.router.navigate([`/profile`]);
         } else { // if the account is not verified we log out the user
-          this.errorMessage = 'YOUR ACCOUNT IS NOT VERIFIED, CHECK YOUR EMAIL';
+          this.errorMessage = 'your account is not verified, check your email';
           this.auth.signOut().catch((e) => console.log(e));
         }
       })
-      .catch((e) => this.errorMessage = 'INCORRECT EMAIL/PASSWORD COMBINATION!');
+      .catch((e) => this.errorMessage = 'Incorrect email / password combination!');
 
     // reset all the values in the form
     this.user.reset();

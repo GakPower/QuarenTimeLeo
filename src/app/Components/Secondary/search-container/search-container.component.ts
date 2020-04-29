@@ -20,7 +20,13 @@ export class SearchContainerComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
+    
   }
+
+  /**
+   * 
+   * 
+   */
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.input && changes.input.currentValue) {
@@ -29,5 +35,6 @@ export class SearchContainerComponent implements OnInit, OnChanges {
       });
     }
   }
+  
 
 }
