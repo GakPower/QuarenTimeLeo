@@ -10,9 +10,8 @@ import {Movie} from '../../Class/Movie/movie';
   styleUrls: ['./my-lists-movie.component.scss']
 })
 export class MyListsMovieComponent implements OnInit {
-  @Input() Option1: boolean; 
-  @Input() WatchedList: Movie[]; 
- 
+  @Input() Option1: boolean;
+  @Input() WatchedList: Movie[];
 
   constructor(public dialog: MatDialog) { }
 
@@ -24,17 +23,13 @@ export class MyListsMovieComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  drop(event: CdkDragDrop<any[]>){
-
-
-    if(event.previousContainer.id !== event.previousContainer.id){
-      transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex); 
-      console.log(event)
-
+  drop(event: CdkDragDrop<any[]>) {
+    if (event.previousContainer.id !== event.previousContainer.id){
+      transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+      console.log(event);
     } else {
       moveItemInArray(this.WatchedList, event.previousIndex, event.currentIndex);
-      console.log(event) 
-
+      console.log(event);
     }
   }
 }

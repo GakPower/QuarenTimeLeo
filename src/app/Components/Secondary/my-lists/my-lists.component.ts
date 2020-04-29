@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Movie} from '../../Class/Movie/movie';
+import {MovieAPI} from '../../Class/MovieAPI/movie-api';
 
 @Component({
   selector: 'app-my-lists',
@@ -12,30 +13,30 @@ export class MyListsComponent implements OnInit {
   Option1 = true;
 
   // WatchedList = WatchedMovies;
-  WatchedList: Movie[] = [];
+  movies: Movie[] = [];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
   }
 
   selectOption1(){
 
-    this.Option3 = false,
-    this.Option2 = false,
+    this.Option3 = false;
+    this.Option2 = false;
     this.Option1 = true;
 
   }
   selectOption2(){
-    this.Option3 = false,
-    this.Option1 = false,
+    this.Option3 = false;
+    this.Option1 = false;
     this.Option2 = true;
 
   }
   selectOption3(){
 
-    this.Option1 = false,
-    this.Option2 = false,
+    this.Option1 = false;
+    this.Option2 = false;
     this.Option3 = true;
   }
 

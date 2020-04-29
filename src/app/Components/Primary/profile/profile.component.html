@@ -60,7 +60,7 @@
       </svg>
     </div>
     <div id="cards" style="overflow: auto; scrollbar-width: thin; scrollbar-color: #252525 transparent;"
-      *ngIf="selectedTopic != -1" [style.border-color]="selectedTopic != -1 ? topics[selectedTopic].color : 'white'">
+      *ngIf="movies.length > 0" [style.border-color]="selectedTopic != -1 ? topics[selectedTopic].color : 'white'">
       <!-- <app-card *ngFor="let card of cards; let i = index" (delete)="removeCard(i)"></app-card> -->
       <div class="movie-card" *ngFor="let movie of movies"
         style="background: url({{movie.poster}}); background-size: cover;">
@@ -84,12 +84,15 @@
   <div id="settingsDiv">
 
     <p>Settings</p>
-    <div>
+    <div id="optionsDiv">
 
       <button class="settings-btn" routerLink="/poll">Preferences</button>
 
-      <div>
-        <button class="settings-btn" routerLink="/resetpass">Change Password</button>
+      <div id="resetPassDiv">
+        <button class="settings-btn" (click)="sendPassResetEmail()" [disabled]="disabledSendButton">Change Password</button>
+        <p [style.opacity]="sendEmail ? 1 : 0">
+          A password reset email has been send to your inbox
+        </p>
       </div>
       <div>
         <button class="settings-btn">Notifications</button>

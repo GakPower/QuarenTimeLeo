@@ -5,7 +5,7 @@ export class Movie {
   readonly poster: string;
   readonly background: string;
   readonly genres: string[];
-  readonly rating: number;
+  readonly rating: string;
 
   constructor(id: number, title: string,
               description: string, poster: string,
@@ -17,6 +17,6 @@ export class Movie {
     this.poster = poster;
     this.background = background;
     this.genres = genres;
-    this.rating = rating;
+    this.rating = rating ? `${rating}` : '';
   }
 }

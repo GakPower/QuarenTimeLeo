@@ -27,4 +27,10 @@ export class MoviePageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  openTrailerOnNewTab() {
+    if (this.trailer) {
+      window.open(this.trailer, '_blank');
+    }
+  }
+
 }

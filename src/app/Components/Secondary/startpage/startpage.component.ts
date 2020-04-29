@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {MovieAPI} from '../../Class/MovieAPI/movie-api';
+import {AngularFireStorage} from '@angular/fire/storage';
 
 @Component({
   selector: 'app-startpage',
@@ -9,17 +10,7 @@ import {MovieAPI} from '../../Class/MovieAPI/movie-api';
 })
 export class StartpageComponent implements OnInit {
 
-  constructor(private router: Router) {
-    // MovieAPI.getMostPopular().then(movies => {
-    //   movies.forEach(movie => {
-    //     MovieAPI.getTrailer(movie.id).then(trailer => {
-    //       console.log(trailer);
-    //     });
-    //   });
-    // });
-    MovieAPI.getGenres([36]);
-
-  }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
   }
