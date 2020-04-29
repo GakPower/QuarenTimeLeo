@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Movie} from '../../Class/Movie/movie';
-import {MovieAPI} from '../../Class/MovieAPI/movie-api';
+import { Movie } from '../../Class/Movie/movie';
+import { MovieAPI } from '../../Class/MovieAPI/movie-api';
 
 @Component({
   selector: 'app-my-lists',
@@ -8,36 +8,34 @@ import {MovieAPI} from '../../Class/MovieAPI/movie-api';
   styleUrls: ['./my-lists.component.scss']
 })
 export class MyListsComponent implements OnInit {
-  Option3 = false;
-  Option2 = false;
-  Option1 = true;
+  MostPopular = true;
+  New = false;
+
 
   // WatchedList = WatchedMovies;
-  movies: Movie[] = [];
+  MostPopularList: Movie[] = [];
+  NewMovies: Movie[] = [];
 
   constructor() {}
 
   ngOnInit(): void {
+    MovieAPI.getUpcoming().then(movies => {
+      this.NewMovies = movies;
+    });
+
+    MovieAPI.getMostPopular().then(movies => {
+      this.MostPopularList = movies;
+    })
   }
 
-  selectOption1(){
-
-    this.Option3 = false;
-    this.Option2 = false;
-    this.Option1 = true;
+  selectMostPopular() {
+    this.MostPopular = true,
+      this.New = false;
 
   }
-  selectOption2(){
-    this.Option3 = false;
-    this.Option1 = false;
-    this.Option2 = true;
+  selectNew() {
+    this.MostPopular = false,
+      this.New = true;
 
   }
-  selectOption3(){
-
-    this.Option1 = false;
-    this.Option2 = false;
-    this.Option3 = true;
-  }
-
 }

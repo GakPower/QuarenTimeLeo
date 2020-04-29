@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700");
+
 /*
 #container {
   margin-top: 120px;
@@ -102,7 +103,7 @@ a {
   }
 
   #wasteTime {
-    color: var(--primary);
+    color: var(--accent);
     font-size: 20px;
     font-family: var(--secondaryFont);
   }
@@ -111,13 +112,26 @@ a {
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 .login-page {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100px; 
+ 
+ // margin: 0 auto 100px;
+ 
+  text-align: center;
+  box-shadow: 0 0 60px #252525;
+  border-radius: 20px;
+
   width: 360px;
   padding: 8% 0 0;
-  margin: auto;
+  
+
 }
 .form {
+  z-index: 20;
   position: relative;
-  z-index: 1;
   background: #181C1F;
   max-width: 360px;
   margin: 0 auto 100px;
@@ -161,6 +175,7 @@ a {
   margin: 15px 0 0;
   color: #b3b3b3;
   font-size: 18px;
+  font-family: var(--primaryFont);
   
 
 }
@@ -168,9 +183,7 @@ a {
   color: var(--accent);
   text-decoration: none;
   font-size: 18px;
-
-
-  
+  font-family: var(--secondaryFont);  
 }
 .form .register-form {
   display: none;
@@ -213,6 +226,7 @@ a {
   text-decoration: none;
   font-size: 18px;
   color: var(--accent);
+  font-family: var(--secondaryFont);
   cursor: pointer;
  
 }
@@ -231,5 +245,6 @@ body {
   font-size: 14px;
   color: var(--accent);
   font-weight: 400;
+  font-family: var(--primaryFont);
 
 }

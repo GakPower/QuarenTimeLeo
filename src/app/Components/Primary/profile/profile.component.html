@@ -3,7 +3,7 @@
 
   <div class="usercontainer">
     <div class="rela-block">
-<!--      <div class="profile-pic" id="profile_pic" style="background: url({{user.avatar}}); background-size: contain;">-->
+      <!--      <div class="profile-pic" id="profile_pic" style="background: url({{user.avatar}}); background-size: contain;">-->
       <div class="profile-pic" id="profile_pic"><span>{{user.avatar}}</span></div>
       <div class="profile-name-container">
         <svg id="edit" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172">
@@ -36,8 +36,8 @@
 
 
 
-  <div id="myList" class="myList-overflow" style="scrollbar-width: 16px; scrollbar-color: transparent transparent;" >
-    <p>My List</p>
+  <div id="myList" class="myList-overflow" style="scrollbar-width: 16px; scrollbar-color: transparent transparent;">
+    <p style="font-family: var(--secondaryFont);">My List</p>
     <div id="topicsDiv">
       <div id="topics">
         <app-topic *ngFor="let topic of topics; let i = index" [title]="topic.title" (delete)="removeTopic(i)" [pointer]="i"
@@ -67,7 +67,6 @@
         <div class="overlay">
           <div class="card-header">
             <div class="release-date">
-              <p style="font-size: 12px">Recomended: Highly</p>
             </div>
             <div class="movie-content">
               <div class="content">
@@ -83,7 +82,7 @@
 
   <div id="settingsDiv">
 
-    <p>Settings</p>
+    <p style="font-family: var(--secondaryFont);">Settings</p>
     <div id="optionsDiv">
 
       <button class="settings-btn" routerLink="/poll">Preferences</button>

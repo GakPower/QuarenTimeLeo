@@ -20,6 +20,8 @@ export class TopTenMovieComponent implements OnInit {
     MovieAPI.getUpcoming().then(movies => {
       this.topTenMovies = movies;
     });
+
+    
   }
   openMoviePage(movie: Movie): void {
     this.dialog.open(MoviePageComponent, {

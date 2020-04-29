@@ -42,7 +42,7 @@ export class ProfileComponent {
   Saved = false;
 
   constructor(private auth: AngularFireAuth,
-              private db: AngularFirestore) {
+    private db: AngularFirestore) {
     auth.currentUser.then(value => {
       this.user.fireUser = value;
       this.user.name = value.displayName;
@@ -53,7 +53,7 @@ export class ProfileComponent {
   }
 
   addTopic() {
-    this.topics.push({color: this.colors[4], title: 'Fav', movieIDs: []});
+    this.topics.push({ color: this.colors[4], title: 'Fav', movieIDs: [] });
 
     this.db.collection('users').doc(this.user.fireUser.uid).update({
       lists: this.topics
@@ -79,8 +79,8 @@ export class ProfileComponent {
   removeCard(index) {
     this.cards.splice(index, 1);
   }
-  changeAvatar(avatar: string){
-    this.user.avatar =  avatar;
+  changeAvatar(avatar: string) {
+    this.user.avatar = avatar;
   }
 
   loadLists() {
@@ -94,7 +94,7 @@ export class ProfileComponent {
           const color = list.color;
           const title = list.title;
           const movieIDs = list.movieIDs;
-          this.topics.push({color, title, movieIDs});
+          this.topics.push({ color, title, movieIDs });
         });
       });
   }

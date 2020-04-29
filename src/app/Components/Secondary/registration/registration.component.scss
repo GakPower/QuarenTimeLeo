@@ -5,9 +5,7 @@
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-
   width: 500px;
-
   text-align: center;
   font-size: 40px;
   letter-spacing: 0.5em;
@@ -32,6 +30,10 @@
   width: 360px;
   padding: 8% 0 0;
   margin: auto;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
 }
 .form {
   position: relative;
@@ -79,6 +81,8 @@
   margin: 15px 0 0;
   color: #b3b3b3;
   font-size: 18px;
+  font-family: var(--primaryFont);
+
   
 
 }
@@ -87,6 +91,7 @@
   text-decoration: none;
   font-size: 18px;
 
+  font-family: var(--secondaryFont);
 
   
 }
@@ -138,4 +143,5 @@
   font-size: 14px;
   font-weight: 400;
   color: var(--accent);
+  font-family: var(--secondaryFont);
 }
