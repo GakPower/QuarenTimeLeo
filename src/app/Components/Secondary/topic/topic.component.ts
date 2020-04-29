@@ -18,7 +18,6 @@ export class TopicComponent implements OnInit {
   inputText = this.title;
 
   colors = [
-    
     '#E3B9BC',
     '#AA9ABA',
     '#8783D1'

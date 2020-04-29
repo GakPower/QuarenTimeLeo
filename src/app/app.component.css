@@ -1,13 +1,13 @@
 ::ng-deep :root {
   --primary: #f0666e;
   --secondary: lightblue;
-  --background: #222B32;
+  --background: #222b32;
   --background-dark: #181c1f;
-  --text: #D8DEDF;
-  --textDark: #5B7280;
+  --text: #d8dedf;
+  --textDark: #5b7280;
   --primaryFont: "Acme", sans-serif;
   --secondaryFont: "Josefin Sans", sans-serif;
-  --accent: #FE4250;
+  --accent: #fe4250;
 }
 
 p {
@@ -25,6 +25,10 @@ app-top-ten {
 .mainContent {
   display: grid;
   grid-template-columns: 35% 30% 35%;
+}
+
+.mat-dialog-container {
+  padding: 0 0;
 }
 
 /*# sourceMappingURL=app.component.css.map */
