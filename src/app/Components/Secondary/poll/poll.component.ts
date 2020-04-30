@@ -3,6 +3,7 @@ import { Router} from '@angular/router';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase';
+import {AngularFireStorage} from '@angular/fire/storage';
 
 @Component({
   selector: 'app-poll',
@@ -28,8 +29,7 @@ export class PollComponent implements OnInit {
     {question: 'hello', answerType: 1, answers: []},
     {question: 'hi', answerType: 2, answers: []},
   ];
-  constructor(public auth: AngularFireAuth, private router: Router) {
-  }
+  constructor(public auth: AngularFireAuth, private router: Router) {}
 
   ngOnInit(): void {
     this.answerType = this.questions[this.current - 1].answerType;

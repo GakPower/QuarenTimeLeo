@@ -1,7 +1,8 @@
-<app-top-nav-bar></app-top-nav-bar>
+<app-top-nav-bar (searchInputChange)="updateInput($event)"></app-top-nav-bar>
+<app-search-container [input]="input"></app-search-container>
 <div class="mainContent">
     <app-watch-it></app-watch-it>
-    <app-top-ten></app-top-ten>
+    <!--  <app-top-ten></app-top-ten> --> 
     <app-my-lists></app-my-lists>
 
     <!--    <app-movie-page> </app-movie-page> -->

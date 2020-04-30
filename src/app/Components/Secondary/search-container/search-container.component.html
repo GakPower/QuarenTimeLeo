@@ -1,0 +1,4 @@
+<h2 *ngIf="input" style="font-family: var(--secondaryFont);">Search Results</h2>
+<div id="container" *ngIf="input">
+  <app-picture-card *ngFor="let movie of movies" [movie]="movie"></app-picture-card>
+</div>

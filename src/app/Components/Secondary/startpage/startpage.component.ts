@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {MovieAPI} from '../../Class/MovieAPI/movie-api';
+import {AngularFireStorage} from '@angular/fire/storage';
 
 @Component({
   selector: 'app-startpage',
@@ -8,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class StartpageComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
   }

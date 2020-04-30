@@ -1,25 +1,24 @@
-<ul cdkDropList
-id="theTopTenMovies"
-cdkDropListConnectedTo="theWatchedList"
-(cdkDropListDropped)="drop($event)"> 
+<ul
+  cdkDropList
+  id="theTopTenMovies"
+  cdkDropListConnectedTo="theWatchedList"
+  (cdkDropListDropped)="drop($event)">
 
-  <li *ngFor="let movie of topTenMovies" cdkDrag  mat-raised-button (click)="openMoviePage(movie)"> 
+  <li *ngFor="let movie of topTenMovies" cdkDrag (click)="openMoviePage(movie)">
   <div class="movie_card" id="bright">
     <div class="info_section">
         <div class="movie_header">
-        <img class="locandina" src="{{movie.MoviePic}}"/>
-        <h3>{{movie.MovieName}}</h3>
+        <img class="locandina" src="{{movie.poster}}"/>
+        <h3>{{movie.title}}</h3>
       </div>
-      <div class="movie_desc" >
-          <p class="text">
-           {{movie.MovieDesc}}
-          </p>
+      <div class="movie_desc">
+          <p class="text">{{movie.description}}</p>
         </div>
       <div class="movie_rating">
-        <h3>{{movie.MovieRating}} </h3>
+        <h3>{{movie.rating}}</h3>
       </div>
     </div>
-    <div class="blur_back" style="background: url({{movie.MovieBackGround}}); width: 80%; background-size: contain;"></div>
+    <div class="blur_back" style="background: url({{movie.background}}); width: 80%; background-size: cover;"></div>
   </div>
 </li>
 </ul>

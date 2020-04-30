@@ -3,12 +3,10 @@
 
   <div class="usercontainer">
     <div class="rela-block">
-      <div class="profile-pic" id="profile_pic"
-        style="background: url(https://i.ya-webdesign.com/images/evil-cartoon-face-png-7.png); background-size: contain;">
-      </div>
+      <!--      <div class="profile-pic" id="profile_pic" style="background: url({{user.avatar}}); background-size: contain;">-->
+      <div class="profile-pic" id="profile_pic"><span>{{user.avatar}}</span></div>
       <div class="profile-name-container">
-        <svg  id="edit" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-          width="24" height="24" viewBox="0 0 172 172">
+        <svg id="edit" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172">
           <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none"
             font-size="none" style="mix-blend-mode: normal">
@@ -20,7 +18,7 @@
             </g>
           </g>
         </svg>
-        
+
         <div class="user-name" id="user_name">{{user.name}}</div>
         <div class="user-desc" id="user_description">{{user.email}}</div>
       </div>
@@ -38,11 +36,11 @@
 
 
 
-  <div id="myList" class="myList-overflow">
-    <p>My List</p>
+  <div id="myList" class="myList-overflow" style="scrollbar-width: 16px; scrollbar-color: transparent transparent;">
+    <p style="font-family: var(--secondaryFont);">My List</p>
     <div id="topicsDiv">
       <div id="topics">
-        <app-topic *ngFor="let topic of topics; let i = index" [title]="topic.title" (delete)="removeTopic(i)"
+        <app-topic *ngFor="let topic of topics; let i = index" [title]="topic.title" (delete)="removeTopic(i)" [pointer]="i"
           (clicked)="clickedTopic(i)" [isSelected]="selectedTopic === i" [color]="topic.color">
         </app-topic>
       </div>
@@ -50,8 +48,8 @@
       <svg (click)="addTopic()" id="plus" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64" height="64"
         viewBox="0 0 172 172">
         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
-          stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
-          font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+          stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none"
+          font-size="none" style="mix-blend-mode: normal">
           <path d="M0,172v-172h172v172z" fill="none"></path>
           <g id="original-icon" fill="#000000">
             <path
@@ -61,87 +59,42 @@
         </g>
       </svg>
     </div>
-    <div id="cards" style="overflow: auto;" *ngIf="selectedTopic != -1"
-      [style.border-color]="topics[selectedTopic].color">
+    <div id="cards" style="overflow: auto; scrollbar-width: thin; scrollbar-color: #252525 transparent;"
+      *ngIf="movies.length > 0" [style.border-color]="selectedTopic != -1 ? topics[selectedTopic].color : 'white'">
       <!-- <app-card *ngFor="let card of cards; let i = index" (delete)="removeCard(i)"></app-card> -->
-
-
-      <div class="movie-card" *ngFor="let movie of WatchList"
-        style="background: url({{movie.MoviePic}}); background-size: cover;">
+      <div class="movie-card" *ngFor="let movie of movies"
+        style="background: url({{movie.poster}}); background-size: cover;">
         <div class="overlay">
           <div class="card-header">
             <div class="release-date">
-              <p style="font-size: 12px">Recomended: Highly</p>
             </div>
             <div class="movie-content">
               <div class="content">
-                <h1>{{movie.MovieName}}</h1>
-                <p class="movie-text">{{movie.MovieDesc}}</p>
+                <h1>{{movie.title}}</h1>
+                <p class="movie-text">{{movie.description}}</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
-
   </div>
-
-  <!-- <p id="favouriteTitle">Favourite</p>
-  <div id="favourite">
-     <app-card *ngFor="let card of cards; let i = index" (delete)="removeCard(i)"></app-card> 
-    <div class="movie-card" *ngFor="let movie of WatchList"
-      style="background: url({{movie.MoviePic}}); background-size: cover;">
-      <div class="overlay">
-        <div class="card-header">
-          <div class="release-date">
-            <p style="font-size: 12px">Recomended: Highly</p>
-          </div>
-          <div class="movie-content">
-            <div class="content">
-              <h1>{{movie.MovieName}}</h1>
-              <p class="movie-text">{{movie.MovieDesc}}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>-->
-
-
-
 
   <div id="settingsDiv">
 
-    <p>Settings</p>
-    <div id="settings">
+    <p style="font-family: var(--secondaryFont);">Settings</p>
+    <div id="optionsDiv">
 
-      <div id="preferences">
-        <p>Preferences</p>
-      </div>
+      <button class="settings-btn" routerLink="/poll">Preferences</button>
 
-      <div id="editProfile" [class.clicked]="clickedProfile" (click)="clickedProfile = true">
-        <p>Edit Profile</p>
-        <div id="editFields" *ngIf="clickedProfile">
-          <div id="avatarDiv">
-            <div id="avatar" (click)="clickedAvatar = !clickedAvatar" [class.clickedAvatar]=clickedAvatar>
-              <div id="emoji1">{{user.avatar}}</div>
-              <div id="overlayPlus">+</div>
-            </div>
-            <!--            <div id="emojiSelector">-->
-            <!--              😂😂😂😂😂😂😂😂😂😂😂😂😂-->
-            <!--            </div>-->
-          </div>
-
-          <input aria-label="" [value]="user.name">
-          <button>Save</button>
-        </div>
+      <div id="resetPassDiv">
+        <button class="settings-btn" (click)="sendPassResetEmail()" [disabled]="disabledSendButton">Change Password</button>
+        <p [style.opacity]="sendEmail ? 1 : 0">
+          A password reset email has been send to your inbox
+        </p>
       </div>
       <div>
-        <p>Change Password</p>
-      </div>
-      <div>
-        <p>Notifications</p>
+        <button class="settings-btn">Notifications</button>
       </div>
 
     </div>

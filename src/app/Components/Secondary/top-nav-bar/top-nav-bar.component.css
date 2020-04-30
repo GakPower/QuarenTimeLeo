@@ -22,4 +22,8 @@
   font-family: var(--secondaryFont);
 }
 
+app-nav-buttons {
+  margin-left: 2rem;
+}
+
 /*# sourceMappingURL=top-nav-bar.component.css.map */

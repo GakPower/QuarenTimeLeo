@@ -1,29 +1,29 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-topic',
   templateUrl: './topic.component.html',
   styleUrls: ['./topic.component.scss']
 })
-export class TopicComponent implements OnInit{
+export class TopicComponent implements OnInit {
   @Output() delete: EventEmitter<any> = new EventEmitter<any>();
   @Output() clicked: EventEmitter<any> = new EventEmitter<any>();
 
   @Input() title: string;
   @Input() isSelected: boolean;
   @Input() color: string;
+  @Input() pointer: number;
 
   editing = false;
   inputText = this.title;
 
   colors = [
-    '#9ed964',
-    '#64c7d9',
-    '#c064d9',
-    '#d9ae64'
+    '#E3B9BC',
+    '#AA9ABA',
+    '#8783D1'
   ];
 
-  constructor() {}
+  constructor() { }
 
   editTitle() {
     this.title = this.inputText;

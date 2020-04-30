@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {Inject } from '@angular/core'; 
+import {Inject } from '@angular/core';
+import {Movie} from '../../Class/Movie/movie';
+import {MovieAPI} from '../../Class/MovieAPI/movie-api';
 
 @Component({
   selector: 'app-movie-page',
@@ -9,11 +11,13 @@ import {Inject } from '@angular/core';
 })
 export class MoviePageComponent implements OnInit {
 
-
-
-  constructor(
-  public dialogRef: MatDialogRef<MoviePageComponent>, 
-  @Inject(MAT_DIALOG_DATA) public data: any) {}
+  trailer: string;
+  constructor(public dialogRef: MatDialogRef<MoviePageComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: Movie) {
+    MovieAPI.getTrailer(data.id).then(result => {
+      this.trailer = result;
+    });
+  }
 
 
   onNoClick(): void {
@@ -21,6 +25,12 @@ export class MoviePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  openTrailerOnNewTab() {
+    if (this.trailer) {
+      window.open(this.trailer, '_blank');
+    }
   }
 
 }

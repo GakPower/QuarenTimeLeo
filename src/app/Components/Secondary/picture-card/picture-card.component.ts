@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Movie } from'../my-lists/listOption'; 
 import { MatDialog } from '@angular/material/dialog';
 
 import { MoviePageComponent } from '../movie-page/movie-page.component';
+import { Movie } from '../../Class/Movie/movie';
 
 
 @Component({
@@ -12,24 +12,16 @@ import { MoviePageComponent } from '../movie-page/movie-page.component';
 })
 export class PictureCardComponent implements OnInit {
 
-  @Input() watchMeList: Movie[]; 
+  @Input() movie: Movie;
   constructor(public dialog: MatDialog) { }
 
-    openMoviePage(movie: Movie): void {
-    const dialogRef = this.dialog.open(MoviePageComponent, {
-      data: {
-        MovieName: movie.MovieName, MovieDesc: movie.MovieDesc, MoviePic: movie.MoviePic, 
-        MovieBackGround: movie.MovieBackGround, MovieRating: movie.MovieRating
-      }
-      
+  openMoviePage(): void {
+    this.dialog.open(MoviePageComponent, {
+      data: this.movie
     });
   }
-  
-
   ngOnInit(): void {
   }
-  
-
 
 }
 

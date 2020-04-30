@@ -1,10 +1,88 @@
-@import url("https://fonts.googleapis.com/css?family=Comic+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Open + Sans:300, 400, 700");
+.usercontainer {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #252525;
+}
+.usercontainer .rela-block {
+  width: 900px;
+  height: 400px;
+  background-color: rgba(255, 255, 255, 0);
+  display: flex;
+  justify-content: center;
+}
+.usercontainer .rela-block .profile-pic {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 150px;
+  border-radius: 10%;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.usercontainer .rela-block .profile-pic span {
+  font-size: 9rem;
+  text-align: center;
+  padding-top: 20px;
+}
+.usercontainer .rela-block #edit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  border: 0;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.usercontainer .rela-block #edit #original-icon {
+  fill: #252525;
+}
+.usercontainer .rela-block .profile-name-container {
+  position: absolute;
+  top: 160px;
+  width: 800px;
+  height: 250px;
+  background-color: var(--text);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+}
+.usercontainer .rela-block .user-name {
+  color: #252525;
+  font-family: var(--secondaryFont);
+  font-weight: 500;
+  font-size: 2.2rem;
+  align-self: center;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+}
+.usercontainer .rela-block .user-desc {
+  color: #414040;
+  font-family: var(--secondaryFont);
+  font-weight: 500;
+  font-size: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  top: 140px;
+}
+
 #container {
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background-color: var(--background);
+  background-color: #252525;
   position: absolute;
   top: 110px;
 }
@@ -40,6 +118,7 @@
   align-items: center;
   justify-content: center;
   margin: 40px;
+  scrollbar-width: thin !important;
 }
 #container #myList > p {
   align-self: flex-start;
@@ -59,6 +138,7 @@
 #container #myList #topicsDiv #topics {
   display: flex;
   overflow-x: auto;
+  scrollbar-width: thin !important;
   width: 100%;
 }
 #container #myList #topicsDiv #topics > app-topic {
@@ -81,12 +161,13 @@
   display: flex;
   align-items: center;
   margin-bottom: 50px;
+  overflow-x: auto;
   width: 90%;
   border: 2px solid white;
   border-radius: 10px;
-  overflow-x: auto;
+  background-color: var(--background-dark);
 }
-#container #myList #cards > app-card {
+#container #myList #cards > .movie-card {
   flex-shrink: 0;
 }
 #container #myList #favouriteTitle {
@@ -112,121 +193,138 @@
   flex-direction: column;
   margin: 0 40px 40px 40px;
 }
-#container #settingsDiv p {
+#container #settingsDiv > p {
   align-self: flex-start;
   margin-bottom: 5px;
   font-family: var(--primaryFont);
   font-size: 2rem;
   color: var(--text);
 }
-#container #settingsDiv #settings {
-  display: flex;
-  flex-direction: column;
-}
-#container #settingsDiv #settings > div {
-  position: relative;
-  width: 300px;
-  height: 50px;
-  margin: 5px;
-  border: 1px solid white;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#container #settingsDiv #settings > div p {
-  position: absolute;
-  top: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--primaryFont);
-  font-size: 1.2rem;
-  color: var(--text);
-  user-select: none;
-}
-#container #settingsDiv #settings #editProfile {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: width 300ms, height 300ms;
-}
-#container #settingsDiv #settings #editProfile.clicked {
-  width: 600px;
-  height: 300px;
-}
-#container #settingsDiv #settings #editProfile #editFields {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 80%;
-  height: 80%;
-  position: relative;
-}
-#container #settingsDiv #settings #editProfile #editFields #avatarDiv #avatar {
-  position: absolute;
-  top: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  cursor: pointer;
-  user-select: none;
-  transition: 300ms left;
-}
-#container #settingsDiv #settings #editProfile #editFields #avatarDiv #avatar:hover #emoji1 {
-  filter: blur(4px) sepia(60%) brightness(1.5);
-}
-#container #settingsDiv #settings #editProfile #editFields #avatarDiv #avatar:hover #overlayPlus {
-  opacity: 1;
-}
-#container #settingsDiv #settings #editProfile #editFields #avatarDiv #avatar.clickedAvatar {
-  left: 100px;
-}
-#container #settingsDiv #settings #editProfile #editFields #avatarDiv #avatar #overlayPlus {
-  position: absolute;
-  transform: translate(-50%, -55%);
-  font-family: "Comic Neue", cursive;
-  font-size: 5rem;
-  color: white;
-  opacity: 0;
-  transition: 300ms opacity;
-}
-#container #settingsDiv #settings #editProfile #editFields #avatarDiv #avatar #emoji1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  font-size: 4rem;
-  transition: 300ms filter;
-}
-#container #settingsDiv #settings #editProfile #editFields input {
-  margin-top: 100px;
-  height: 40px;
-  width: 250px;
-  border: 0;
-  border-bottom: 1px solid var(--secondary);
-  background-color: transparent;
-  color: var(--text);
-  font-size: 1.2rem;
-  font-family: var(--secondaryFont);
-  padding-left: 10px;
-}
-#container #settingsDiv #settings #editProfile #editFields button {
+#container #settingsDiv #optionsDiv > div {
   margin-top: 20px;
-  background-color: transparent;
-  border: 1px solid var(--secondary);
-  border-radius: 10px;
-  color: var(--text);
-  font-size: 1.2rem;
+}
+#container #settingsDiv #optionsDiv #resetPassDiv {
+  display: flex;
+  align-items: center;
+}
+#container #settingsDiv #optionsDiv #resetPassDiv p {
+  color: #01ac01;
   font-family: var(--secondaryFont);
+  font-size: 1.2rem;
+  opacity: 0;
+  margin-left: 10px;
+  transition: opacity 300ms;
+}
+
+.row {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  row-gap: 10px;
+}
+
+.movie-card {
+  width: 250px;
+  height: 360px;
+  margin: 1em;
+  position: relative;
+  float: left;
+  overflow: hidden;
+}
+
+.card-header {
   padding: 10px;
   cursor: pointer;
 }
-#container #settingsDiv #settings #editProfile #editFields button:hover {
-  background-color: var(--primary);
+
+.release-date {
+  color: #fff;
+}
+
+.movie-content {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transform: translateY(calc(70px + 1em));
+  transform: translateY(calc(160px + 1em));
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+.content {
+  position: relative;
+  color: #fff;
+  overflow: hidden;
+}
+
+h1 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+p {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+}
+
+.movie-card:hover .movie-content {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+.movie-card:hover .overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  transition: 0.3s;
+}
+
+.release-date p {
+  margin: 0;
+}
+
+.movie-text {
+  padding: 0px 0 25px 0;
+}
+
+a {
+  display: block;
+  padding: 10px 0;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.settings-btn {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: var(--accent);
+  border-radius: 20px;
+  width: 300px;
+  border: 2px solid var(--accent);
+  padding: 15px;
+  color: var(--text);
+  font-size: 14px;
+  transition: all 300ms ease;
+  cursor: pointer;
+}
+
+.settings-btn:hover, .settings-btn:active, .settings-btn:focus {
+  background: var(--primary);
+}
+
+.settings-btn:disabled {
+  border-color: var(--accentDisabled);
+  background-color: transparent;
+  cursor: default;
 }
 
 /*# sourceMappingURL=profile.component.css.map */

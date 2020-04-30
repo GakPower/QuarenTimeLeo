@@ -1,23 +1,25 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
-
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
+.mat-dialog-container {
+  padding: 0px !important;
+}
 .row {
   padding: 20px;
   display: grid;
-  grid-template-columns: 50% 50% ;
+  grid-template-columns: 50% 50%;
   row-gap: 10px;
 }
 
 .movie-card {
   width: 300px;
   height: 450px;
-  
+
   position: relative;
   float: left;
   overflow: hidden;
 }
 
 .card-header {
-  padding: 10px; 
+  padding: 10px;
   cursor: pointer;
 }
 
@@ -32,12 +34,12 @@
   overflow: hidden;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-      -webkit-transform: translateY(calc(70px + 1em));
-    transform: translateY(calc(160px + 1em));
-    -webkit-transition: -webkit-transform 0.3s;
-    transition: -webkit-transform 0.3s;
-    transition: transform 0.3s;
-    transition: transform 0.3s, -webkit-transform 0.3s;
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
 }
 
 .content {
@@ -47,20 +49,19 @@
 }
 
 h1 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 300;
   font-size: 20px;
 }
 
 p {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 500;
-  
 }
 
 .movie-card:hover .movie-content {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
 }
 
 .movie-card:hover .overlay {
@@ -72,7 +73,7 @@ p {
 }
 
 .release-date p {
-  margin: 0
+  margin: 0;
 }
 
 .movie-text {
