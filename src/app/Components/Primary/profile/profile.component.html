@@ -37,7 +37,7 @@
 
 
   <div id="myList" class="myList-overflow" style="scrollbar-width: 16px; scrollbar-color: transparent transparent;">
-    <p style="font-family: var(--secondaryFont);">My List</p>
+    <p style="font-family: var(--secondaryFont);">My Library</p>
     <div id="topicsDiv">
       <div id="topics">
         <app-topic *ngFor="let topic of topics; let i = index" [title]="topic.title" (delete)="removeTopic(i)" [pointer]="i"

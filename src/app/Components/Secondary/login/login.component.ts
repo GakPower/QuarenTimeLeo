@@ -34,9 +34,11 @@ export class LoginComponent implements OnInit {
     this.auth.signInWithEmailAndPassword(this.user.get('email').value, this.user.get('password').value).then((credential) => {
         console.log('ONE');
         if (credential.user.emailVerified){
+          console.log('Two')
           this.db.collection('users')
             .doc(credential.user.uid)
             .get().subscribe(next => {
+              console.log('Three')
               if (next.data().takenSurvey) {
                 this.router.navigate([`/mainpage`]);
               } else {
@@ -44,6 +46,7 @@ export class LoginComponent implements OnInit {
               }
             });
         } else { // if the account is not verified we log out the user
+          console.log('Four')
           this.errorMessage = 'your account is not verified, check your email';
           this.auth.signOut().catch((e) => console.log(e));
         }

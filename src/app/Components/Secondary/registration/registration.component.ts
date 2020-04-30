@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {AngularFirestore, AngularFirestoreModule} from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import * as firebase from 'firebase';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -20,8 +20,8 @@ export class RegistrationComponent implements OnInit {
   });
 
   constructor(private auth: AngularFireAuth,
-              private router: Router,
-              private db: AngularFirestore) { }
+    private router: Router,
+    private db: AngularFirestore) { }
 
   ngOnInit(): void {
   }
@@ -31,9 +31,9 @@ export class RegistrationComponent implements OnInit {
     this.errorMessage = '';
     const saveusername = this.user.get('username').value; // we need to save this in a variable because of scope
 
-    if (this.user.get('password').value.length < 8){ // check for custom made response input error
+    if (this.user.get('password').value.length < 8) { // check for custom made response input error
       this.errorMessage = 'PASSWORD TOO SHORT, MINIMUM OF 8 CHARACTERS';
-    } else if (this.user.get('password').value === this.user.get('repeat').value){ // check for custom made response input error
+    } else if (this.user.get('password').value === this.user.get('repeat').value) { // check for custom made response input error
       this.auth.createUserWithEmailAndPassword(this.user.get('email').value, this.user.get('password').value)
         .then((credential) => {
           this.db.collection('users')
@@ -62,15 +62,16 @@ export class RegistrationComponent implements OnInit {
                   color: '#255F85',
                   movieIDs: []
                 }
-                ]
+              ]
             }).then(() => {
               this.auth.signOut();
+              credential.user.updateProfile({ displayName: saveusername })
+                .then(() => {
+                  credential.user.sendEmailVerification().catch((e) => console.log(e));  // send email verification
+                  this.router.navigate(['/login']);
+                });
             });
-          credential.user.updateProfile({displayName: saveusername})
-            .then(() => {
-              credential.user.sendEmailVerification().catch((e) => console.log(e));  // send email verification
-              this.router.navigate(['/login']);
-            });
+
         })
         .catch((e) => {
           switch (e.message) {
