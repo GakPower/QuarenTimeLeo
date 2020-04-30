@@ -31,22 +31,25 @@ import { StartpageComponent } from './Components/Secondary/startpage/startpage.c
 import { MoviePageComponent } from './Components/Secondary/movie-page/movie-page.component';
 import { MatDialogModule, MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {LoggedInGuard} from './Components/Class/logged-in-guard.service';
+import { LoggedInGuard} from './Components/Class/logged-in-guard.service';
 import { SearchContainerComponent } from './Components/Secondary/search-container/search-container.component';
 import { SurveyComponent } from './Components/Primary/survey/survey.component';
+import { StarsComponent } from './Components/Secondary/stars/stars.component';
 
 import { ComputeRecommendationComponent } from './Components/Secondary/compute-recommendation/compute-recommendation.component';
 
 
 const routes = [
   {path: '', component: StartpageComponent},
+  {path: 'about', component:StarsComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegistrationComponent},
   {path: 'resetpass', component: RestorepasswordComponent},
-  {path: 'poll', canActivate: [LoggedInGuard], component: PollComponent},
+  {path: 'poll', canActivate: [LoggedInGuard], component: SurveyComponent},
   {path: 'mainpage', canActivate: [LoggedInGuard], component: MainPageComponent},
   {path: 'profile', canActivate: [LoggedInGuard], component: ProfileComponent},
   {path: '**',   redirectTo: '', pathMatch: 'full' }
+  
 ];
 
 @NgModule({
@@ -76,7 +79,8 @@ const routes = [
     TopicComponent,
     ComputeRecommendationComponent,
     SearchContainerComponent,
-    SurveyComponent
+    SurveyComponent,
+    StarsComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

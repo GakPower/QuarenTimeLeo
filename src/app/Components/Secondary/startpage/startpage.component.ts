@@ -21,5 +21,8 @@ export class StartpageComponent implements OnInit {
   onLogin() {
     this.router.navigateByUrl('/login');
   }
+  openInfo(){
+    this.router.navigateByUrl('/about'); 
+  }
 }
 
