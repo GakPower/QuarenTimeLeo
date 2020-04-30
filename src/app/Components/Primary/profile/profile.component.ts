@@ -42,7 +42,7 @@ export class ProfileComponent {
   Saved = false;
 
   constructor(private auth: AngularFireAuth,
-    private db: AngularFirestore) {
+              private db: AngularFirestore) {
     auth.currentUser.then(value => {
       this.user.fireUser = value;
       this.user.name = value.displayName;

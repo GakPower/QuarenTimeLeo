@@ -4,7 +4,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { FormControl, FormGroup} from '@angular/forms';
 import { Router} from '@angular/router';
 import * as firebase from 'firebase/app';
+import {environment} from '../../../../environments/environment';
 import 'firebase/auth';
+import {AngularFireStorage} from '@angular/fire/storage';
 
 @Component({
   selector: 'app-login',
