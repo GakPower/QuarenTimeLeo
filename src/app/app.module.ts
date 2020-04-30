@@ -74,12 +74,9 @@ const routes = [
     MoviePageComponent,
     TopTenComponent,
     TopicComponent,
-<<<<<<< HEAD
-    ComputeRecommendationComponent
-=======
+    ComputeRecommendationComponent,
     SearchContainerComponent,
     SurveyComponent
->>>>>>> 987670b9c11119c9270c4515ec2b7ac927d342fd
   ],
   imports: [
     RouterModule.forRoot(routes),
