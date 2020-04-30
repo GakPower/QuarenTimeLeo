@@ -33,6 +33,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {LoggedInGuard} from './Components/Class/logged-in-guard.service';
 
+import { ComputeRecommendationComponent } from './Components/Secondary/compute-recommendation/compute-recommendation.component';
+
+
 const routes = [
   {path: '', component: StartpageComponent},
   {path: 'login', component: LoginComponent},
@@ -68,7 +71,8 @@ const routes = [
     StartpageComponent,
     MoviePageComponent,
     TopTenComponent,
-    TopicComponent
+    TopicComponent,
+    ComputeRecommendationComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -81,7 +85,9 @@ const routes = [
     DragDropModule,
     ReactiveFormsModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+   
+    
   ],
   providers: [],
   bootstrap: [AppComponent],
