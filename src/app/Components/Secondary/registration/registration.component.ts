@@ -65,11 +65,11 @@ export class RegistrationComponent implements OnInit {
                 ]
             }).then(() => {
               this.auth.signOut();
-            });
-          credential.user.updateProfile({displayName: saveusername})
-            .then(() => {
-              credential.user.sendEmailVerification().catch((e) => console.log(e));  // send email verification
-              this.router.navigate(['/login']);
+              credential.user.updateProfile({displayName: saveusername})
+              .then(() => {
+                credential.user.sendEmailVerification().catch((e) => console.log(e));  // send email verification
+                this.router.navigate(['/login']);
+              });
             });
         })
         .catch((e) => {
