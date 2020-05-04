@@ -13,8 +13,6 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class MoviePageComponent implements OnInit {
 
-
-
   @Output() clicked: EventEmitter<any> = new EventEmitter<any>();
 
   trailer: string;
@@ -46,6 +44,7 @@ export class MoviePageComponent implements OnInit {
   openTrailerOnNewTab() {
     if (this.trailer) {
       window.open(this.trailer, '_blank');
+
     }
   }
 
@@ -54,13 +53,14 @@ export class MoviePageComponent implements OnInit {
   }
 
   addMovieToList(movieId: number) {
-    this.db.collection('users').doc(this.userId).update({
-      lists: [
-        {
-          title: 'Watch List',
-          movieIDs: [].push(movieId), 
-        }]
-    })
-  }
+    
+    //  this.db.collection('users').doc(this.userId).update({
+    //   lists: [
+    //     {
+    //      title: 'Watch List',
+    //       movieIDs: [].push(movieId), 
+    //      }]
+    //  })
 
+  }
 }
