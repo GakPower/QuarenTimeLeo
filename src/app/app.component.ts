@@ -74,7 +74,7 @@ export class AppComponent {
   }
 
   constructor() {
-    console.log(TEST.split('\n'));
+    //console.log(TEST.split('\n'));
     // let popular;
     // MovieAPI.getUpcoming().then(movies => {
     //   popular = movies;
