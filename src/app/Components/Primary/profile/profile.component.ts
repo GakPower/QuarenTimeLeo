@@ -59,6 +59,7 @@ export class ProfileComponent {
       lists: this.topics
     });
   }
+  
   removeTopic(index) {
     this.topics.splice(index, 1);
     this.selectedTopic = -1;
@@ -66,6 +67,7 @@ export class ProfileComponent {
       lists: this.topics
     });
   }
+
   clickedTopic(index) {
     this.selectedTopic = index;
     this.movies = [];

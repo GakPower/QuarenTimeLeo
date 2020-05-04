@@ -47,7 +47,7 @@ export class SurveyComponent implements OnInit {
     MovieAPI.getMostPopular().then(movies => {
       this.MovieList = movies;
     })
-    console.log(this.user.email);
+   // console.log(this.user.email);
   }
   setRating(number: number) {
     this.MovieRating = number;
@@ -55,7 +55,7 @@ export class SurveyComponent implements OnInit {
     this.index = this.index + 1;
     this.userRatings[this.index + 1] = number; 
     this.SumOfRatings = this.SumOfRatings + number; 
-    console.table(this.userRatings);
+   // console.table(this.userRatings);
   }
   skipRating() {
     this.index = this.index + 1;
@@ -64,7 +64,7 @@ export class SurveyComponent implements OnInit {
     if(this.numberOfRatedMovies > 3) {
       this.router.navigate([`/mainpage`]);
       this.userRatings[1] = (this.SumOfRatings / this.numberOfRatedMovies); 
-      console.table(this.userRatings)
+      //console.table(this.userRatings)
     } else {
     }
   }
