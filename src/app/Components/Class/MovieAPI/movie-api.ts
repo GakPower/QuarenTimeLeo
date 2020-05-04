@@ -155,4 +155,14 @@ export abstract class MovieAPI {
         return moviesToReturn;
       });
   }
+
+  static getMovieByIds(moviesIds: number[]): Movie[] {
+    const recomendedMovies: Movie[] = []; 
+    moviesIds.forEach(id => {
+      this.getMovie(id).then( movie =>{
+        recomendedMovies.push(movie); 
+      })
+    })
+    return recomendedMovies; 
+  }
 }

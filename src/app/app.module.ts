@@ -36,6 +36,9 @@ import { SearchContainerComponent } from './Components/Secondary/search-containe
 import { SurveyComponent } from './Components/Primary/survey/survey.component';
 import { StarsComponent } from './Components/Secondary/stars/stars.component';
 
+import { ComputeRecommendationComponent } from './Components/Secondary/compute-recommendation/compute-recommendation.component';
+
+
 const routes = [
   {path: '', component: StartpageComponent},
   {path: 'about', component:StarsComponent},
@@ -74,6 +77,7 @@ const routes = [
     MoviePageComponent,
     TopTenComponent,
     TopicComponent,
+    ComputeRecommendationComponent,
     SearchContainerComponent,
     SurveyComponent,
     StarsComponent
@@ -89,7 +93,9 @@ const routes = [
     DragDropModule,
     ReactiveFormsModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+   
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

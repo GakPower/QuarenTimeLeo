@@ -42,6 +42,47 @@ a:hover {
   border-radius: 5px;
   position: relative;
 }
+.container .add-list {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+  width: 30%;
+  height: 45%;
+  overflow-y: scroll;
+}
+.container .add-list #list {
+  cursor: pointer;
+  float: right;
+  border-radius: 15px;
+  width: 120px;
+  height: 45px;
+  margin: 5px 10px 5px 30px;
+  transition: width 0.5s;
+  transition-timing-function: cubic-bezier(0.1, 0.7, 1, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-family: var(--secondaryFont);
+  padding: 5px;
+  text-align: center;
+  color: var(--primary);
+}
+.container .add-list #list p {
+  font-size: 14px;
+  font-family: var(--secondaryFont);
+  color: white;
+  transition-duration: 1s;
+  transition-property: font-size;
+}
+.container .add-list #list:hover {
+  width: 150px;
+  background-color: #A9A9A9;
+}
+.container .add-list #list:hover p {
+  font-size: 18px;
+}
 
 .hero {
   height: 342px;
@@ -51,6 +92,25 @@ a:hover {
   z-index: 1;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+}
+.hero .circle:hover {
+  color: var(--accent);
+}
+.hero .circle:hover i {
+  font-size: 2.3rem !important;
+}
+.hero .circle {
+  color: var(--accent);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+  transition: opacity 300ms;
+}
+.hero .circle i {
+  width: 50px !important;
+  height: 50px !important;
+  font-size: 2rem !important;
 }
 
 .hero:before {
@@ -64,7 +124,7 @@ a:hover {
   z-index: -1;
   transform: skewY(-2.2deg);
   transform-origin: 0 0;
-  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .cover {
@@ -85,18 +145,14 @@ img.cover {
 
 #play-icon {
   position: absolute;
-  z-index: 10;
-  top: 230px;
-  left: 80px;
+  z-index: 5;
   opacity: 0.5;
-  transition-duration: 500ms;
+  transition-duration: 1s;
   transition-property: opacity;
 }
 
 #play-icon:hover {
   opacity: 1;
-  width: 120%;
-  height: 120%;
 }
 
 img.cover:hover {
