@@ -35,7 +35,7 @@
 }
 .container-about {
     position: absolute;
-    top: 10%; 
+    top: 10%;
 }
 
 body {
@@ -90,8 +90,18 @@ body {
     top: 25px;
 
     font-family: var(--primaryFont);
-
 }
+
+.project_title {
+  color: white;
+  font-weight: 300;
+  position: absolute;
+  left: 10px;
+  top: 45px;
+
+  font-family: var(--primaryFont);
+}
+
 .email{
     position: absolute;
     top: 50%;
@@ -101,7 +111,7 @@ body {
     font-size: 14px;
     display: inline;
     overflow-wrap: break-word;
-    
+
 
 }
 
@@ -131,7 +141,7 @@ body {
 }
 
 .card:hover .filledbar {
-    width: 160px;
+    width: 100%;
     transition: 0.4s ease-out;
 }
 
@@ -139,6 +149,12 @@ body {
     position: absolute;
     top: 150px;
     left: calc(50% - 60px);
+}
+
+i {
+  font-size: 1.7rem;
+  color: var(--text);
+  top:100px;
 }
 
 .stroke {
