@@ -66,7 +66,7 @@
                         <input type="radio" id="star5" name="rating" value="5" (click)="setRating(5)" /><label
                             class="full" for="star5" title="Awesome - 5 stars"></label>
                         <input type="radio" id="star4half" name="rating" value="4 and a half"
-                            (click)="setRating(4.5)" /><label class="half" for="star4half"
+                            (click)="setRating(4.5)" /><label class="half" for="star4half" 
                             title="Pretty good - 4.5 stars"></label>
                         <input type="radio" id="star4" name="rating" value="4" (click)="setRating(4)" /><label
                             class="full" for="star4" title="Pretty good - 4 stars"></label>
@@ -97,5 +97,5 @@
 
 <div class="arrows">
     <div title="Skip" class="arrow slider-link next" (click)="skipRating()"></div>
-    <button class="submit-button" (click)="onSubmitSurvey()">{{numberOfRatedMovies < 3 ? numberOfRatedMovies + '/20' : 'Submit'}}</button>
+    <button class="submit-button" (click)="onSubmitSurvey()">{{numberOfRatedMovies < 4 ? numberOfRatedMovies + '/20' : 'Submit'}}</button>
 </div>
