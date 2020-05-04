@@ -22,10 +22,6 @@ export class ComputeRecommendationComponent implements OnInit {
   movieLength: number = 9744;
 
 
-
-  
-  
-
   constructor(private database:AngularFireStorage) {  
     this.recommend();
   }
