@@ -9,7 +9,6 @@ h2{
   font-size: 1.8rem;
 }
 #container {
-  margin-top: 22px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -19,5 +18,6 @@ h2{
   scrollbar-color: #181c1f #252525 !important;
   scrollbar-width: thin !important;
 
-  margin-right: 50px;
+  //margin-right: 50px;
+  margin: 22px 25px 0 25px;
 }

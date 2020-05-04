@@ -6,14 +6,9 @@ import {AngularFireAuth} from '@angular/fire/auth';
   providedIn: 'root'
 })
 export class LoggedInGuard implements CanActivate {
-  loggedIn = false;
-  constructor(private auth: AngularFireAuth) {
-    this.auth.user.subscribe(next => {
-      this.loggedIn = next != null;
-    });
-  }
+  constructor(private auth: AngularFireAuth) {}
 
   canActivate(): boolean {
-    return this.loggedIn;
+    return this.auth.currentUser != null;
   }
 }
