@@ -2,13 +2,18 @@
 
 
 
-  -  Quarentime is a personal recommendation system that will use each person preferences to suggest them the movies they will probably like much.
+  - Quarentime is a movie recommendation system that utilizes user-user collaborative
+   filtering to process the users' responses to a questionnaire.
 
-  -  We are making sure to develope a proper recommendation algorithm so our users will always be satisfied with the result they get.
+  -  The questionnaire requires the user to rate at least 20 random movies and compares
+                  these ratings to other users ratings in our database.
 
-  -  In addition to the recommendation system, the website functions as a good looking movie database to search for movies, get the most popular movies, and see what is upcomming.
+  - Our initial database consists of 10,000 different movies and 610 ratings, but we are planning
+                to expand it.
 
-  -  Our users can also get personalized profiles where they can arrange the movies they have seen, want to see and even can have their own black list.
+  -  In addition to the recommendation system, the users get to see upcoming movies, most
+                  popular movies, and a chance to personalize their profiles. They can create their own watch lists, and
+                    a blacklist, watched, and favorite lists that will influence the recommendation system.
   
   contributors: 
 
