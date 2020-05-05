@@ -133,7 +133,7 @@ export class SurveyComponent implements OnInit {
   onSubmitSurvey() {
     var arrayOfnumbers: number[];
 
-    if (this.numberOfRatedMovies >= 3) {
+    if (this.numberOfRatedMovies >= 20) {
       this.router.navigate([`/mainpage`]);
       this.userRatings[1] = (this.SumOfRatings / this.numberOfRatedMovies);
       console.table(this.userRatings);

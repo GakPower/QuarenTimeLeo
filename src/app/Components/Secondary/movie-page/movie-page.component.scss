@@ -158,10 +158,10 @@ img.cover {
 #play-icon {
   position: absolute;
   z-index: 5;
-  //top: 230px;
-  //left: 80px;
+  top: 230px;
+  left: 45px;
 
-  opacity: 0.5;
+  opacity: 0.3;
   transition-duration: 1s;
   transition-property: opacity;
 }
