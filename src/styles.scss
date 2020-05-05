@@ -20,3 +20,19 @@ p {
 .mat-dialog-container {
 padding: 0 0;
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #181c1f;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #252525;
+}
