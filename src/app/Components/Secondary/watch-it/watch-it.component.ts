@@ -15,28 +15,22 @@ import { User } from 'firebase';
 })
 export class WatchItComponent implements OnInit {
 
-  // watchMeList = WatchMeMovies;
   movies: Movie[] = [];
-
   user: User;
 
-
-
-
-
-  constructor(private db: AngularFirestore, private auth: AngularFireAuth) {
+  constructor(private db: AngularFirestore,
+              private auth: AngularFireAuth) {
     auth.currentUser.then(value => {
       this.user = value;
     });
   }
 
   ngOnInit(): void {
-
-    this.db.collection('users').doc(this.user.uid).collection('recommended').get().subscribe(next => {
-
-      this.movies = MovieAPI.getMovieByIds(next.docs[0].data().recomendations);
-    })
-
+    this.db.collection('users')
+      .doc(this.user.uid)
+      .get().subscribe(next => {
+      this.movies = MovieAPI.getMovieByIds(next.data().recommendations);
+    });
   }
 
 }

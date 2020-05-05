@@ -24,7 +24,7 @@
     </ul>
 
 </div>
-<!-- 
+<!--
 <div class="Container">
     <div *ngFor="let movie of MovieList">
         <app-picture-card [movie]="movie"></app-picture-card>
@@ -56,14 +56,13 @@
 <div class="slider">
     <div class="slider-wrapper flex">
         <div class="slide flex">
-            <div class="slide-image slider-link prev"><img src="{{MovieList[index].poster}}"
+            <div class="slide-image slider-link prev"><img src="{{selectedMovie ? selectedMovie.poster : ''}}"
                     style="width: 300px; height: 450px;">
                 <div class="overlay"></div>
             </div>
             <div class="slide-content">
-                <div class="slide-title">{{MovieList[index].title}}</div>
-                <div class="slide-desc" style="font-family: var(--secondaryFont);">{{MovieList[index].description}}
-                </div>
+                <div class="slide-title">{{selectedMovie ? selectedMovie.title : ''}}</div>
+                <div class="slide-desc" style="font-family: var(--secondaryFont);" >{{selectedMovie ? selectedMovie.description : ''}} </div>
                 <div class="slide-more">
                     <fieldset class="rating" style="margin-left: 0; padding-left: 0;">
                         <input type="radio" id="star5" name="rating" value="5" (click)="setRating(5)" /><label
@@ -99,7 +98,6 @@
 </div>
 
 <div class="arrows">
-    <div title="Skip" class="arrow slider-link next" (click)="skipRating()"></div>
-    <button class="submit-button"
-        (click)="onSubmitSurvey()">{{numberOfRatedMovies < 20 ? numberOfRatedMovies + '/20' : 'Submit'}}</button>
+    <div title="Skip" class="arrow slider-link next" (click)="nextMovie()"></div>
+    <button class="submit-button" (click)="onSubmitSurvey()">{{numberOfRatedMovies < 20 ? numberOfRatedMovies + '/20' : 'Submit'}}</button>
 </div>
