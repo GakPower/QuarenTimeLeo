@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700%22");
 .mat-dialog-container {
   padding: 0px !important;
 }
@@ -38,6 +38,8 @@
   transform: translateY(100%);
   -webkit-transition: -webkit-transform 0.3s;
   transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
 }
 
 .content {
@@ -76,8 +78,6 @@ p {
 
 .movie-text {
   padding: 0px 0 25px 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 a {
@@ -86,8 +86,6 @@ a {
   text-decoration: none;
   color: #fff;
   font-weight: bold;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 /*# sourceMappingURL=picture-card.component.css.map */

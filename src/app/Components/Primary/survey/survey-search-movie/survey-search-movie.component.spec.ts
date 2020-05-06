@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PollComponent } from './poll.component';
+import { SurveySearchMovieComponent } from './survey-search-movie.component';
 
-describe('PollComponent', () => {
-  let component: PollComponent;
-  let fixture: ComponentFixture<PollComponent>;
+describe('SurveySearchMovieComponent', () => {
+  let component: SurveySearchMovieComponent;
+  let fixture: ComponentFixture<SurveySearchMovieComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PollComponent ]
+      declarations: [ SurveySearchMovieComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PollComponent);
+    fixture = TestBed.createComponent(SurveySearchMovieComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

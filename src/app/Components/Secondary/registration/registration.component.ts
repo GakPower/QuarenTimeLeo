@@ -19,7 +19,8 @@ export class RegistrationComponent implements OnInit {
     repeat: new FormControl()
   });
 
-  constructor(private auth: AngularFireAuth,
+  constructor(
+    private auth: AngularFireAuth,
     private router: Router,
     private db: AngularFirestore) { }
 

@@ -1,10 +1,14 @@
+<app-search-bar (inputChange)="emitInputChange($event)"></app-search-bar>
 <div id="title">
     <p>Quarentime</p>
     <p id="wasteTime">Waste time</p>
+
+</div>
+<div class="myLists-Wrapper" *ngIf="input != ''">
+    <app-survey-search-movie [Option1]="true" [WatchedList]="SearchResults" (movieEvent)="receiveMovie($event)"></app-survey-search-movie>
 </div>
 
 <div class="instructions">
-
     <h1 style="color: var(--accent); font-size: 30px; font-family: var(--primaryFont);">Instructions:</h1>
     <ul style="color: var(--text); list-style-type:symbols();">
         <li>
@@ -16,10 +20,14 @@
             <p style="color: var(--text); font-size: 24px; font-family: var(--secondaryFont); ">Make sure to use the
                 skip arrow in case that you didn't see the movie.</p>
         </li>
+        <li>
+            <p style="color: var(--text); font-size: 24px; font-family: var(--secondaryFont); ">If you are having trouble finding movies you have watched, use the search bar and rate some movies you like and others you don't.</p>
+        </li>
     </ul>
 
 </div>
-<!-- 
+
+<!--
 <div class="Container">
     <div *ngFor="let movie of MovieList">
         <app-picture-card [movie]="movie"></app-picture-card>
@@ -47,26 +55,24 @@
         </fieldset>
     </div>
 </div>
-
 -->
-
 
 <div class="slider">
     <div class="slider-wrapper flex">
         <div class="slide flex">
-            <div class="slide-image slider-link prev"><img src="{{MovieList[index].poster}}"
+            <div class="slide-image slider-link prev"><img src="{{selectedMovie ? selectedMovie.poster : ''}}"
                     style="width: 300px; height: 450px;">
                 <div class="overlay"></div>
             </div>
             <div class="slide-content">
-                <div class="slide-title">{{MovieList[index].title}}</div>
-                <div class="slide-desc" style="font-family: var(--secondaryFont);" >{{MovieList[index].description}} </div>
+                <div class="slide-title">{{selectedMovie ? selectedMovie.title : ''}}</div>
+                <div class="slide-desc" style="font-family: var(--secondaryFont);" >{{selectedMovie ? selectedMovie.description : ''}} </div>
                 <div class="slide-more">
                     <fieldset class="rating" style="margin-left: 0; padding-left: 0;">
                         <input type="radio" id="star5" name="rating" value="5" (click)="setRating(5)" /><label
                             class="full" for="star5" title="Awesome - 5 stars"></label>
                         <input type="radio" id="star4half" name="rating" value="4 and a half"
-                            (click)="setRating(4.5)" /><label class="half" for="star4half" 
+                            (click)="setRating(4.5)" /><label class="half" for="star4half"
                             title="Pretty good - 4.5 stars"></label>
                         <input type="radio" id="star4" name="rating" value="4" (click)="setRating(4)" /><label
                             class="full" for="star4" title="Pretty good - 4 stars"></label>
@@ -92,10 +98,10 @@
             </div>
         </div>
     </div>
-    
+
 </div>
 
 <div class="arrows">
-    <div title="Skip" class="arrow slider-link next" (click)="skipRating()"></div>
+    <div title="Skip" class="arrow slider-link next" (click)="nextMovie()"></div>
     <button class="submit-button" (click)="onSubmitSurvey()">{{numberOfRatedMovies < 20 ? numberOfRatedMovies + '/20' : 'Submit'}}</button>
 </div>
