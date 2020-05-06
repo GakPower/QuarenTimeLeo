@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class TopicComponent implements OnInit {
   @Output() delete: EventEmitter<any> = new EventEmitter<any>();
   @Output() clicked: EventEmitter<any> = new EventEmitter<any>();
+  
 
   @Input() title: string;
   @Input() isSelected: boolean;
@@ -28,6 +29,7 @@ export class TopicComponent implements OnInit {
   editTitle() {
     this.title = this.inputText;
     this.editing = false;
+    
   }
 
   emitDeleteEvent() {

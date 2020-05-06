@@ -14,10 +14,30 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class MoviePageComponent implements OnInit {
 
   @Output() clicked: EventEmitter<any> = new EventEmitter<any>();
+  //@Input() movie: Movie;
+  
 
   trailer: string;
   userId: string;
   movies: number[];
+
+  user = {
+    fireUser: null,
+    name: 'User Userson',
+    email: '',
+    avatar: '\ud83d\udcbb',
+  };
+  topics = [];
+  colors = [
+    '#FFC857',
+    '#E9724C',
+    '#C5283D',
+    '#255f85',
+    '#9ed964'
+  ];
+  
+  
+
   constructor(public dialogRef: MatDialogRef<MoviePageComponent>,
     private db: AngularFirestore,
     private auth: AngularFireAuth,
@@ -27,11 +47,12 @@ export class MoviePageComponent implements OnInit {
     });
     auth.currentUser.then(value => {
       this.userId = value.uid;
-
+      this.moveTheLists();
     })
   }
 
   adding = false;
+  done = false;
 
 
   onNoClick(): void {
@@ -39,6 +60,22 @@ export class MoviePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+      
+  }
+
+  moveTheLists(){
+    this.db.collection('users')
+        .doc(this.userId)
+        .get().subscribe(next => {
+          const lists = next.data().lists;
+          this.topics = [];
+          lists.forEach(list => {
+            const color = list.color;
+            const title = list.title;
+            const movieIDs = list.movieIDs;
+            this.topics.push({ color, title, movieIDs });
+          });
+        });
   }
 
   openTrailerOnNewTab() {
@@ -52,15 +89,26 @@ export class MoviePageComponent implements OnInit {
     this.clicked.emit();
   }
 
-  addMovieToList(movieId: number) {
-    
-    //  this.db.collection('users').doc(this.userId).update({
-    //   lists: [
-    //     {
-    //      title: 'Watch List',
-    //       movieIDs: [].push(movieId), 
-    //      }]
-    //  })
 
+  
+  addMovieToList(topicIndex: number) {
+     if (!this.topics[topicIndex].movieIDs) {
+       this.topics[topicIndex].movieIDs = [];
+     }
+     if (!this.topics[topicIndex].movieIDs.includes(this.data.id)){
+      this.topics[topicIndex].movieIDs.push(this.data.id);
+      this.db.collection('users').doc(this.userId).update({
+       lists: this.topics
+     });
+     } 
+     this.adding = false;
+     this.done = true;
   }
+  
+ 
+
+
+  
+  
+
 }

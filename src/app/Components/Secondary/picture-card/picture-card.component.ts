@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { MoviePageComponent } from '../movie-page/movie-page.component';
@@ -11,6 +11,8 @@ import { Movie } from '../../Class/Movie/movie';
   styleUrls: ['./picture-card.component.scss']
 })
 export class PictureCardComponent implements OnInit {
+  
+  
 
   @Input() movie: Movie;
   constructor(public dialog: MatDialog) { }
@@ -22,7 +24,8 @@ export class PictureCardComponent implements OnInit {
   }
   ngOnInit(): void {
   }
-
+  
+  
 }
 
 
