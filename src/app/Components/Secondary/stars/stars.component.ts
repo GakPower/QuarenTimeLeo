@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-stars',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StarsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) {}
 
   setRating(number:number){
 
@@ -16,4 +17,7 @@ export class StarsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onStart() {
+    this.router.navigateByUrl('/start');
+  }
 }

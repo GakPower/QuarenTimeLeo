@@ -65,6 +65,10 @@ body {
 .movie_card .info_section .movie_header h3 {
   color: black;
   width: auto;
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .movie_card .info_section .movie_header p {
   color: #555;
@@ -82,8 +86,8 @@ body {
   padding: 2px;
   width: 10em;
   overflow: auto;
-  scrollbar-color: #999999 transparent !important;
-  scrollbar-width: thin;
+  scrollbar-color: transparent !important;
+  scrollbar-width: thin !important;
 }
 .movie_card .info_section .movie_desc .text {
   color: #545454;

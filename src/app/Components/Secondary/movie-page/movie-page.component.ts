@@ -53,12 +53,12 @@ export class MoviePageComponent implements OnInit {
   }
 
   addMovieToList(movieId: number) {
-    
+
     //  this.db.collection('users').doc(this.userId).update({
     //   lists: [
     //     {
     //      title: 'Watch List',
-    //       movieIDs: [].push(movieId), 
+    //       movieIDs: [].push(movieId),
     //      }]
     //  })
 
