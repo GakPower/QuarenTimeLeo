@@ -34,9 +34,9 @@ export class SurveyComponent implements OnInit {
   recomendedMovies: number[];                 //the result recommendations.
   SumOfRatings: number = 0;                   //The sum of the total ratings of movies.
 
-
-  // pos[0] = email, pos[1]= average rating.
   selectedMovie: Movie;
+
+  InSurveyComponent: boolean = true;
 
 
 
@@ -96,6 +96,7 @@ export class SurveyComponent implements OnInit {
   }
   userId: string;
   @ViewChild('panel', { read: ElementRef }) public panel: ElementRef;
+
   ngOnInit(): void {
     for (var i = 0; i < this.translationArray.length; i++)
       Hashfunction.put(this.translationArray[i], i);
@@ -121,6 +122,7 @@ export class SurveyComponent implements OnInit {
         this.selectedMovie = movie;
       });
   }
+
   onSubmitSurvey() {
     if (this.numberOfRatedMovies >= 20) {
       this.router.navigate([`/mainpage`]);
@@ -144,6 +146,10 @@ export class SurveyComponent implements OnInit {
       this.SearchResults = result.filter(movie => Hashfunction.get(movie.id) != -1);
     });
 
+  }
+  receiveMovie($event: Movie){
+    this.selectedMovie = $event
+    console.log("selected Movie" + this.selectedMovie)
   }
 
 }

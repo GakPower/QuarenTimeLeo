@@ -5,9 +5,8 @@
 
 </div>
 <div class="myLists-Wrapper" *ngIf="input != ''">
-    <app-my-lists-movie [Option1]="true" [WatchedList]="SearchResults"></app-my-lists-movie>
+    <app-survey-search-movie [Option1]="true" [WatchedList]="SearchResults" (movieEvent)="receiveMovie($event)"></app-survey-search-movie>
 </div>
-
 
 <div class="instructions">
     <h1 style="color: var(--accent); font-size: 30px; font-family: var(--primaryFont);">Instructions:</h1>
@@ -21,9 +20,13 @@
             <p style="color: var(--text); font-size: 24px; font-family: var(--secondaryFont); ">Make sure to use the
                 skip arrow in case that you didn't see the movie.</p>
         </li>
+        <li>
+            <p style="color: var(--text); font-size: 24px; font-family: var(--secondaryFont); ">If you are having trouble finding movies you have watched, use the search bar and rate some movies you like and others you don't.</p>
+        </li>
     </ul>
 
 </div>
+
 <!--
 <div class="Container">
     <div *ngFor="let movie of MovieList">
@@ -53,6 +56,7 @@
     </div>
 </div>
 -->
+
 <div class="slider">
     <div class="slider-wrapper flex">
         <div class="slide flex">
