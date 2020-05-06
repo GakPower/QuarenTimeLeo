@@ -86,6 +86,7 @@ const routes = [
     ReactiveFormsModule,
     MatDialogModule,
     BrowserAnimationsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

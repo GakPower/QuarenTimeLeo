@@ -26,6 +26,7 @@
     "@types/xlsx": "0.0.36",
     "angularfire2": "^5.4.2",
     "firebase": "^7.14.1",
+    "font-awesome": "^4.7.0",
     "node-sass": "^4.13.1",
     "rxjs": "~6.5.4",
     "sass-loader": "^8.0.2",
