@@ -65,10 +65,6 @@ body {
 .movie_card .info_section .movie_header h3 {
   color: black;
   width: auto;
-  width: 150px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 .movie_card .info_section .movie_header p {
   color: #555;
@@ -86,8 +82,8 @@ body {
   padding: 2px;
   width: 10em;
   overflow: auto;
-  scrollbar-color: white !important;
-  scrollbar-width: thin !important;
+  scrollbar-color: #999999 transparent !important;
+  scrollbar-width: thin;
 }
 .movie_card .info_section .movie_desc .text {
   color: #545454;
@@ -262,4 +258,4 @@ a[data-tooltip][data-placement=top]::after {
   margin-bottom: 4px;
 }
 
-/*# sourceMappingURL=my-lists-movie.component.css.map */
+/*# sourceMappingURL=survey-search-movie.component.css.map */
