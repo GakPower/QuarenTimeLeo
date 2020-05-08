@@ -62,6 +62,11 @@ body {
             h3 {
                 color: black;
                 width: auto;
+              //to truncate the text!!!!!!!!!!
+              width: 150px;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
             }
             p {
                 color: #555;
@@ -81,8 +86,8 @@ body {
             width: 10em;
             overflow: auto;
 
-            scrollbar-color: #999999 transparent !important;
-            scrollbar-width: thin;
+            scrollbar-color: white !important;
+            scrollbar-width: thin !important;
 
             .text {
                 color: #545454;

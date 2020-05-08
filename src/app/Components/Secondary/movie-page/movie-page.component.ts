@@ -104,11 +104,4 @@ export class MoviePageComponent implements OnInit {
      this.adding = false;
      this.done = true;
   }
-  
- 
-
-
-  
-  
-
 }
