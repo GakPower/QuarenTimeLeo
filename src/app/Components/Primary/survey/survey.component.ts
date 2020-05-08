@@ -81,8 +81,6 @@ export class SurveyComponent implements OnInit {
   ];  //The translations between old ids, and new ids.
 
 
-
-
   constructor(
     private router: Router,
     private db: AngularFirestore,
@@ -92,7 +90,8 @@ export class SurveyComponent implements OnInit {
       this.user.name = value.displayName;
       this.user.email = value.email;
       this.userId = value.uid;
-    });
+    }); 
+
   }
   userId: string;
   @ViewChild('panel', { read: ElementRef }) public panel: ElementRef;
@@ -106,16 +105,17 @@ export class SurveyComponent implements OnInit {
     MovieAPI.getMovie(this.translationArray[Math.floor(Math.random() * (this.translationArray.length - 1))])
       .then(movie => {
         this.selectedMovie = movie;
+        console.log(movie.id)
       });
   }
   setRating(rating: number) {
-    this.randomId = Math.floor(Math.random() * (this.translationArray.length - 1));
-    this.userRatings[this.randomId + 2] = rating;
+    
+    this.userRatings[Hashfunction.get(this.selectedMovie.id) + 2] = rating;
     this.numberOfRatedMovies += 1;
     this.SumOfRatings += rating;
-
     this.nextMovie();
   }
+
   nextMovie() {
     MovieAPI.getMovie(this.translationArray[Math.floor(Math.random() * (this.translationArray.length - 1))])
       .then(movie => {
@@ -147,7 +147,7 @@ export class SurveyComponent implements OnInit {
     });
 
   }
-  receiveMovie($event: Movie){
+  receiveMovie($event: Movie) {
     this.selectedMovie = $event
     console.log("selected Movie" + this.selectedMovie)
   }

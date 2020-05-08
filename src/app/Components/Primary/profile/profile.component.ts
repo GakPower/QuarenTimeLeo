@@ -16,11 +16,7 @@ export class ProfileComponent {
   @Output() delete: EventEmitter<any> = new EventEmitter<any>();
   @Input() immutable = false;
 
-
-
   editing: boolean = false;
-
-
 
   user = {
     fireUser: null,
@@ -143,6 +139,8 @@ export class ProfileComponent {
     username: new FormControl(),
   });
 
+  cancel: boolean = true; 
+
 
   selectedEmoji: number;
 
@@ -171,7 +169,7 @@ export class ProfileComponent {
 
 
   addTopic() {
-    this.topics.push({ color: this.colors[4], title: 'Fav', movieIDs: [] });
+    this.topics.push({ color: this.colors[4], title: 'Fav', movieIDs: []});
     this.db.collection('users').doc(this.user.fireUser.uid).update({
       lists: this.topics
     });
