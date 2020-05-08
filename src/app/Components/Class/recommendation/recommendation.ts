@@ -248,7 +248,7 @@ export abstract class Recommendation {
         }
         // console.log(predictedUserScores[46]);
 
-        const bestMovies = this.nearestKNeighbors(predictedUserScores, 50);
+        const bestMovies = this.nearestKNeighbors(predictedUserScores, 100); // this is the number of recommended movies we want to display in watch me. 
 
 
         return bestMovies;
