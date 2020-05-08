@@ -32,9 +32,13 @@ export class NavButtonsComponent {
       .doc(this.user.uid)
       .collection('recommended')
       .get().subscribe(next => {
-        const movieIDs = [];
+        let movieIDs = [];
+        //const movieIDs = [];
+        console.log(next);
         next.docs.forEach(doc => {
-          movieIDs.push(doc.data().id);
+          movieIDs = doc.data().recomendations;
+         // movieIDs.push(doc.data().id);
+          console.log(movieIDs); 
         });
 
         const randomIndex = Math.floor(Math.random() * movieIDs.length);

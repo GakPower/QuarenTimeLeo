@@ -1,4 +1,5 @@
 import DatasetFunction from '../../../../assets/detaset';
+import { HttpClient } from '@angular/common/http';
 
 export abstract class Recommendation {
     static currentUserRatings = [];
@@ -8,6 +9,7 @@ export abstract class Recommendation {
 
     static createMatrix() {
 
+       
         const dataset = DatasetFunction;
 
         const lines = dataset.split('\n');
@@ -27,7 +29,7 @@ export abstract class Recommendation {
                 ratingMatrix[i][j] = Number(tokens[j]);
             }
         }
-
+       
 
 
         return ratingMatrix;
@@ -243,14 +245,15 @@ export abstract class Recommendation {
         const tneighbor = this.transpose(neighboursRating);
 
         for (let i = 2; i < this.movieLength; i++) {
-            predictedUserScores[i - 2] = this.scorePrediction(tneighbor[i], neighborWeights, tneighbor[1], this.currentUserRatings[1]);
-
+            if(this.currentUserRatings[i] == 0) 
+                predictedUserScores[i - 2] = this.scorePrediction(tneighbor[i], neighborWeights, tneighbor[1], this.currentUserRatings[1]);
+            else 
+                predictedUserScores[i - 2] = 0;
         }
         // console.log(predictedUserScores[46]);
 
-        const bestMovies = this.nearestKNeighbors(predictedUserScores, 50);
-
-
+        const bestMovies = this.nearestKNeighbors(predictedUserScores,50);
+        
         return bestMovies;
 
 
@@ -271,5 +274,17 @@ export abstract class Recommendation {
     }
 
 
+
+
+
+        static getUsers() {
+
+            console.log("users");
+       /* fetch('http://localhost:3000/get-users')
+      .then(response => {
+        return response.json();}).then((emails) => { 
+            console.log(emails);
+        })*/
+      }
 
 }

@@ -71,6 +71,7 @@ export class ProfileComponent {
   clickedTopic(index) {
     this.selectedTopic = index;
     this.movies = [];
+
     this.topics[index].movieIDs.forEach(movieID => {
       MovieAPI.getMovie(movieID).then(result => {
         this.movies.push(result);
