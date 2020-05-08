@@ -3,7 +3,6 @@
 
   <div class="usercontainer">
     <div class="rela-block">
-      <!--      <div class="profile-pic" id="profile_pic" style="background: url({{user.avatar}}); background-size: contain;">-->
       <div class="profile-pic" id="profile_pic"><span>{{user.avatar}}</span></div>
       <div class="profile-name-container">
         <svg id="edit" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172">
@@ -24,17 +23,6 @@
       </div>
     </div>
   </div>
-  <!--
-  <div id="profile">
-    <div id="emoji">{{user.avatar}}</div>
-    <div id="info">
-      <p id="name">{{user.name}}</p>
-      <p>{{user.email}}</p>
-    </div>
-  </div>
-   ================================================================ -->
-
-
 
   <div id="myList" class="myList-overflow" style="scrollbar-width: 16px; scrollbar-color: transparent transparent;">
     <p style="font-family: var(--secondaryFont);">My Library</p>
@@ -61,9 +49,7 @@
     </div>
     <div id="cards" style="overflow: auto; scrollbar-width: thin; scrollbar-color: #252525 transparent;"
       *ngIf="movies.length > 0" [style.border-color]="selectedTopic != -1 ? topics[selectedTopic].color : 'white'">
-      <!-- <app-card *ngFor="let card of cards; let i = index" (delete)="removeCard(i)"></app-card> -->
-      <div class="movie-card" *ngFor="let movie of movies"
-        style="background: url({{movie.poster}}); background-size: cover;">
+      <div class="movie-card" *ngFor="let movie of movies" style="background: url({{movie.poster}}); background-size: cover;">
         <div class="overlay">
           <div class="card-header">
             <div class="release-date">

@@ -18,7 +18,8 @@ export class MoviePageComponent implements OnInit {
   trailer: string;
   userId: string;
   movies: number[];
-  constructor(public dialogRef: MatDialogRef<MoviePageComponent>,
+  constructor(
+    public dialogRef: MatDialogRef<MoviePageComponent>,
     private db: AngularFirestore,
     private auth: AngularFireAuth,
     @Inject(MAT_DIALOG_DATA) public data: Movie) {
@@ -27,8 +28,7 @@ export class MoviePageComponent implements OnInit {
     });
     auth.currentUser.then(value => {
       this.userId = value.uid;
-
-    })
+    });
   }
 
   adding = false;
@@ -44,7 +44,6 @@ export class MoviePageComponent implements OnInit {
   openTrailerOnNewTab() {
     if (this.trailer) {
       window.open(this.trailer, '_blank');
-
     }
   }
 
@@ -53,14 +52,10 @@ export class MoviePageComponent implements OnInit {
   }
 
   addMovieToList(movieId: number) {
-    
-    //  this.db.collection('users').doc(this.userId).update({
-    //   lists: [
-    //     {
-    //      title: 'Watch List',
-    //       movieIDs: [].push(movieId), 
-    //      }]
-    //  })
+
+    // this.db.collection('users').doc(this.userId).update({
+    //   lists: this.topics
+    // });
 
   }
 }

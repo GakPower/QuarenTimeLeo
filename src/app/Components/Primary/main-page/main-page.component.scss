@@ -1,23 +1,68 @@
+#mainContent {
+  display: grid;
+  grid-template-columns: 70% 30%;
 
-  
-  p {
-    margin: 0;
-  }
-  
-  app-watch-it{
-    background-color: #252525;
-    
-  }
-  
-  app-top-ten{
-    background-color: #252525;
-  }
-  
-  .mainContent{
-    display: grid;
-    grid-template-columns: 70% 30%;
+  height: calc(100% - 110px);
+}
+
+#watchme-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 20px;
+
+  max-height: calc(100vh - 120px - 40px);
+
+  h1 {
+    width: 100%;
+    margin: 0 0 20px 0;
+    font-family: var(--secondaryFont);
+    color: var(--text);
+    text-align: center;
+
+    background-color: var(--accent);
+    border-radius: 10px;
+    box-shadow: 0 1px 5px 1px black;
   }
 
-  
-  
-  
+  #wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    background-color: var(--background-dark);
+    box-shadow: inset 0 0 20px black;
+    border-radius: 10px;
+
+    overflow: auto;
+    scrollbar-color: var(--background-dark) var(--background) !important;
+    scrollbar-width: thin !important;
+  }
+}
+
+#theWatchedList {
+  height: calc(100vh - 220px - 40px);
+}
+
+@media only screen and (max-width: 1100px) {
+  #mainContent {
+    grid-template-columns: 50% 50%
+  }
+  #watchme-container {
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+}
+@media only screen and (max-width: 800px) {
+  #mainContent {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 450px) {
+  #mainContent {
+    margin-top: 50px;
+  }
+}

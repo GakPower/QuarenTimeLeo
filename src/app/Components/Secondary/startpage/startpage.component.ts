@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {MovieAPI} from '../../Class/MovieAPI/movie-api';
 import {AngularFireStorage} from '@angular/fire/storage';
+import {Movie} from '../../Class/Movie/movie';
 
 @Component({
   selector: 'app-startpage',
@@ -22,7 +23,7 @@ export class StartpageComponent implements OnInit {
     this.router.navigateByUrl('/login');
   }
   openInfo(){
-    this.router.navigateByUrl('/about'); 
+    this.router.navigateByUrl('/about');
   }
 }
 

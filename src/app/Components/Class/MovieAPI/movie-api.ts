@@ -156,13 +156,13 @@ export abstract class MovieAPI {
       });
   }
 
-  static getMovieByIds(moviesIds: number[]): Movie[] {
-    const recomendedMovies: Movie[] = []; 
-    moviesIds.forEach(id => {
-      this.getMovie(id).then( movie =>{
-        recomendedMovies.push(movie); 
-      })
-    })
-    return recomendedMovies; 
+  static async getMovieByIds(moviesIds: number[]): Promise<Movie[]> {
+    const recommendedMovies: Movie[] = [];
+    for (const id of moviesIds) {
+      await this.getMovie(id).then( movie => {
+        recommendedMovies.push(movie);
+      });
+    }
+    return recommendedMovies;
   }
 }

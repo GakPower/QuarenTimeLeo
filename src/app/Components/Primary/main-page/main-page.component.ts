@@ -1,5 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {Component, OnInit} from '@angular/core';
+import { Movie } from '../../Class/Movie/movie';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { User } from 'firebase';
 import {MovieAPI} from '../../Class/MovieAPI/movie-api';
 
 @Component({
@@ -9,16 +12,30 @@ import {MovieAPI} from '../../Class/MovieAPI/movie-api';
 })
 export class MainPageComponent implements OnInit {
 
+  movies: Movie[] = [];
+  user: User;
   input = '';
 
-  constructor( ) {
-  }
-
-  ngOnInit(): void {
+  constructor(
+    private db: AngularFirestore,
+    private auth: AngularFireAuth) {
+    auth.currentUser.then(value => {
+      this.user = value;
+    });
   }
 
   updateInput(input) {
     this.input = input;
+  }
+
+  ngOnInit(): void {
+    this.db.collection('users')
+      .doc(this.user.uid)
+      .get().subscribe(next => {
+      MovieAPI.getMovieByIds(next.data().recommendations).then(result => {
+        this.movies = result;
+      });
+    });
   }
 
 }

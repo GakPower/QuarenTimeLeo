@@ -29,7 +29,7 @@ export class WatchItComponent implements OnInit {
     this.db.collection('users')
       .doc(this.user.uid)
       .get().subscribe(next => {
-      this.movies = MovieAPI.getMovieByIds(next.data().recommendations);
+      MovieAPI.getMovieByIds(next.data().recommendations).then(movies => this.movies = movies);
     });
   }
 

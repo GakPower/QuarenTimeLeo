@@ -1,10 +1,8 @@
-import { Component, } from '@angular/core';
-import {Movie} from '../../Class/Movie/movie';
-import {AngularFireAuth} from '@angular/fire/auth';
-import {AngularFirestore} from '@angular/fire/firestore';
-import * as firebase from 'firebase/app';
-import 'firebase/auth';
-import {MovieAPI} from '../../Class/MovieAPI/movie-api';
+import { Component } from '@angular/core';
+import { Movie } from '../../Class/Movie/movie';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { MovieAPI } from '../../Class/MovieAPI/movie-api';
 
 @Component({
   selector: 'app-profile',
@@ -36,11 +34,6 @@ export class ProfileComponent {
   sendEmail = false;
   disabledSendButton = false;
 
-  clickedProfile = false;
-  // \ud83d\ude06
-  clickedAvatar = false;
-  Saved = false;
-
   constructor(private auth: AngularFireAuth,
               private db: AngularFirestore) {
     auth.currentUser.then(value => {
@@ -59,7 +52,7 @@ export class ProfileComponent {
       lists: this.topics
     });
   }
-  
+
   removeTopic(index) {
     this.topics.splice(index, 1);
     this.selectedTopic = -1;
