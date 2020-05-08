@@ -1,4 +1,4 @@
-import { Component, } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import {Movie} from '../../Class/Movie/movie';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFirestore} from '@angular/fire/firestore';
@@ -12,6 +12,13 @@ import {MovieAPI} from '../../Class/MovieAPI/movie-api';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
+  @Output() delete: EventEmitter<any> = new EventEmitter<any>();
+  @Input() immutable = false;
+
+
+
+ 
+
 
   user = {
     fireUser: null,
@@ -19,7 +26,7 @@ export class ProfileComponent {
     email: '',
     avatar: '\ud83d\udcbb',
   };
-
+  
   topics = [];
   colors = [
     '#FFC857',
@@ -30,8 +37,9 @@ export class ProfileComponent {
   ];
 
   movies: Movie[] = [];
-  cards = ['15661', '65161', '78913'];
+  ///???cards = ['15661', '65161', '78913'];
   selectedTopic = -1;
+  
 
   sendEmail = false;
   disabledSendButton = false;
@@ -68,6 +76,22 @@ export class ProfileComponent {
     });
   }
 
+  
+
+
+  /////////BUG IS HERE///////////
+  emitDeleteEvent(index) {
+    console.log(this.movies[index]);
+    this.topics[index].movieIDs.splice(index, 1);
+    console.log(index);
+    this.movies.splice(index, -1);
+    this.db.collection('users').doc(this.user.fireUser.uid).update({
+      lists: this.topics
+    });
+    console.log(this.movies);
+  }
+//////////////////////////////////
+
   clickedTopic(index) {
     this.selectedTopic = index;
     this.movies = [];
@@ -79,9 +103,6 @@ export class ProfileComponent {
     });
   }
 
-  removeCard(index) {
-    this.cards.splice(index, 1);
-  }
   changeAvatar(avatar: string) {
     this.user.avatar = avatar;
   }

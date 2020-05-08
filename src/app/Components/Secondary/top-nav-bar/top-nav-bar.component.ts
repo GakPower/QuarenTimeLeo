@@ -8,6 +8,8 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 export class TopNavBarComponent implements OnInit {
 
   @Output() searchInputChange: EventEmitter<string> = new EventEmitter<string>();
+
+
   constructor() {
   }
 

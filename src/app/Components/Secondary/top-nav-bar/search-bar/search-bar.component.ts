@@ -13,6 +13,7 @@ import {SearchContainerComponent} from '../../search-container/search-container.
 })
 export class SearchBarComponent implements OnInit {
   @Output() inputChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() close: EventEmitter<string> = new EventEmitter();
   constructor() {
   }
 
@@ -20,7 +21,6 @@ export class SearchBarComponent implements OnInit {
   }
 
   onChange(input: string) {
-    this.inputChange.emit(input);
+      this.inputChange.emit(input);
   }
-
 }

@@ -1,12 +1,11 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { Movie } from '../../Class/Movie/movie';
 import { MovieAPI } from '../../Class/MovieAPI/movie-api';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Recommendation } from '../../Class/recommendation/recommendation';
-
-
+import { Hashfunction } from '../../Class/hashfunction/hashfunction';
 
 @Component({
   selector: 'app-survey',
@@ -21,22 +20,30 @@ export class SurveyComponent implements OnInit {
     avatar: '',
   };
 
+  @Input() input = '';
+  @Output() searchInputChange: EventEmitter<string> = new EventEmitter<string>();
 
-  MovieRating: number;  // rarting provided by user on each movie
-  index: number = 0;    // to keep position of movies a user skip without rating.
+  MovieRating: number;                        // rarting provided by user on each movie
+  index: number = 0;                          // to keep position of movies a user skip without rating.
   numberOfRatedMovies: number = 0;
-  userRatings: any[] = []; // The array that has the ratings of each user.
-  //pos[0] = email, pos[1]= average rating.
-  MovieList: Movie[] = [];
+  userRatings: any[] = [];                    // The array that has the ratings of each user. 
+  MovieList: Movie[] = [];                    //pos[0] = email, pos[1]= average rating.
   randomId: number;
 
+  SearchResults: Movie[];
+  recomendedMovies: number[];                 //the result recommendations.
+  SumOfRatings: number = 0;                   //The sum of the total ratings of movies.
+
+  selectedMovie: Movie;
+
+  InSurveyComponent: boolean = true;
 
 
-  recomendedMovies: number[]; //the result recommendations.
 
 
 
-  SumOfRatings: number = 0; //The sum of the total ratings of movies.
+
+
 
   translationArray: number[] = [
     862, 512200, 15602, 31357, 11862, 949, 6620, 45325, 9091, 710, 9087, 12110, 21032, 301348, 1408, 524, 4584, 5, 9273, 11517, 8012, 1710, 9691, 12665, 451,
@@ -80,7 +87,8 @@ export class SurveyComponent implements OnInit {
    userArray = [];
    average = 0; 
 
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private db: AngularFirestore,
     private auth: AngularFireAuth) {
     auth.currentUser.then(value => {
@@ -93,74 +101,35 @@ export class SurveyComponent implements OnInit {
   }
 
   userId: string;
-  @ViewChild('panel', { read: ElementRef }) public panel: ElementRef<any>;
+  @ViewChild('panel', { read: ElementRef }) public panel: ElementRef;
+
   ngOnInit(): void {
+    for (var i = 0; i < this.translationArray.length; i++)
+      Hashfunction.put(this.translationArray[i], i);
+    this.userRatings = Array(9744).fill(0);
+    this.userRatings[0] = this.user.email;
 
-    Recommendation.getUsers();
-    //this.userRatings = Array(9744).fill(0);
-    this.userEmail = this.user.email;                           //email-setting
-    //this.userRatings[0] = this.user.email;
-
-
-
-
-
-    MovieAPI.getMovie(this.translationArray[Math.floor(Math.random() * (this.translationArray.length - 1))]).then(movie => {
-      this.MovieList.push(movie);
-    })
-
-    // MovieAPI.getMostPopular().then(movies => {
-    //  this.MovieList = movies;
-    //})
-
-
+    MovieAPI.getMovie(this.translationArray[Math.floor(Math.random() * (this.translationArray.length - 1))])
+      .then(movie => {
+        this.selectedMovie = movie;
+      });
   }
-
-
-
-
-
-
-
-  setRating(number: number) {
+  setRating(rating: number) {
     this.randomId = Math.floor(Math.random() * (this.translationArray.length - 1));
-    console.log("this is random id one: " + this.randomId)
-    this.MovieRating = number;
-    this.numberOfRatedMovies = this.numberOfRatedMovies + 1;
-    
-    this.userArray.push({movieId: this.randomId, rate: number});                                      //setting movieId and rate for each movie rated by user.
-    
-    this.userRatings[this.randomId + 2] = number;
-    console.log("the index we insert rating at: " + (this.randomId + 2))
-    console.log("the value of the index" + (this.randomId + 2) + "is: " + number)
-    this.SumOfRatings = this.SumOfRatings + number;
-    MovieAPI.getMovie(this.translationArray[this.randomId]).then(movie => {
-      this.MovieList.push(movie);
-    })
-    this.index = this.index + 1;
+    this.userRatings[this.randomId + 2] = rating;
+    this.numberOfRatedMovies += 1;
+    this.SumOfRatings += rating;
 
-
-
+    this.nextMovie();
   }
-   randomGenerator(){
-      this.prev = Math.abs(((966*this.prev) % 9949));//9949 is prime and 966 is a primitive root of 9949 therefore we should have an uniformely distributed sequence
-      if(this.prev >= 9741)
-         this.randomGenerator();
-      else 
-        return this.prev;
-    }
-
-  skipRating() {
-    
-    MovieAPI.getMovie(this.translationArray[this.randomGenerator()]).then(movie => {
-      this.MovieList.push(movie);
-    })
-    this.index = this.index + 1;
+  nextMovie() {
+    MovieAPI.getMovie(this.translationArray[Math.floor(Math.random() * (this.translationArray.length - 1))])
+      .then(movie => {
+        this.selectedMovie = movie;
+      });
   }
-  
+
   onSubmitSurvey() {
-    var arrayOfnumbers: number[];
-
     if (this.numberOfRatedMovies >= 20) {
       this.router.navigate([`/mainpage`]);
       this.average = (this.SumOfRatings / this.numberOfRatedMovies);
@@ -176,24 +145,29 @@ export class SurveyComponent implements OnInit {
       
       
       this.userRatings[1] = (this.SumOfRatings / this.numberOfRatedMovies);
-      console.table(this.userRatings);
-      this.db.collection('users').doc(this.userId).update({
-        takenSurvey: true
-      })
-      arrayOfnumbers = Recommendation.recommend(this.userRatings);
+      this.recomendedMovies = Recommendation.recommend(this.userRatings)
+        .map(x => this.translationArray[x]);
 
-      this.recomendedMovies = arrayOfnumbers.map(x => this.translationArray[x]);
       this.db.collection('users')
         .doc(this.userId)
-        .collection('recommended')
-        .add
-        (
-          {
-            recomendations: this.recomendedMovies
-          }
-        )
-
-    } else {
+        .update({
+          takenSurvey: true,
+          recommendations: this.recomendedMovies
+        });
     }
   }
+
+  emitInputChange(input) {
+    this.input = input;
+
+    MovieAPI.search(input).then(result => {
+      this.SearchResults = result.filter(movie => Hashfunction.get(movie.id) != -1);
+    });
+
+  }
+  receiveMovie($event: Movie){
+    this.selectedMovie = $event
+    console.log("selected Movie" + this.selectedMovie)
+  }
+
 }
