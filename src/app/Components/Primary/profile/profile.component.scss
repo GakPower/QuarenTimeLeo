@@ -10,7 +10,7 @@
   .rela-block {
     width: 900px;
     height: 400px;
-    background-color: rgba(255, 255, 255, 0.0);
+    background-color: rgba(255, 255, 255, 0);
     display: flex;
     justify-content: center;
 
@@ -50,8 +50,7 @@
       }
     }
 
-
-    .profile-name-container{
+    .profile-name-container {
       position: absolute;
 
       top: 160px;
@@ -61,9 +60,8 @@
       border-radius: 10px;
       display: flex;
       justify-content: center;
-
     }
-    .user-name{
+    .user-name {
       color: #252525;
       font-family: var(--secondaryFont);
       font-weight: 500;
@@ -72,9 +70,8 @@
       left: 50%;
       transform: translateX(-50%);
       position: absolute;
-
     }
-    .user-desc{
+    .user-desc {
       color: #414040;
       font-family: var(--secondaryFont);
       font-weight: 500;
@@ -143,7 +140,6 @@
     margin: 40px;
     scrollbar-width: thin !important;
 
-
     & > p {
       align-self: flex-start;
       margin-bottom: 5px;
@@ -208,6 +204,37 @@
       & > .movie-card {
         flex-shrink: 0;
       }
+
+      ////////////new code for delete button////////////
+      // :host {
+      //   position: relative;
+
+      //   display: flex;
+      //   align-items: center;
+      //   justify-content: center;
+
+      &:hover {
+        #delete {
+          opacity: 1;
+        }
+      }
+
+      #delete {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        z-index: 5;
+        opacity: 0;
+        cursor: pointer;
+        transition: opacity 300ms;
+
+        #original-icon {
+          fill: whitesmoke;
+        }
+      }
+
+      ////////////new code for delete button////////////
     }
 
     #favouriteTitle {
@@ -238,7 +265,7 @@
     flex-direction: column;
 
     margin: 0 40px 40px 40px;
-    &>p {
+    & > p {
       align-self: flex-start;
       margin-bottom: 5px;
 
@@ -248,7 +275,7 @@
     }
 
     #optionsDiv {
-      &>div {
+      & > div {
         margin-top: 20px;
       }
       #resetPassDiv {
@@ -270,11 +297,11 @@
   }
 }
 
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
 
-
-
-@import url('https://fonts.googleapis.com/css?family=Open + Sans:300, 400, 700');
-
+.mat-dialog-container {
+  padding: 0px !important;
+}
 .row {
   padding: 20px;
   display: grid;
@@ -283,9 +310,8 @@
 }
 
 .movie-card {
-  width: 250px;
-  height: 360px;
-  margin: 1em;
+  width: 300px;
+  height: 450px;
 
   position: relative;
   float: left;
@@ -308,8 +334,8 @@
   overflow: hidden;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  -webkit-transform: translateY(calc(70px + 1em));
-  transform: translateY(calc(160px + 1em));
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
   -webkit-transition: -webkit-transform 0.3s;
   transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
@@ -361,7 +387,8 @@ a {
   color: #fff;
   font-weight: bold;
 }
-.settings-btn{
+
+.settings-btn {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
@@ -375,7 +402,9 @@ a {
   transition: all 300ms ease;
   cursor: pointer;
 }
-.settings-btn:hover,.settings-btn:active,.settings-btn:focus {
+.settings-btn:hover,
+.settings-btn:active,
+.settings-btn:focus {
   background: var(--primary);
 }
 
@@ -383,4 +412,75 @@ a {
   border-color: var(--accentDisabled);
   background-color: transparent;
   cursor: default;
+}
+
+#login-form {
+  position: absolute;
+  float: right;
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  height: 100%;
+  background: var(--background-dark);
+
+  border-radius: 0 9px 9px 0;
+  right: 0;
+  text-align: center;
+  z-index: 10;
+  #emoji-container {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 5px;
+    background: var(--background-dark);
+    border-radius: 20px;
+    height: 120px;
+    width: 240px;
+    display: grid;
+    flex-direction: row;
+    overflow-x: auto;
+    scrollbar-color: transparent #252525;
+    scrollbar-width: thin;
+    flex-shrink: 0;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    scroll-margin: 0;
+    .emoji {
+      width: 48px;
+      height: 48px;
+      margin: 3px;
+      
+      cursor: pointer;
+      &:focus, &:active, &:hover{
+        background-color: rgb(170, 169, 169);
+      }
+      span {
+        font-size: 2rem;
+      }
+    }
+  }
+  input {
+    margin: 10px 20px 15px;
+    padding: 15px;
+    background: var(--background-light);
+    border-radius: 20px;
+    font-size: 14px;
+    font-family: var(--contentFont);
+  }
+  button {
+    padding: 15px;
+    margin: 0 20px 10px;
+    background: var(--accent);
+    border-radius: 20px;
+    color: var(--text);
+    font-family: var(--contentFont);
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 300ms ease;
+    &:hover,
+    &:active,
+    &:focus {
+      background: var(--primary);
+    }
+  }
 }

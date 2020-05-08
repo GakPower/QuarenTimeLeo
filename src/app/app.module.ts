@@ -31,6 +31,8 @@ import { LoggedInGuard} from './Components/Class/logged-in-guard.service';
 import { SearchContainerComponent } from './Components/Secondary/search-container/search-container.component';
 import { SurveyComponent } from './Components/Primary/survey/survey.component';
 import { StarsComponent } from './Components/Secondary/stars/stars.component';
+import { SurveySearchMovieComponent } from './Components/Primary/survey/survey-search-movie/survey-search-movie.component';
+import { PickerModule } from '@ctrl/ngx-emoji-mart'
 
 
 const routes = [
@@ -45,8 +47,6 @@ const routes = [
   {path: '**',   redirectTo: '', pathMatch: 'full' }
 ];
 
-// @ts-ignore
-// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +72,8 @@ const routes = [
     TopicComponent,
     SearchContainerComponent,
     SurveyComponent,
-    StarsComponent
+    StarsComponent,
+    SurveySearchMovieComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -86,6 +87,8 @@ const routes = [
     ReactiveFormsModule,
     MatDialogModule,
     BrowserAnimationsModule,
+    PickerModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

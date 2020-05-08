@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { Movie } from '../../Class/Movie/movie';
 import { MovieAPI } from '../../Class/MovieAPI/movie-api';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Recommendation } from '../../Class/recommendation/recommendation';
+import { Hashfunction } from '../../Class/hashfunction/hashfunction';
 
 @Component({
   selector: 'app-survey',
@@ -19,17 +20,30 @@ export class SurveyComponent implements OnInit {
     avatar: '',
   };
 
-  numberOfRatedMovies = 0;
-  userRatings: any[] = []; // The array that has the ratings of each user.
-  // pos[0] = email, pos[1]= average rating.
-  selectedMovie: Movie;
+  @Input() input = '';
+  @Output() searchInputChange: EventEmitter<string> = new EventEmitter<string>();
+
+  MovieRating: number;                        // rarting provided by user on each movie
+  index: number = 0;                          // to keep position of movies a user skip without rating.
+  numberOfRatedMovies: number = 0;
+  userRatings: any[] = [];                    // The array that has the ratings of each user. 
+  MovieList: Movie[] = [];                    //pos[0] = email, pos[1]= average rating.
   randomId: number;
 
-  recomendedMovies: number[]; //the result recommendations.
+  SearchResults: Movie[];
+  recomendedMovies: number[];                 //the result recommendations.
+  SumOfRatings: number = 0;                   //The sum of the total ratings of movies.
+
+  selectedMovie: Movie;
+
+  InSurveyComponent: boolean = true;
 
 
 
-  SumOfRatings = 0; //The sum of the total ratings of movies.
+
+
+
+
 
   translationArray: number[] = [
     862, 512200, 15602, 31357, 11862, 949, 6620, 45325, 9091, 710, 9087, 12110, 21032, 301348, 1408, 524, 4584, 5, 9273, 11517, 8012, 1710, 9691, 12665, 451,
@@ -82,14 +96,17 @@ export class SurveyComponent implements OnInit {
   }
   userId: string;
   @ViewChild('panel', { read: ElementRef }) public panel: ElementRef;
+
   ngOnInit(): void {
+    for (var i = 0; i < this.translationArray.length; i++)
+      Hashfunction.put(this.translationArray[i], i);
     this.userRatings = Array(9744).fill(0);
     this.userRatings[0] = this.user.email;
 
     MovieAPI.getMovie(this.translationArray[Math.floor(Math.random() * (this.translationArray.length - 1))])
       .then(movie => {
-      this.selectedMovie = movie;
-    });
+        this.selectedMovie = movie;
+      });
   }
   setRating(rating: number) {
     this.randomId = Math.floor(Math.random() * (this.translationArray.length - 1));
@@ -105,6 +122,7 @@ export class SurveyComponent implements OnInit {
         this.selectedMovie = movie;
       });
   }
+
   onSubmitSurvey() {
     if (this.numberOfRatedMovies >= 20) {
       this.router.navigate([`/mainpage`]);
@@ -120,4 +138,18 @@ export class SurveyComponent implements OnInit {
         });
     }
   }
+
+  emitInputChange(input) {
+    this.input = input;
+
+    MovieAPI.search(input).then(result => {
+      this.SearchResults = result.filter(movie => Hashfunction.get(movie.id) != -1);
+    });
+
+  }
+  receiveMovie($event: Movie){
+    this.selectedMovie = $event
+    console.log("selected Movie" + this.selectedMovie)
+  }
+
 }

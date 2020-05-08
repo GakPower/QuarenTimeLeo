@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
 import { MoviePageComponent } from '../movie-page/movie-page.component';
-import {Movie} from '../../Class/Movie/movie';
+import { Movie } from '../../Class/Movie/movie';
 
 @Component({
   selector: 'app-my-lists-movie',

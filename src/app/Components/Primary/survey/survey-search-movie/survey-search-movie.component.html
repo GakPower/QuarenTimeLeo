@@ -1,0 +1,22 @@
+<ul *ngIf="Option1">
+    <li *ngFor="let movie of WatchedList" mat-raised-button (click)="setSelectedMovie(movie)">
+        <div class="movie_card" id="bright">
+            <div class="info_section">
+                <div class="movie_header">
+                    <img class="locandina" src="{{movie.poster}}" />
+                    <h3 style="font-family: var(--primaryFont);">{{movie.title}}</h3>
+                </div>
+                <div class="movie_desc">
+                    <p class="text">
+                        {{movie.description}}
+                    </p>
+                </div>
+                <div class="movie_rating">
+                    <h3 style="font-family: var(--secondaryFont);">{{movie.rating}} </h3>
+                </div>
+            </div>
+            <div class="blur_back" style="background: url({{movie.background}}); width: 80%; background-size: cover;">
+            </div>
+        </div>
+    </li>
+</ul>

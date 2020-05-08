@@ -1,13 +1,9 @@
 <div class="movie-card">
 
   <div class="container">
-    <div class = "add-list" *ngIf="adding"> 
-      <div id = "list" style ="background-color: #FFC857; box-shadow: 5px 5px 8px rgb(71, 71, 70);"><p>Watch List</p></div>
-      <div id = "list" style ="background-color: #E9724C; box-shadow: 5px 5px 8px rgb(71, 71, 70);"><p>Favourite</p></div>
-      <div id = "list" style ="background-color: #C5283D; box-shadow: 5px 5px 8px rgb(71, 71, 70);"><p>Black List</p></div>
-      <div id = "list" style ="background-color: #255f85; box-shadow: 5px 5px 8px rgb(71, 71, 70);"
-      (click)="addMovieToList(data.id)"><p>Watched</p></div>
-    </div>
+    <div class = "add-list" *ngIf="adding" >   
+      <div id = "list" *ngFor="let topic of topics; let i = index"  (click) ="addMovieToList(i)" [style.background-color]="topic.color" (click)="done = !done"><p>{{topic.title}}</p></div>
+    </div> 
 
     <div style="position: relative;" [style.cursor]="trailer ? 'pointer' : 'default'"
          (click)="openTrailerOnNewTab()">
@@ -41,9 +37,10 @@
         </svg>
     </div>
     <div class="hero" [style.background]="'url(' + data.background + ')'" [style.background-size]="'cover'">
-      <div class = 'circle' (click)="adding = !adding" >
+      <div class = 'circle' (click)="adding = !adding"  >  
         <i class="fa fa-plus" aria-hidden="true"> </i>
       </div>
+      <p *ngIf="done">Added</p>
       
       <div class="details">
         <div class="title1" style="text-shadow: 2px 4px #1b1b1b;">{{data.title}}</div>

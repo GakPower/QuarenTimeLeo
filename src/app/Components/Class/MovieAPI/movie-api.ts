@@ -1,4 +1,4 @@
-import {Movie} from '../Movie/movie';
+import { Movie } from '../Movie/movie';
 
 export abstract class MovieAPI {
   static readonly genres = [
@@ -72,11 +72,11 @@ export abstract class MovieAPI {
         const results = movies.results;
         results.forEach(movie => {
           moviesToReturn.push(new Movie(
-              movie.id, movie.title, movie.overview,
+            movie.id, movie.title, movie.overview,
             `http://image.tmdb.org/t/p/original${movie.poster_path}`,
             `http://image.tmdb.org/t/p/original${movie.backdrop_path}`,
-              this.getGenres(movie.genre_ids), movie.vote_average
-            )
+            this.getGenres(movie.genre_ids), movie.vote_average
+          )
           );
         });
         return moviesToReturn;
@@ -149,7 +149,7 @@ export abstract class MovieAPI {
             `http://image.tmdb.org/t/p/original${movie.poster_path}`,
             `http://image.tmdb.org/t/p/original${movie.backdrop_path}`,
             this.getGenres(movie.genre_ids), movie.vote_average
-            )
+          )
           );
         });
         return moviesToReturn;
@@ -165,4 +165,5 @@ export abstract class MovieAPI {
     }
     return recommendedMovies;
   }
+
 }

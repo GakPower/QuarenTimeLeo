@@ -9,7 +9,7 @@
     letter-spacing: 0.5em;
     text-transform: uppercase;
     font-family: var(--primaryFont);
-
+    z-index: 9999; //fixes the git icon not showing
     p {
         color: white;
     }
@@ -20,6 +20,32 @@
         font-family: var(--secondaryFont);
     }
 }
+
+.btn1{
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: var(--accent);
+  border-radius: 20px;
+  width: 200px;
+  border: 0;
+  padding: 15px;
+  color: #ffffff;
+  font-size: 14px;
+
+  cursor: pointer;
+  transition-property: background-color;
+  transition-duration: 500ms;
+}
+.btn1:hover{
+  background-color: var(--primary);
+}
+
+.back{
+  left: 70%;
+  position: relative;
+}
+
 
 .container {
     display: flex;
@@ -102,18 +128,6 @@ body {
   font-family: var(--primaryFont);
 }
 
-.email{
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    color: white;
-    font-family: var(--secondaryFont);
-    font-size: 14px;
-    display: inline;
-    overflow-wrap: break-word;
-
-
-}
 
 .bar {
     position: absolute;
@@ -147,12 +161,13 @@ body {
 
 .circle {
     position: absolute;
-    top: 150px;
+    top: 50%; //150px;
     left: calc(50% - 60px);
+
 }
 
 i {
-  font-size: 1.7rem;
+  font-size: 2.4rem;
   color: var(--text);
   top:100px;
 }

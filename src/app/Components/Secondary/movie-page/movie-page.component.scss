@@ -112,13 +112,22 @@ a:hover {
     bottom: 0;
     cursor: pointer;
     transition: opacity 300ms;
-    
     i{
+      
       width: 50px !important;
       height: 50px !important;
       font-size: 2rem  !important;
     }
   } 
+  p{
+    color: var(--accent);
+    position: absolute;
+    right: 65px;
+    bottom: 25px;
+    // width: 50px !important;
+    // height: 50px !important;
+    font-size: 1rem  !important;
+  }
 }
 
 
