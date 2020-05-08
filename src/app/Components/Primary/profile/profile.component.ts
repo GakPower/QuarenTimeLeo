@@ -87,7 +87,7 @@ export class ProfileComponent {
     0x1F62D,
     0x1F62E,
     0x1F62F,
-  ]
+  ];
 
   emojis = [
     String.fromCodePoint(0x1F600),
@@ -246,7 +246,7 @@ export class ProfileComponent {
   editProfile() {
 
     this.editing = true;
-    console.log('edit profile activated')
+    console.log('edit profile activated');
   }
   selectEmoji(emojiIndex: number) {
     this.selectedEmoji = emojiIndex;
@@ -259,14 +259,14 @@ export class ProfileComponent {
     if (saveusername) {
       if (this.selectedEmoji) {
         this.db.collection('users').doc(this.user.fireUser.uid)
-          .update({ "icon": this.emojiIDs[this.selectedEmoji], "username": saveusername });
+          .update({ 'icon': this.emojiIDs[this.selectedEmoji], "username": saveusername });
       }
       this.db.collection('users').doc(this.user.fireUser.uid)
-        .update({ "username": saveusername });
+        .update({ 'username': saveusername });
       this.user.name = saveusername;
     } else if (this.selectedEmoji && !saveusername) {
       this.db.collection('users').doc(this.user.fireUser.uid)
-        .update({ "icon": this.emojiIDs[this.selectedEmoji] });
+        .update({ 'icon': this.emojiIDs[this.selectedEmoji] });
     }
 
   }

@@ -97,7 +97,7 @@
   right: -75%;
   background: var(--primary);
   z-index: 6;
-  opacity: 0;
+  opacity: 1;
 }
 .container input:focus ~ .search::before {
   top: 0;

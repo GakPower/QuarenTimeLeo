@@ -35,6 +35,9 @@ export class MainPageComponent implements OnInit {
       MovieAPI.getMovieByIds(next.data().recommendations).then(result => {
         this.movies = result;
       });
+      // MovieAPI.getMoviesOfGenre('Drama').then(result => {
+      //   this.movies = result;
+      // });
     });
   }
 

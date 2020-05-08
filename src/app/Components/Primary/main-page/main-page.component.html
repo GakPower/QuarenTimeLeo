@@ -2,7 +2,7 @@
 <app-search-container [input]="input"></app-search-container>
 <div id="mainContent">
 <!--    <app-watch-it></app-watch-it>-->
-  <div id="watchme-container" *ngIf="movies.length > 0">
+  <div id="watchme-container">
     <h1>Watch Me</h1>
     <div id="wrapper">
         <app-picture-card *ngFor="let movie of movies" [movie]="movie"></app-picture-card>
