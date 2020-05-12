@@ -41,10 +41,7 @@ export class WatchItComponent implements OnInit {
           this.movies = this.movies.filter(movie => !ids.includes(movie.id))
         }
       })
-
     })
   }
-
-
 
 }

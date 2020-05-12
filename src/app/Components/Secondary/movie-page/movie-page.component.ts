@@ -104,4 +104,8 @@ export class MoviePageComponent implements OnInit {
      this.adding = false;
      this.done = true;
   }
+  setRating(rating: number) {
+    
+   console.log("You rated : " + rating)
+  }
 }

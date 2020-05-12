@@ -129,7 +129,6 @@ export class SurveyComponent implements OnInit {
       this.userRatings[1] = (this.SumOfRatings / this.numberOfRatedMovies);
       this.recomendedMovies = Recommendation.recommend(this.userRatings)
         .map(x => this.translationArray[x]);
-
       this.db.collection('users')
         .doc(this.userId)
         .update({

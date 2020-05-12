@@ -96,6 +96,7 @@ export abstract class Recommendation {
             alert('error in pearson');
             return 0;
         }
+        var commonMovies: number = 0;
 
 
         const vector1_Avg = vector1[1];
@@ -118,7 +119,8 @@ export abstract class Recommendation {
                 pearson_vector2[i - 2] = vector2[i] - vector2_Avg;
             } else {
                 pearson_vector2[i - 2] = 0;
-            }
+            } if (vector1[i] !== 0 && vector2[i] !== 0)//if they both rated a movie than we increment the counter
+                commonMovies++;
         }
 
 
@@ -126,6 +128,8 @@ export abstract class Recommendation {
         const num: number = this.vector_length(pearson_vector1) * this.vector_length(pearson_vector2);
 
 
+        if (commonMovies < 6)
+            return 0;
 
         return (dot / num);
 
@@ -159,9 +163,9 @@ export abstract class Recommendation {
 
 
     static sort(weights: number[], userID: number[]) {
-        const arr: number[] = new Array(this.userLength);
+        const arr: number[] = new Array(weights.length);
 
-        for (let i = 0; i < this.userLength; i++) {
+        for (let i = 0; i < weights.length; i++) {
             arr[i] = weights[i];
         }
 
@@ -223,17 +227,17 @@ export abstract class Recommendation {
             weights[i] = this.pearson_similarity(ourMatrix[i], this.currentUserRatings);
         }
 
-        const neighbors = this.nearestKNeighbors(weights, 20);
+        const neighbors = this.nearestKNeighbors(weights, 10);
 
 
-        const neighborWeights: number[] = new Array(20);
+        const neighborWeights: number[] = new Array(10);
         for (let i = 0; i < neighborWeights.length; i++) {
 
             neighborWeights[i] = weights[neighbors[i]];
 
         }
 
-        const neighboursRating = new Array(20);
+        const neighboursRating = new Array(10);
         for (let i = 0; i < neighborWeights.length; i++) {
             neighboursRating[i] = ourMatrix[neighbors[i]];
 
@@ -243,7 +247,7 @@ export abstract class Recommendation {
         for (let i = 2; i < this.movieLength; i++) {
             if (this.currentUserRatings[i] == 0) {
                 predictedUserScores[i - 2] = this.scorePrediction(tneighbor[i], neighborWeights, tneighbor[1], this.currentUserRatings[1]);
-                
+
             }
 
             else {

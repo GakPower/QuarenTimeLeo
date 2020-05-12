@@ -169,14 +169,12 @@ img.cover {
   z-index: 5;
   top: 230px;
   left: 45px;
-
   opacity: 0.3;
   transition-duration: 1s;
   transition-property: opacity;
 }
 #play-icon:hover {
   opacity: 1;
- 
 }
 
 img.cover:hover {
@@ -304,7 +302,7 @@ label {
 .rating > label:before {
   margin: 5px;
   margin-top: 0;
-  font-size: 1em;
+  font-size: 1.8em;
   font-family: FontAwesome;
   display: inline-block;
   content: "\f005";
@@ -316,7 +314,7 @@ label {
 }
 
 .rating > label {
-  color: #ddd;
+  color: rgb(255, 255, 255);
   float: right;
 }
 
