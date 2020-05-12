@@ -41,6 +41,7 @@ export class TopicComponent implements OnInit {
 
   changeColor(index) {
     this.color = this.colors[index];
+    console.log(this.color);
   }
 
   ngOnInit(): void {

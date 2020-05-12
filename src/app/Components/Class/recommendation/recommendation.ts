@@ -1,13 +1,115 @@
 import DatasetFunction from '../../../../assets/detaset';
+import { HttpClient } from '@angular/common/http';
 
 export abstract class Recommendation {
     static currentUserRatings = [];
     static userLength = 610;
     static movieLength = 9744;
+    static Matrix = [];
 
 
-    static createMatrix() {
+    static adjustMovieArray(arr): number[]{
+        var result: number[] = new Array(this.movieLength - 2);//initialize an array for storing only movie ratings
+         for(var i = 0; i < result.length; i++)//fill the array with zeros
+            result[i] = 0;
+        for(var i = 0; i < arr.length; i++){//update with the values of all rated movies at the correct position
+            result[arr[i].movieId] = arr[i].rate;
+        }
+        return result;
+    }    
 
+    static createMatrix(){
+        
+        var position: number = 0;
+        const ratingMatrix = [];
+        for (let i = 0; i < this.userLength; i++) {
+            ratingMatrix[i] = new Array(this.movieLength);                                                                        // we added one number to 9742 because we added the average;
+        }
+        
+        
+   return fetch('http://localhost:3000/get-users')
+    .then(response => {
+       return response.json();}).then((emails) => {   
+          emails.forEach(element => {
+             fetch('http://localhost:3000/user/?email=' + element).then(res => { 
+               return res.json();}).then((user) => { 
+                   ratingMatrix[position][0] = user.email;
+                   ratingMatrix[position][1] = user.average;
+   
+                //   console.log(ratingMatrix[position][0]);
+                 //  console.log(ratingMatrix[position][1]);
+                   
+                   var ratings = this.adjustMovieArray(user.ratings);      //read all ratings in the correct form
+                   for(var j = 2; j < ratings.length; j++)                 //fill in the return matrix with rating vectors one at a time
+                       ratingMatrix[position][j] = ratings[j-2];           //the ratings array is shifted by two because it does not have email and average
+                   
+                       position++;
+            }) 
+          })
+          return ratingMatrix;
+       })
+
+       /*.then((emails) => {                                 //sending requests to get all emails
+            emails.forEach(element => {
+            //  console.log(emails.length);
+            //console.log(emails.indexOf(element));
+            if(emails.indexOf(element) === emails.length - 2){
+                console.log("the character");
+                return  fetch('http://localhost:3000/user/?email=' + element).then(res => { 
+                    return res.json();}).then(user =>{
+                        
+                        if(position < 610 && user) {
+    
+                            ratingMatrix[position][0] = user.email;
+                            ratingMatrix[position][1] = user.average;
+                           
+                            //console.log(ratingMatrix[position][0]);
+                            //console.log(ratingMatrix[position][1]);
+                            var ratings = this.adjustMovieArray(user.ratings);      //read all ratings in the correct form
+                            for(var j = 2; j < ratings.length; j++)                 //fill in the return matrix with rating vectors one at a time
+                                ratingMatrix[position][j] = ratings[j-2];           //the ratings array is shifted by two because it does not have email and average
+                            position++;
+                        }
+                      //  console.log(ratingMatrix[0][0]);
+                      //console.log(ratingMatrix);
+                      return ratingMatrix;
+    
+                        
+                    })
+            }
+            else { 
+            fetch('http://localhost:3000/user/?email=' + element).then(res => { 
+                return res.json();}).then(user =>{
+                    if(position < 610 && user) {
+
+                        ratingMatrix[position][0] = user.email;
+                        ratingMatrix[position][1] = user.average;
+                       
+                        //console.log(ratingMatrix[position][0]);
+                        //console.log(ratingMatrix[position][1]);
+                        var ratings = this.adjustMovieArray(user.ratings);//read all ratings in the correct form
+                        for(var j = 2; j < ratings.length; j++)//fill in the return matrix with rating vectors one at a time
+                        ratingMatrix[position][j] = ratings[j-2];//the ratings array is shifted by two because it does not have email and average
+                        position++;
+                    }
+                  //  console.log(ratingMatrix[0][0]);
+
+                    
+                })
+                }        }); */
+        
+      
+          
+        }
+
+
+
+
+
+
+    /*static createMatrix() {
+
+       
         const dataset = DatasetFunction;
 
         const lines = dataset.split('\n');
@@ -27,11 +129,11 @@ export abstract class Recommendation {
                 ratingMatrix[i][j] = Number(tokens[j]);
             }
         }
-
+       
 
 
         return ratingMatrix;
-    }
+    }*/
 
     static simple_avg(vector: number[]): number {
         let acc = 0;
@@ -219,7 +321,7 @@ export abstract class Recommendation {
 
         this.currentUserRatings = ratingsArray;
         const ourMatrix = this.createMatrix();
-
+        
         const weights: number[] = new Array(this.userLength);
         const predictedUserScores = new Array(this.movieLength - 2);
 
@@ -273,6 +375,37 @@ export abstract class Recommendation {
 
         return transArray;
     }
+
+
+    static async initMatrix() { 
+        
+        console.log("wat");
+        await this.createMatrix().then((matrii) => { 
+          this.Matrix = matrii;
+          
+        });
+        console.log(this.Matrix);
+        
+      }
+
+
+  static getUsers() {
+     let array = []; 
+     fetch('http://localhost:3000/get-users')
+      .then(response => {
+        return response.json();}).then((emails) => {
+                array = emails;
+                console.log(array.length);
+                for(var i = 0; i < emails.length;i++) { 
+                fetch('http://localhost:3000/user/?email=' + emails[i]).then(res => { 
+                    return res.json();}).then(user =>{ 
+                        console.log(user);
+                    })
+                }
+            });
+            
+      }
+
 
 
 
