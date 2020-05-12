@@ -40,6 +40,7 @@ export class RegistrationComponent implements OnInit {
           this.db.collection('users')
             .doc(credential.user.uid)
             .set({
+              username: saveusername,
               icon: '0x1F606',
               takenSurvey: false,
               lists: [

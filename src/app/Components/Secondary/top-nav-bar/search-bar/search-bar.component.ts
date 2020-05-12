@@ -23,4 +23,7 @@ export class SearchBarComponent implements OnInit {
   onChange(input: string) {
       this.inputChange.emit(input);
   }
+
+ 
+
 }

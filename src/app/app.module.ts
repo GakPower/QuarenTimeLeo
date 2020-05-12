@@ -32,6 +32,7 @@ import { SearchContainerComponent } from './Components/Secondary/search-containe
 import { SurveyComponent } from './Components/Primary/survey/survey.component';
 import { StarsComponent } from './Components/Secondary/stars/stars.component';
 import { SurveySearchMovieComponent } from './Components/Primary/survey/survey-search-movie/survey-search-movie.component';
+import { PickerModule } from '@ctrl/ngx-emoji-mart'
 
 
 const routes = [
@@ -86,6 +87,8 @@ const routes = [
     ReactiveFormsModule,
     MatDialogModule,
     BrowserAnimationsModule,
+    PickerModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

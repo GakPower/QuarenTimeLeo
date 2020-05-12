@@ -119,7 +119,7 @@ export abstract class Recommendation {
 
         const ratingMatrix = [];
         for (let i = 0; i < this.userLength; i++) {
-          ratingMatrix[i] = new Array(this.movieLength);                        // we added one number to 9742 because we added the average;
+            ratingMatrix[i] = new Array(this.movieLength);                        // we added one number to 9742 because we added the average;
         }
 
         for (let i = 0; i < n - 1; i++) {  // each line
@@ -201,7 +201,7 @@ export abstract class Recommendation {
 
 
         const vector1_Avg = vector1[1];
-  // we get the avgs from the arrays, we already stored the avgs in the arrays.
+        // we get the avgs from the arrays, we already stored the avgs in the arrays.
         const vector2_Avg = vector2[1];
 
 
@@ -212,7 +212,7 @@ export abstract class Recommendation {
         for (let i = 2; i < this.movieLength; i++) {
             if (vector1[i] !== 0) {
                 pearson_vector1[i - 2] = vector1[i] - vector1_Avg;
-    // Changing the vectors to vector-average
+                // Changing the vectors to vector-average
             } else {
                 pearson_vector1[i - 2] = 0;
             }
@@ -234,7 +234,7 @@ export abstract class Recommendation {
     }
 
     static scorePrediction(vector: number[], weights: number[], usersAvg: number[], currentUserAvg: number): number {
-  // another weighted average method (better?)
+        // another weighted average method (better?)
 
 
         let num = 0;
@@ -340,24 +340,22 @@ export abstract class Recommendation {
             neighboursRating[i] = ourMatrix[neighbors[i]];
 
         }
-
-
         const tneighbor = this.transpose(neighboursRating);
 
         for (let i = 2; i < this.movieLength; i++) {
-            if(this.currentUserRatings[i] == 0) 
+            if (this.currentUserRatings[i] == 0) {
                 predictedUserScores[i - 2] = this.scorePrediction(tneighbor[i], neighborWeights, tneighbor[1], this.currentUserRatings[1]);
-            else 
+                
+            }
+
+            else {
                 predictedUserScores[i - 2] = 0;
+
+            }
         }
-        // console.log(predictedUserScores[46]);
-        
 
-        const bestMovies = this.nearestKNeighbors(predictedUserScores,50);
-        
+        const bestMovies = this.nearestKNeighbors(predictedUserScores, 100); // this is the number of recommended movies we want to display in watch me. 
         return bestMovies;
-
-
     }
     static transpose(array) {
         const transArray = new Array(this.movieLength);

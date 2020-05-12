@@ -5,6 +5,7 @@
 
 </div>
 <div class="myLists-Wrapper" *ngIf="input != ''">
+    <h2 *ngIf="SearchResults.length == 0 " style="font-family: var(--secondaryFont); color: var(--accent); margin-left: auto; margin-right: auto;">No Results</h2>
     <app-survey-search-movie [Option1]="true" [WatchedList]="SearchResults" (movieEvent)="receiveMovie($event)"></app-survey-search-movie>
 </div>
 
