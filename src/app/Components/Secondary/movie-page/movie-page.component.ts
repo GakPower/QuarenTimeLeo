@@ -81,4 +81,18 @@ export class MoviePageComponent {
     this.adding = false;
     this.done = true;
   }
+<<<<<<< HEAD
+  setRating(rating: number) {
+    
+   console.log("You rated : " + rating)
+  }
+=======
+  
+ 
+
+
+  
+  
+
+>>>>>>> d13491b72a40b8914d631c12134f5c3a96ee261a
 }

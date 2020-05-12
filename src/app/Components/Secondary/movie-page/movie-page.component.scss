@@ -176,7 +176,6 @@ img.cover {
 }
 #play-icon:hover {
   opacity: 1;
-
 }
 
 img.cover:hover {
@@ -305,7 +304,7 @@ label {
 .rating > label:before {
   margin: 5px;
   margin-top: 0;
-  font-size: 1em;
+  font-size: 1.8em;
   font-family: FontAwesome;
   display: inline-block;
   content: "\f005";
@@ -317,7 +316,7 @@ label {
 }
 
 .rating > label {
-  color: #ddd;
+  color: var(--text);
   float: right;
 }
 

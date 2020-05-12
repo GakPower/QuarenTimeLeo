@@ -15,8 +15,8 @@ import 'firebase/auth';
 export class LoginComponent {
   errorMessage = '';
   user = new FormGroup({
-    email: new FormControl(),
-    password: new FormControl()
+  email: new FormControl(),
+  password: new FormControl()
   });
 
   constructor(
