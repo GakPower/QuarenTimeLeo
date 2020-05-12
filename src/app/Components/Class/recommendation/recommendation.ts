@@ -7,17 +7,15 @@ export abstract class Recommendation {
 
 
     static createMatrix() {
-
         const dataset = DatasetFunction;
 
         const lines = dataset.split('\n');
-
 
         const n = lines.length;
 
         const ratingMatrix = [];
         for (let i = 0; i < this.userLength; i++) {
-            ratingMatrix[i] = new Array(this.movieLength);                        // we added one number to 9742 because we added the average;
+          ratingMatrix[i] = new Array(this.movieLength);                        // we added one number to 9742 because we added the average;
         }
 
         for (let i = 0; i < n - 1; i++) {  // each line
@@ -27,8 +25,6 @@ export abstract class Recommendation {
                 ratingMatrix[i][j] = Number(tokens[j]);
             }
         }
-
-
 
         return ratingMatrix;
     }
@@ -121,19 +117,14 @@ export abstract class Recommendation {
             }
         }
 
-
         const dot: number = this.dot(pearson_vector1, pearson_vector2);
         const num: number = this.vector_length(pearson_vector1) * this.vector_length(pearson_vector2);
 
-
-
         return (dot / num);
-
     }
 
     static scorePrediction(vector: number[], weights: number[], usersAvg: number[], currentUserAvg: number): number {
         // another weighted average method (better?)
-
 
         let num = 0;
         let deno = 0;
@@ -150,13 +141,8 @@ export abstract class Recommendation {
             return currentUserAvg;
         }
 
-
         return ((num / deno) + currentUserAvg);
     }
-
-
-
-
 
     static sort(weights: number[], userID: number[]) {
         const arr: number[] = new Array(this.userLength);
@@ -164,7 +150,6 @@ export abstract class Recommendation {
         for (let i = 0; i < this.userLength; i++) {
             arr[i] = weights[i];
         }
-
 
         for (let i = 0; i < arr.length; i++) {
 
@@ -180,24 +165,16 @@ export abstract class Recommendation {
 
             arr[j + 1] = key;
             userID[j + 1] = keyID;
-
         }
-
-
-
-
-
     }
 
     static nearestKNeighbors(array: number[], k): number[] {
         const neighborsID: number[] = new Array(k);
         const index: number[] = new Array(array.length);
 
-
         for (let i = 0; i < array.length; i++) {
             index[i] = i;
         }
-
 
         this.sort(array, index);
 
@@ -208,11 +185,7 @@ export abstract class Recommendation {
         return neighborsID;
     }
 
-
-
     static recommend(ratingsArray: number[]): number[] {
-
-
         this.currentUserRatings = ratingsArray;
         const ourMatrix = this.createMatrix();
 
@@ -225,35 +198,27 @@ export abstract class Recommendation {
 
         const neighbors = this.nearestKNeighbors(weights, 20);
 
-
         const neighborWeights: number[] = new Array(20);
         for (let i = 0; i < neighborWeights.length; i++) {
-
             neighborWeights[i] = weights[neighbors[i]];
-
         }
 
         const neighboursRating = new Array(20);
         for (let i = 0; i < neighborWeights.length; i++) {
             neighboursRating[i] = ourMatrix[neighbors[i]];
-
         }
         const tneighbor = this.transpose(neighboursRating);
 
         for (let i = 2; i < this.movieLength; i++) {
-            if (this.currentUserRatings[i] == 0) {
+            if (this.currentUserRatings[i] === 0) {
                 predictedUserScores[i - 2] = this.scorePrediction(tneighbor[i], neighborWeights, tneighbor[1], this.currentUserRatings[1]);
-                
-            }
-
-            else {
+            } else {
                 predictedUserScores[i - 2] = 0;
-
             }
         }
 
-        const bestMovies = this.nearestKNeighbors(predictedUserScores, 100); // this is the number of recommended movies we want to display in watch me. 
-        return bestMovies;
+        // this is the number of recommended movies we want to display in watch me.
+        return this.nearestKNeighbors(predictedUserScores, 100);
     }
     static transpose(array) {
         const transArray = new Array(this.movieLength);
@@ -269,7 +234,4 @@ export abstract class Recommendation {
 
         return transArray;
     }
-
-
-
 }

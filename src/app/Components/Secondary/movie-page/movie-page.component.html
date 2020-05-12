@@ -2,7 +2,7 @@
 
   <div class="container">
     <div class = "add-list" *ngIf="adding" >
-      <div id = "list" *ngFor="let topic of topics; let i = index"  (click) ="addMovieToList(i)" [style.background-color]="topic.color" (click)="done = !done"><p>{{topic.title}}</p></div>
+      <div id = "list" *ngFor="let topic of topics; let i = index"  (click) ="addMovieToList(i)" [style.background-color]="topic.color"><p>{{topic.title}}</p></div>
     </div>
 
     <div style="position: relative;" [style.cursor]="trailer ? 'pointer' : 'default'"
@@ -43,32 +43,16 @@
       <p *ngIf="done">Added</p>
 
       <div class="details">
-        <div class="title1" style="text-shadow: 2px 4px #1b1b1b;">{{data.title}}</div>
-
-        <!--        <div class="title2"></div>-->
-        <!--        <fieldset class="rating">-->
-        <!--          <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>-->
-        <!--          <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>-->
-        <!--          <input type="radio" id="star4" name="rating" value="4"/><label class = "full" for="star4" title="Pretty good - 4 stars"></label>-->
-        <!--          <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>-->
-        <!--          <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>-->
-        <!--          <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>-->
-        <!--          <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>-->
-        <!--          <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>-->
-        <!--          <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>-->
-        <!--          <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>-->
-        <!--        </fieldset>-->
-        <!--        <span class="likes">109 likes</span>-->
+        <div class="title1" style="text-shadow: 2px 4px #1b1b1b;">{{data.title}} {{data.id}}</div>
       </div>
     </div>
     <div class="description">
       <div class="column1">
         <span class="tag"
-          *ngFor="let genre of data.genres" >{{genre}}</span>
+          *ngFor="let genre of data.genres">{{genre}}</span>
       </div>
       <div class="column2">
         <p>{{data.description}}</p>
-
       </div>
     </div>
 

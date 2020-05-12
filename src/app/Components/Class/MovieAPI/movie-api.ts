@@ -4,79 +4,61 @@ export abstract class MovieAPI {
   static readonly genres = [
     {
       id: 28,
-      name: 'Action',
-      movieID: 10431
+      name: 'Action'
     }, {
       id: 12,
-      name: 'Adventure',
-      movieID: 481848
+      name: 'Adventure'
     }, {
       id: 16,
-      name: 'Animation',
-      movieID: 920
+      name: 'Animation'
     }, {
       id: 35,
-      name: 'Comedy',
-      movieID: 402582
+      name: 'Comedy'
     }, {
       id: 80,
-      name: 'Crime',
-      movieID: 38700
+      name: 'Crime'
     }, {
       id: 99,
-      name: 'Documentary',
-      movieID: 250766
+      name: 'Documentary'
     }, {
       id: 18,
-      name: 'Drama',
-      movieID: 452000
+      name: 'Drama'
     }, {
       id: 10751,
-      name: 'Family',
-      movieID: 19084
+      name: 'Family'
     }, {
       id: 14,
-      name: 'Fantasy',
-      movieID: 539537
+      name: 'Fantasy'
     }, {
       id: 36,
-      name: 'History',
-      movieID: 530915
+      name: 'History'
     }, {
       id: 27,
-      name: 'Horror',
-      movieID: 10065
+      name: 'Horror'
     }, {
       id: 10402,
-      name: 'Music',
-      movieID: 34038
+      name: 'Music'
     }, {
       id: 9648,
-      name: 'Mystery',
-      movieID: 428045
+      name: 'Mystery'
     }, {
       id: 10749,
-      name: 'Romance',
-      movieID: 503403
+      name: 'Romance'
     }, {
       id: 878,
-      name: 'Science Fiction',
-      movieID: 11
+      name: 'Science Fiction'
     }, {
       id: 10770,
       name: 'TV Movie'
     }, {
       id: 53,
-      name: 'Thriller',
-      movieID: 2263
+      name: 'Thriller'
     }, {
       id: 10752,
-      name: 'War',
-      movieID: 10592
+      name: 'War'
     }, {
       id: 37,
-      name: 'Western',
-      movieID: 43804
+      name: 'Western'
     },
   ];
 
@@ -209,58 +191,58 @@ export abstract class MovieAPI {
     let result;
     switch (genre) {
       case 'Action':
-        result = 10431;
+        result = 40027;
         break;
       case 'Adventure':
-        result = 481848;
+        result = 240584;
         break;
       case 'Animation':
-        result = 920;
+        result = 439710;
         break;
       case 'Comedy':
-        result = 402582;
+        result = 813;
         break;
       case 'Crime':
-        result = 38700;
+        result = 2088;
         break;
       case 'Documentary':
-        result = 250766;
+        result = 81167;
         break;
       case 'Drama':
-        result = 452000;
+        result = 9422;
         break;
       case 'Family':
-        result = 19084;
+        result = 431562;
         break;
       case 'Fantasy':
-        result = 539537;
+        result = 205272;
         break;
       case 'Romance':
-        result = 503403;
+        result = 460556;
         break;
       case 'History':
-        result = 530915;
+        result = 42664;
         break;
       case 'Horror':
-        result = 539537;
+        result = 409617;
         break;
       case 'Music':
         result = 34038;
         break;
       case 'Mystery':
-        result = 428045;
+        result = 223360;
         break;
       case 'Science Fiction':
-        result = 11;
+        result = 80583;
         break;
       case 'Thriller':
-        result = 2263;
+        result = 178;
         break;
       case 'War':
-        result = 10592;
+        result = 87245;
         break;
       case 'Western':
-        result = 43804;
+        result = 33;
         break;
     }
     return result;

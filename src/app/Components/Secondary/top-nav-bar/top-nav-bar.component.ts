@@ -1,20 +1,16 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-top-nav-bar',
   templateUrl: './top-nav-bar.component.html',
   styleUrls: ['./top-nav-bar.component.scss']
 })
-export class TopNavBarComponent implements OnInit {
+export class TopNavBarComponent {
 
   @Output() searchInputChange: EventEmitter<string> = new EventEmitter<string>();
+  @Input() hideButtons = false;
 
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
+  constructor() {}
 
   emitInputChange(input) {
     this.searchInputChange.emit(input);

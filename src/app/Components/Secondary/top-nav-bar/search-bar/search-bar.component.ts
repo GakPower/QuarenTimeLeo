@@ -1,29 +1,17 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {AngularFireAuth} from '@angular/fire/auth';
-import {MovieAPI} from '../../../Class/MovieAPI/movie-api';
-import {Movie} from '../../../Class/Movie/movie';
-import {MoviePageComponent} from '../../movie-page/movie-page.component';
-import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
-import {SearchContainerComponent} from '../../search-container/search-container.component';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss']
 })
-export class SearchBarComponent implements OnInit {
+export class SearchBarComponent {
   @Output() inputChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() close: EventEmitter<string> = new EventEmitter();
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
+  constructor() {}
 
   onChange(input: string) {
       this.inputChange.emit(input);
   }
-
- 
 
 }

@@ -2,8 +2,6 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Movie } from '../../Class/Movie/movie';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
-import * as firebase from 'firebase/app';
-import 'firebase/auth';
 import { MovieAPI } from '../../Class/MovieAPI/movie-api';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -16,7 +14,7 @@ export class ProfileComponent {
   @Output() delete: EventEmitter<any> = new EventEmitter<any>();
   @Input() immutable = false;
 
-  editing: boolean = false;
+  editing = false;
 
   user = {
     fireUser: null,
@@ -134,43 +132,34 @@ export class ProfileComponent {
     String.fromCodePoint(0x1F62D),
     String.fromCodePoint(0x1F62E),
     String.fromCodePoint(0x1F62F),
-  ]
+  ];
   User = new FormGroup({
     username: new FormControl(),
   });
 
-  cancel: boolean = true; 
-
-
   selectedEmoji: number;
 
   movies: Movie[] = [];
-  ///???cards = ['15661', '65161', '78913'];
   selectedTopic = -1;
 
 
   sendEmail = false;
   disabledSendButton = false;
 
-  clickedProfile = false;
-  // \ud83d\ude06
-  clickedAvatar = false;
-  Saved = false;
-
   constructor(
     private auth: AngularFireAuth,
     private db: AngularFirestore) {
     auth.currentUser.then(value => {
-      this.user.fireUser = value;
-      this.user.email = value.email;
-      this.loadLists();
+      if (value) {
+        this.user.fireUser = value;
+        this.user.email = value.email;
+        this.loadLists();
+      }
     });
-
   }
 
-
   addTopic() {
-    this.topics.push({ color: this.colors[4], title: 'Fav', movieIDs: []});
+    this.topics.push({ color: this.colors[4], title: 'My List', movieIDs: []});
     this.db.collection('users').doc(this.user.fireUser.uid).update({
       lists: this.topics
     });
@@ -183,29 +172,38 @@ export class ProfileComponent {
       lists: this.topics
     });
   }
-
-
-
-
-  /////////BUG IS HERE///////////
-  emitDeleteEvent(index) {
-    console.log(this.movies[index]);
-    this.topics[index].movieIDs.splice(index, 1);
-    console.log(index);
-    this.movies.splice(index, -1);
+  updateTopic(event, index) {
+    this.topics[index].title = event.title;
+    this.topics[index].color = event.color;
     this.db.collection('users').doc(this.user.fireUser.uid).update({
       lists: this.topics
     });
-    console.log(this.movies);
   }
-  //////////////////////////////////
+
+  deleteMovieFromList(index) {
+    this.movies.splice(index, 1);
+    this.topics[this.selectedTopic].movieIDs.splice(index, 1);
+
+    this.db.collection('users')
+      .doc(this.user.fireUser.uid)
+      .update({
+        lists: this.topics
+      });
+  }
+
 
   clickedTopic(index) {
     this.selectedTopic = index;
-    this.movies = [];
+    if (this.topics[index].movieIDs.length === 0) {
+      this.movies = [];
+    }
     this.topics[index].movieIDs.forEach(movieID => {
+      const temp: Movie[] = [];
       MovieAPI.getMovie(movieID).then(result => {
-        this.movies.push(result);
+        temp.push(result);
+        if (this.topics[index].movieIDs.length - 1 === this.topics[index].movieIDs.indexOf(movieID)) {
+          this.movies = temp;
+        }
       });
     });
   }
@@ -241,11 +239,6 @@ export class ProfileComponent {
         this.disabledSendButton = false;
       });
   }
-  editProfile() {
-
-    this.editing = true;
-    console.log('edit profile activated');
-  }
   selectEmoji(emojiIndex: number) {
     this.selectedEmoji = emojiIndex;
     this.user.avatar = this.emojis[emojiIndex];
@@ -256,15 +249,25 @@ export class ProfileComponent {
 
     if (saveusername) {
       if (this.selectedEmoji) {
-        this.db.collection('users').doc(this.user.fireUser.uid)
-          .update({ 'icon': this.emojiIDs[this.selectedEmoji], "username": saveusername });
+        this.db.collection('users')
+          .doc(this.user.fireUser.uid)
+          .update({
+            icon: this.emojiIDs[this.selectedEmoji],
+            username: saveusername
+          });
       }
-      this.db.collection('users').doc(this.user.fireUser.uid)
-        .update({ 'username': saveusername });
+      this.db.collection('users')
+        .doc(this.user.fireUser.uid)
+        .update({
+          username: saveusername
+        });
       this.user.name = saveusername;
     } else if (this.selectedEmoji && !saveusername) {
-      this.db.collection('users').doc(this.user.fireUser.uid)
-        .update({ 'icon': this.emojiIDs[this.selectedEmoji] });
+      this.db.collection('users')
+        .doc(this.user.fireUser.uid)
+        .update({
+          icon: this.emojiIDs[this.selectedEmoji]
+        });
     }
 
   }

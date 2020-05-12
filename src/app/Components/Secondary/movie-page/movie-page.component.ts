@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Inject } from '@angular/core';
 import { Movie } from '../../Class/Movie/movie';
 import { MovieAPI } from '../../Class/MovieAPI/movie-api';
@@ -11,7 +11,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
   templateUrl: './movie-page.component.html',
   styleUrls: ['./movie-page.component.scss']
 })
-export class MoviePageComponent implements OnInit {
+export class MoviePageComponent {
 
   @Output() clicked: EventEmitter<any> = new EventEmitter<any>();
 
@@ -19,12 +19,6 @@ export class MoviePageComponent implements OnInit {
   userId: string;
   movies: number[];
 
-  user = {
-    fireUser: null,
-    name: 'User Userson',
-    email: '',
-    avatar: '\ud83d\udcbb',
-  };
   topics = [];
   colors = [
     '#FFC857',
@@ -51,13 +45,6 @@ export class MoviePageComponent implements OnInit {
   adding = false;
   done = false;
 
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-  ngOnInit(): void {}
-
   moveTheLists(){
     this.db.collection('users')
         .doc(this.userId)
@@ -80,21 +67,18 @@ export class MoviePageComponent implements OnInit {
     }
   }
 
-  emitClickedEvent() {
-    this.clicked.emit();
-  }
-
   addMovieToList(topicIndex: number) {
-     if (!this.topics[topicIndex].movieIDs) {
-       this.topics[topicIndex].movieIDs = [];
-     }
-     if (!this.topics[topicIndex].movieIDs.includes(this.data.id)){
+    this.done = !this.done;
+    if (!this.topics[topicIndex].movieIDs) {
+      this.topics[topicIndex].movieIDs = [];
+    }
+    if (!this.topics[topicIndex].movieIDs.includes(this.data.id)){
       this.topics[topicIndex].movieIDs.push(this.data.id);
       this.db.collection('users').doc(this.userId).update({
-       lists: this.topics
-     });
-     }
-     this.adding = false;
-     this.done = true;
+      lists: this.topics
+      });
+    }
+    this.adding = false;
+    this.done = true;
   }
 }

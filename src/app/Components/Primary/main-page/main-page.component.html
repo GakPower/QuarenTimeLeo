@@ -3,31 +3,18 @@
 <div id="mainContent">
 <!--    <app-watch-it></app-watch-it>-->
   <div id="watchme-container">
-    <h1>Watch Me</h1>
+    <div id="watchmeMenu">
+      <div id="title">{{selectedGenre == '' ? 'Watch Me' : selectedGenre}}</div>
+      <div id="genreTitle" (click)="genreButton()">{{selectedGenre != '' ? 'Watch Me' : 'Genres'}}</div>
+    </div>
+    <div id="genre-list" *ngIf="selectedGenre != ''">
+      <div id="genre" *ngFor="let genre of loadGenres(); let i = index" (click)= "getMovies(genre)" ><p>{{genre}}</p></div>
+    </div>
     <div id="wrapper">
         <app-picture-card *ngFor="let movie of movies" [movie]="movie"></app-picture-card>
     </div>
   </div>
 
   <app-my-lists></app-my-lists>
-<!--  <div class="myLists-menue">-->
-<!--    <div class="page">-->
-<!--      <nav class="menu">-->
-<!--        <ul class="menu__list">-->
-<!--          <li class="menu__group"  (click)="selectMostPopular()">-->
-<!--            <h1 class="menu__link" [class.active]="MostPopular">Most Popular</h1>-->
-<!--          </li>-->
-<!--          <li class="menu__group" (click)="selectNew()">-->
-<!--            <h1 class="menu__link" [class.active]="New">New</h1>-->
-<!--          </li>-->
-<!--        </ul>-->
-<!--      </nav>-->
-<!--    </div>-->
-<!--  </div>-->
-
-<!--  <div class="myLists-Wrapper">-->
-<!--    <app-my-lists-movie [Option1]="New" [WatchedList]="NewMovies"></app-my-lists-movie>-->
-<!--    <app-my-lists-movie [Option1]="MostPopular" [WatchedList]="MostPopularList"></app-my-lists-movie>-->
-<!--  </div>-->
 
 </div>

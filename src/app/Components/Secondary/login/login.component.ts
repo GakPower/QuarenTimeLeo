@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import * as firebase from 'firebase/app';
 import 'firebase/auth';
-import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-login',
@@ -18,36 +19,32 @@ export class LoginComponent {
     password: new FormControl()
   });
 
-  constructor(private auth: AngularFireAuth,
+  constructor(
+    private auth: AngularFireAuth,
     private router: Router,
     private db: AngularFirestore) { }
 
   login(): void {
     this.errorMessage = '';
-    const eml = this.user.get('email').value; 
-    const psd = this.user.get('password').value; 
-    //The persistency login is not working properly. please check ========> https://firebase.google.com/docs/auth/web/auth-state-persistence
+    const eml = this.user.get('email').value;
+    const psd = this.user.get('password').value;
+    // The persistency login is not working properly.
+    // please check ========> https://firebase.google.com/docs/auth/web/auth-state-persistence
 
-    this.auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL) // sesssion, Local, none. 
+    this.auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL) // sesssion, Local, none.
       .then( () => {
-       
         return firebase.auth().signInWithEmailAndPassword(eml, psd).then((credential) => {
-          
           if (credential.user.emailVerified) {
-            
             this.db.collection('users')
               .doc(credential.user.uid)
               .get().subscribe(next => {
                 if (next.data().takenSurvey) {
-                  
                   this.router.navigate([`/mainpage`]);
                 } else {
-                  
                   this.router.navigate([`/poll`]);
                 }
               });
           } else { // if the account is not verified we log out the user
-            
             this.errorMessage = 'your account is not verified, check your email';
             this.auth.signOut().catch((e) => console.log(e));
           }
@@ -55,36 +52,13 @@ export class LoginComponent {
           .catch((e) => this.errorMessage = 'Incorrect email / password combination!');
 
       })
-      .catch(function (error) {
-      
+      .catch((error) => {
         // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log(errorCode)
-        console.log(errorMessage)
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
       });
-
-
-
-
-    /* Here starts previous code without the persistency added. 
-        this.auth.signInWithEmailAndPassword(this.user.get('email').value, this.user.get('password').value).then((credential) => {
-          if (credential.user.emailVerified) {
-            this.db.collection('users')
-              .doc(credential.user.uid)
-              .get().subscribe(next => {
-                if (next.data().takenSurvey) {
-                  this.router.navigate([`/mainpage`]);
-                } else {
-                  this.router.navigate([`/poll`]);
-                }
-              });
-          } else { // if the account is not verified we log out the user
-            this.errorMessage = 'your account is not verified, check your email';
-            this.auth.signOut().catch((e) => console.log(e));
-          }
-        })
-          .catch((e) => this.errorMessage = 'Incorrect email / password combination!');*/
 
     // reset all the values in the form
     this.user.reset();

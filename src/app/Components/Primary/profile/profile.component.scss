@@ -17,8 +17,6 @@
     .profile-pic {
       position: absolute;
       top: 80px;
-      //padding: 1em;
-      //align-self: center;
       left: 50%;
       transform: translateX(-50%);
       width: 150px;
@@ -194,12 +192,14 @@
 
       margin-bottom: 50px;
 
-      overflow-x: auto;
       width: 90%;
 
       border: 2px solid white;
       border-radius: 10px;
       background-color: var(--background-dark);
+      overflow: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #706f6f transparent;
 
       & > .movie-card {
         flex-shrink: 0;
@@ -253,10 +253,6 @@
       width: 90%;
 
       overflow-x: auto;
-
-      & > app-card {
-        flex-shrink: 0;
-      }
     }
   }
 
@@ -447,7 +443,7 @@ a {
       width: 48px;
       height: 48px;
       margin: 3px;
-      
+
       cursor: pointer;
       &:focus, &:active, &:hover{
         background-color: rgb(170, 169, 169);

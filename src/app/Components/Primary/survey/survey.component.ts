@@ -23,27 +23,17 @@ export class SurveyComponent implements OnInit {
   @Input() input = '';
   @Output() searchInputChange: EventEmitter<string> = new EventEmitter<string>();
 
-  MovieRating: number;                        // rarting provided by user on each movie
-  index: number = 0;                          // to keep position of movies a user skip without rating.
-  numberOfRatedMovies: number = 0;
-  userRatings: any[] = [];                    // The array that has the ratings of each user. 
-  MovieList: Movie[] = [];                    //pos[0] = email, pos[1]= average rating.
-  randomId: number;
+  index = 0;                          // to keep position of movies a user skip without rating.
+  numberOfRatedMovies = 0;
+  userRatings: any[] = [];                    // The array that has the ratings of each user.
 
   SearchResults: Movie[];
   recomendedMovies: number[];                 //the result recommendations.
-  SumOfRatings: number = 0;                   //The sum of the total ratings of movies.
+  SumOfRatings = 0;                   //The sum of the total ratings of movies.
 
   selectedMovie: Movie;
 
-  InSurveyComponent: boolean = true;
-
-
-
-
-
-
-
+  passedMovies: number[] = [];
 
   translationArray: number[] = [
     862, 512200, 15602, 31357, 11862, 949, 6620, 45325, 9091, 710, 9087, 12110, 21032, 301348, 1408, 524, 4584, 5, 9273, 11517, 8012, 1710, 9691, 12665, 451,
@@ -90,34 +80,38 @@ export class SurveyComponent implements OnInit {
       this.user.name = value.displayName;
       this.user.email = value.email;
       this.userId = value.uid;
-    }); 
-
+    });
   }
   userId: string;
   @ViewChild('panel', { read: ElementRef }) public panel: ElementRef;
 
   ngOnInit(): void {
-    for (var i = 0; i < this.translationArray.length; i++)
+    for (let i = 0; i < this.translationArray.length; i++){
       Hashfunction.put(this.translationArray[i], i);
+    }
     this.userRatings = Array(9744).fill(0);
     this.userRatings[0] = this.user.email;
 
     MovieAPI.getMovie(this.translationArray[Math.floor(Math.random() * (this.translationArray.length - 1))])
       .then(movie => {
         this.selectedMovie = movie;
-        console.log(movie.id)
       });
   }
   setRating(rating: number) {
-    
     this.userRatings[Hashfunction.get(this.selectedMovie.id) + 2] = rating;
     this.numberOfRatedMovies += 1;
     this.SumOfRatings += rating;
+
     this.nextMovie();
   }
 
   nextMovie() {
-    MovieAPI.getMovie(this.translationArray[Math.floor(Math.random() * (this.translationArray.length - 1))])
+    let randomMovieID = this.translationArray[Math.floor(Math.random() * (this.translationArray.length - 1))];
+    while (this.passedMovies.includes(randomMovieID)) {
+      randomMovieID = this.translationArray[Math.floor(Math.random() * (this.translationArray.length - 1))];
+    }
+    this.passedMovies.push(this.selectedMovie.id);
+    MovieAPI.getMovie(randomMovieID)
       .then(movie => {
         this.selectedMovie = movie;
       });
@@ -143,13 +137,12 @@ export class SurveyComponent implements OnInit {
     this.input = input;
 
     MovieAPI.search(input).then(result => {
-      this.SearchResults = result.filter(movie => Hashfunction.get(movie.id) != -1);
+      this.SearchResults = result.filter(movie => Hashfunction.get(movie.id) !== -1);
     });
 
   }
   receiveMovie($event: Movie) {
-    this.selectedMovie = $event
-    console.log("selected Movie" + this.selectedMovie)
+    this.selectedMovie = $event;
   }
 
 }

@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MoviePageComponent } from '../movie-page/movie-page.component';
 import { Movie } from '../../Class/Movie/movie';
