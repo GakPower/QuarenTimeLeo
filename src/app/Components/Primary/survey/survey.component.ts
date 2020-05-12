@@ -82,11 +82,10 @@ export class SurveyComponent implements OnInit {
 
    test = new Date();
    prev = ( this.test.getMilliseconds() ) % 9949; 
-
    userEmail:string = "";
    userArray = [];
    average = 0; 
-
+  
   constructor(
     private router: Router,
     private db: AngularFirestore,
@@ -100,12 +99,19 @@ export class SurveyComponent implements OnInit {
 
   }
 
+ 
+
   userId: string;
   @ViewChild('panel', { read: ElementRef }) public panel: ElementRef;
 
   ngOnInit(): void {
+    console.log("init works!");
+   
+    
+    Recommendation.initMatrix();
     for (var i = 0; i < this.translationArray.length; i++)
       Hashfunction.put(this.translationArray[i], i);
+    this.userEmail = this.user.email;
     this.userRatings = Array(9744).fill(0);
     this.userRatings[0] = this.user.email;
 
@@ -116,6 +122,7 @@ export class SurveyComponent implements OnInit {
   }
   setRating(rating: number) {
     this.randomId = Math.floor(Math.random() * (this.translationArray.length - 1));
+    this.userArray.push({movieId: this.randomId, rate: rating});
     this.userRatings[this.randomId + 2] = rating;
     this.numberOfRatedMovies += 1;
     this.SumOfRatings += rating;
@@ -133,17 +140,24 @@ export class SurveyComponent implements OnInit {
     if (this.numberOfRatedMovies >= 20) {
       this.router.navigate([`/mainpage`]);
       this.average = (this.SumOfRatings / this.numberOfRatedMovies);
+      var user = {email: this.userEmail, average: this.average, ratings: this.userArray};
+      
+      
+      fetch('http://localhost:3000/user-add', { 
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user),        
+      })  
+      .then(response => {
+        return response.json();}).then((res) => { console.log(res)})
+      .catch((err) => {
+        console.log(err);
+      });
 
-/*
-      routerExpress.post('/main-page', (req,res) => { 
-        let user = new this.UserRatings({email: this.userEmail, average: this.average, rate: this.userArray});
-        user.save().then
-      })*/
-      
-      
-      
-      
-      
+
+
       this.userRatings[1] = (this.SumOfRatings / this.numberOfRatedMovies);
       this.recomendedMovies = Recommendation.recommend(this.userRatings)
         .map(x => this.translationArray[x]);

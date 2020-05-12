@@ -89,18 +89,6 @@ export class MoviePageComponent implements OnInit {
     this.clicked.emit();
   }
 
-<<<<<<< HEAD
-  addMovieToList(movieId: number) {
-
-    //  this.db.collection('users').doc(this.userId).update({
-    //   lists: [
-    //     {
-    //      title: 'Watch List',
-    //       movieIDs: [].push(movieId),
-    //      }]
-    //  })
-=======
->>>>>>> ce01b03adce13c9a6cb66294ef49d223b7ea323a
 
   
   addMovieToList(topicIndex: number) {
@@ -116,9 +104,6 @@ export class MoviePageComponent implements OnInit {
      this.adding = false;
      this.done = true;
   }
-<<<<<<< HEAD
-}
-=======
   
  
 
@@ -127,4 +112,3 @@ export class MoviePageComponent implements OnInit {
   
 
 }
->>>>>>> ce01b03adce13c9a6cb66294ef49d223b7ea323a

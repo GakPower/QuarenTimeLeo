@@ -2,6 +2,10 @@ const express = require('express');
 const http = require('http');
 const path = require('path');
 const mongoose = require('mongoose');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const app = express();
+app.use(bodyParser.json());
 let fs = require('fs');
 let all = fs.readFileSync('C://Users//anasa//Documents//Network and Communication//task1//FinalMovieDataset.txt', "utf8");
 let router = express.Router();
@@ -14,8 +18,8 @@ db.once('open', function() {
 });
 
 
-const app = express();
 
+app.use(cors());
 var Schema = mongoose.Schema;
 
 var userRatings = new Schema({ 
@@ -25,15 +29,13 @@ var userRatings = new Schema({
 
 });
 
-
-var testModel = new Schema({ 
-    Test1: Number,
-    Test2: String
+var resources = new Schema( { 
+    Type: String,
+    Dataset: []
 });
 
 
-var TestModel = mongoose.model('TestModel', testModel);
-
+var Recources = mongoose.model('Recources', resources);
 var UserRatings = mongoose.model('UserRatings', userRatings);
 
 
@@ -63,9 +65,42 @@ app.get('/get-users', function(req, res, next){
                 console.log(results);
                 res.json(results);
              });
-        });
+});
+
+app.get('/user', function(req,res,next) { 
+    let query = req.query.email;
+
+    db.collection("UserRatings").findOne({email: query}).then(function(doc){                                               //how to find elements in mongodb
+        res.json(doc);
+    });
+})
 
 
+app.post('/user-add', function(req,res) {
+    console.log(req.body);
+     let user =  new UserRatings({email: req.body.email, average: req.body.average, ratings: req.body.ratings});
+    
+    db.collection("UserRatings").insertOne(user, function (err, results) {  
+                                    //how to insert users into mongodb
+            res.json(results);
+    });
+})
+
+
+
+app.get('/translation', function(req,res,next) { 
+    db.collection("Recources").find().then(res => { 
+        res.forEach(elem => { 
+            console.log(elem.Dataset[0]); });
+    })
+})
+
+
+db.collection("UserRatings").find().then(doc => { 
+    doc.forEach(elem => { 
+        console.log(elem);
+    })
+})
     
  
 /*
