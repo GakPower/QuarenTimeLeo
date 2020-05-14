@@ -1,6 +1,9 @@
-<app-nav-buttons></app-nav-buttons>
 <div id="title">
   <p>Quarentime</p>
   <p id="wasteTime">Waste time</p>
 </div>
-<app-search-bar (inputChange)="emitInputChange($event)"></app-search-bar>
+<div id="controlContainer" [style.justify-content]="hideButtons ? 'flex-end' : 'space-between'">
+  <app-nav-buttons *ngIf="!hideButtons" ></app-nav-buttons>
+  <app-search-bar *ngIf="!hideSearch" (inputChange)="emitInputChange($event)"></app-search-bar>
+</div>
+

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({

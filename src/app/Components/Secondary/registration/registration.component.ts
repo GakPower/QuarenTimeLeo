@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import * as firebase from 'firebase';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss']
 })
-export class RegistrationComponent implements OnInit {
+export class RegistrationComponent {
   errorMessage = '';
   user = new FormGroup({
     username: new FormControl(),
@@ -23,9 +22,6 @@ export class RegistrationComponent implements OnInit {
     private auth: AngularFireAuth,
     private router: Router,
     private db: AngularFirestore) { }
-
-  ngOnInit(): void {
-  }
 
 
   register(): void {

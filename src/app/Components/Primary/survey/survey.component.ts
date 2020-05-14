@@ -23,16 +23,13 @@ export class SurveyComponent implements OnInit {
   @Input() input = '';
   @Output() searchInputChange: EventEmitter<string> = new EventEmitter<string>();
 
-  MovieRating: number;                        // rarting provided by user on each movie
-  index: number = 0;                          // to keep position of movies a user skip without rating.
-  numberOfRatedMovies: number = 0;
-  userRatings: any[] = [];                    // The array that has the ratings of each user. 
-  MovieList: Movie[] = [];                    //pos[0] = email, pos[1]= average rating.
-  randomId: number;
+  index = 0;                          // to keep position of movies a user skip without rating.
+  numberOfRatedMovies = 0;
+  userRatings: any[] = [];                    // The array that has the ratings of each user.
 
-  SearchResults: Movie[];
-  recomendedMovies: number[];                 //the result recommendations.
-  SumOfRatings: number = 0;                   //The sum of the total ratings of movies.
+  SearchResults: Movie[] = [];
+  recomendedMovies: number[];                 // the result recommendations.
+  SumOfRatings = 0;                   // The sum of the total ratings of movies.
 
   selectedMovie: Movie;
 
@@ -44,9 +41,11 @@ export class SurveyComponent implements OnInit {
 
 
 
-/*
-  translationArray: number[] = [
-    862, 512200, 15602, 31357, 11862, 949, 6620, 45325, 9091, 710, 9087, 12110, 21032, 301348, 1408, 524, 4584, 5, 9273, 11517, 8012, 1710, 9691, 12665, 451,
+
+  passedMovies: number[] = [];
+
+  //translationArray: number[] = [
+  /*  862, 512200, 15602, 31357, 11862, 949, 6620, 45325, 9091, 710, 9087, 12110, 21032, 301348, 1408, 524, 4584, 5, 9273, 11517, 8012, 1710, 9691, 12665, 451,
     47697, 9263, 13949, 902, 37557, 9909, 63, 9598, 687, 33689, 9603, 9768, 31174, 11443, 35196, 664767, 577, 11861, 11321, 10530, 8391, 629, 11448, 49133, 26441,
     13159, 9089, 9922, 11359, 17182, 2054, 10607, 19760, 9536, 11525, 4482, 10634, 755, 38363, 9981, 586863, 20927, 36929, 9102, 124626, 27526, 9623, 46785, 400, 880,
     146599, 8447, 10534, 17414, 13997, 2086, 9095, 12158, 9283, 9208, 40154, 470044, 63076, 11062, 13685, 47475, 418437, 9614, 688, 483879, 10874, 89333, 197, 103, 33542,
@@ -85,8 +84,8 @@ export class SurveyComponent implements OnInit {
    prev = ( this.test.getMilliseconds() ) % 9949;                                     
    userEmail:string = "";
    userArray = [];
-   average = 0; 
-  
+   average = 0;
+
 
   constructor(
     private router: Router,
@@ -98,11 +97,7 @@ export class SurveyComponent implements OnInit {
       this.user.email = value.email;
       this.userId = value.uid;
     });
-
   }
-
- 
-
   userId: string;
   @ViewChild('panel', { read: ElementRef }) public panel: ElementRef;
 
@@ -133,12 +128,17 @@ export class SurveyComponent implements OnInit {
     this.userRatings[Hashfunction.get(this.selectedMovie.id) + 2] = rating;
     this.numberOfRatedMovies += 1;
     this.SumOfRatings += rating;
+
     this.nextMovie();
   }
 
   nextMovie() {
-    
-    MovieAPI.getMovie(this.translationArray[Math.floor(Math.random() * (this.translationArray.length - 1))])
+    let randomMovieID = this.translationArray[Math.floor(Math.random() * (this.translationArray.length - 1))];
+    while (this.passedMovies.includes(randomMovieID)) {
+      randomMovieID = this.translationArray[Math.floor(Math.random() * (this.translationArray.length - 1))];
+    }
+    this.passedMovies.push(this.selectedMovie.id);
+    MovieAPI.getMovie(randomMovieID)
       .then(movie => {
         this.selectedMovie = movie;
       });
@@ -194,14 +194,17 @@ export class SurveyComponent implements OnInit {
   emitInputChange(input) {
     this.input = input;
 
-    MovieAPI.search(input).then(result => {
-      this.SearchResults = result.filter(movie => Hashfunction.get(movie.id) != -1);
-    });
+    if (input) {
+      MovieAPI.search(input).then(result => {
+        this.SearchResults = result.filter(movie => Hashfunction.get(movie.id) !== -1);
+      });
+    } else {
+      this.SearchResults = [];
+    }
 
   }
   receiveMovie($event: Movie) {
-    this.selectedMovie = $event
-    console.log("selected Movie" + this.selectedMovie)
+    this.selectedMovie = $event;
   }
   
     initTranslationArray(){

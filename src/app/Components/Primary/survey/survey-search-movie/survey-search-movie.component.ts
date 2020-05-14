@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Movie} from '../../../Class/Movie/movie' 
+import { Movie} from '../../../Class/Movie/movie';
 
 @Component({
   selector: 'app-survey-search-movie',
@@ -11,7 +11,7 @@ export class SurveySearchMovieComponent implements OnInit {
   @Input() WatchedList: Movie[];
   @Input() InSurveyComponent: boolean;
 
-  @Output() movieEvent = new EventEmitter<Movie>(); 
+  @Output() movieEvent = new EventEmitter<Movie>();
 
   constructor() { }
 
@@ -19,8 +19,7 @@ export class SurveySearchMovieComponent implements OnInit {
   }
 
   setSelectedMovie(movie: Movie){
-    console.log(movie)
-    this.movieEvent.emit(movie); 
+    this.movieEvent.emit(movie);
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Inject } from '@angular/core';
 import { Movie } from '../../Class/Movie/movie';
 import { MovieAPI } from '../../Class/MovieAPI/movie-api';
@@ -11,22 +11,14 @@ import { AngularFireAuth } from '@angular/fire/auth';
   templateUrl: './movie-page.component.html',
   styleUrls: ['./movie-page.component.scss']
 })
-export class MoviePageComponent implements OnInit {
+export class MoviePageComponent {
 
   @Output() clicked: EventEmitter<any> = new EventEmitter<any>();
-  //@Input() movie: Movie;
-  
 
   trailer: string;
   userId: string;
   movies: number[];
 
-  user = {
-    fireUser: null,
-    name: 'User Userson',
-    email: '',
-    avatar: '\ud83d\udcbb',
-  };
   topics = [];
   colors = [
     '#FFC857',
@@ -35,10 +27,9 @@ export class MoviePageComponent implements OnInit {
     '#255f85',
     '#9ed964'
   ];
-  
-  
 
-  constructor(public dialogRef: MatDialogRef<MoviePageComponent>,
+  constructor(
+    public dialogRef: MatDialogRef<MoviePageComponent>,
     private db: AngularFirestore,
     private auth: AngularFireAuth,
     @Inject(MAT_DIALOG_DATA) public data: Movie) {
@@ -48,20 +39,11 @@ export class MoviePageComponent implements OnInit {
     auth.currentUser.then(value => {
       this.userId = value.uid;
       this.moveTheLists();
-    })
+    });
   }
 
   adding = false;
   done = false;
-
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-  ngOnInit(): void {
-      
-  }
 
   moveTheLists(){
     this.db.collection('users')
@@ -85,30 +67,22 @@ export class MoviePageComponent implements OnInit {
     }
   }
 
-  emitClickedEvent() {
-    this.clicked.emit();
-  }
-
-
-  
   addMovieToList(topicIndex: number) {
-     if (!this.topics[topicIndex].movieIDs) {
-       this.topics[topicIndex].movieIDs = [];
-     }
-     if (!this.topics[topicIndex].movieIDs.includes(this.data.id)){
+    this.done = !this.done;
+    if (!this.topics[topicIndex].movieIDs) {
+      this.topics[topicIndex].movieIDs = [];
+    }
+    if (!this.topics[topicIndex].movieIDs.includes(this.data.id)){
       this.topics[topicIndex].movieIDs.push(this.data.id);
       this.db.collection('users').doc(this.userId).update({
-       lists: this.topics
-     });
-     } 
-     this.adding = false;
-     this.done = true;
+      lists: this.topics
+      });
+    }
+    this.adding = false;
+    this.done = true;
   }
-  
- 
 
-
-  
-  
-
+  setRating(rating: number) {
+   console.log("You rated : " + rating)
+  }
 }

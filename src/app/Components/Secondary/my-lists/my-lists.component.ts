@@ -1,41 +1,44 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../../Class/Movie/movie';
 import { MovieAPI } from '../../Class/MovieAPI/movie-api';
+import { MatDialog } from '@angular/material/dialog';
+import { MoviePageComponent } from '../movie-page/movie-page.component';
+import { ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-my-lists',
+  encapsulation: ViewEncapsulation.None ,
   templateUrl: './my-lists.component.html',
   styleUrls: ['./my-lists.component.scss']
 })
 export class MyListsComponent implements OnInit {
-  MostPopular = true;
-  New = false;
+  selectedCategoryIndex = 0;
 
-
-  // WatchedList = WatchedMovies;
   MostPopularList: Movie[] = [];
   NewMovies: Movie[] = [];
+  showedMovies: Movie[] = [];
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
+    MovieAPI.getMostPopular().then(movies => {
+      this.MostPopularList = movies;
+      this.showedMovies = movies;
+    });
     MovieAPI.getUpcoming().then(movies => {
       this.NewMovies = movies;
     });
-
-    MovieAPI.getMostPopular().then(movies => {
-      this.MostPopularList = movies;
-    })
   }
 
-  selectMostPopular() {
-    this.MostPopular = true,
-      this.New = false;
-
+  openMoviePage(movie: Movie): void {
+    this.dialog.open(MoviePageComponent, {
+      data: movie
+    });
+    console.log('my-lists')
   }
-  selectNew() {
-    this.MostPopular = false,
-      this.New = true;
 
+  changeSelectedCategory(index: number) {
+    this.selectedCategoryIndex = index;
+    this.showedMovies = index === 0 ? this.MostPopularList : this.NewMovies;
   }
 }

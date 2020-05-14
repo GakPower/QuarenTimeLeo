@@ -4,12 +4,12 @@
   left: 50%;
   transform: translateX(-50%);
 
-  text-align: center;
+  font-family: var(--primaryFont);
   font-size: 2rem;
   letter-spacing: 0.5em;
   text-transform: uppercase;
 
-  font-family: var(--primaryFont);
+  text-align: center;
 
   p {
     color: var(--text);
@@ -132,6 +132,13 @@
 }
 
 @media only screen and (max-width: 300px) {
+  #title {
+    font-size: 1rem;
+
+    #waste-time {
+      font-size: .1rem;
+    }
+  }
   #login-form {
     width: calc(95vw - 40px);
   }

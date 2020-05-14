@@ -166,4 +166,86 @@ export abstract class MovieAPI {
     return recommendedMovies;
   }
 
+  static getMoviesOfGenre(genre: string): Promise<Movie[]> {
+    const moviesToReturn = [];
+    return fetch(`https://api.themoviedb.org/3/movie/${this.getIDFromGenre(genre)}/similar?api_key=ed03eba5dc6628c738bb9d3a13e7a1e4&language=en-US&page=1`)
+      .then(response => {
+        return response.json();
+      })
+      .then(movies => {
+        const results = movies.results;
+        results.forEach(movie => {
+          moviesToReturn.push(new Movie(
+            movie.id, movie.title, movie.overview,
+            `http://image.tmdb.org/t/p/original${movie.poster_path}`,
+            `http://image.tmdb.org/t/p/original${movie.backdrop_path}`,
+            this.getGenres(movie.genre_ids), movie.vote_average
+            )
+          );
+        });
+        return moviesToReturn;
+      });
+  }
+
+  private static getIDFromGenre(genre: string): number {
+    let result;
+    switch (genre) {
+      case 'Action':
+        result = 40027;
+        break;
+      case 'Adventure':
+        result = 240584;
+        break;
+      case 'Animation':
+        result = 439710;
+        break;
+      case 'Comedy':
+        result = 813;
+        break;
+      case 'Crime':
+        result = 2088;
+        break;
+      case 'Documentary':
+        result = 81167;
+        break;
+      case 'Drama':
+        result = 9422;
+        break;
+      case 'Family':
+        result = 431562;
+        break;
+      case 'Fantasy':
+        result = 205272;
+        break;
+      case 'Romance':
+        result = 460556;
+        break;
+      case 'History':
+        result = 42664;
+        break;
+      case 'Horror':
+        result = 409617;
+        break;
+      case 'Music':
+        result = 34038;
+        break;
+      case 'Mystery':
+        result = 223360;
+        break;
+      case 'Science Fiction':
+        result = 80583;
+        break;
+      case 'Thriller':
+        result = 178;
+        break;
+      case 'War':
+        result = 87245;
+        break;
+      case 'Western':
+        result = 33;
+        break;
+    }
+    return result;
+  }
+
 }

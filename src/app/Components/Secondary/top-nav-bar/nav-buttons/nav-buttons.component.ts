@@ -5,9 +5,11 @@ import { User } from 'firebase';
 import { MatDialog } from '@angular/material/dialog';
 import { MoviePageComponent } from '../../movie-page/movie-page.component';
 import { MovieAPI } from '../../../Class/MovieAPI/movie-api';
+import {ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-nav-buttons',
+  
   templateUrl: './nav-buttons.component.html',
   styleUrls: ['./nav-buttons.component.scss']
 })

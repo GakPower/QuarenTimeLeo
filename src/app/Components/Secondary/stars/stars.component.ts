@@ -1,21 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-stars',
   templateUrl: './stars.component.html',
   styleUrls: ['./stars.component.scss']
 })
-export class StarsComponent implements OnInit {
+export class StarsComponent {
 
   constructor(private router: Router) {}
-
-  setRating(number:number){
-
-  }
-
-  ngOnInit(): void {
-  }
 
   onStart() {
     this.router.navigateByUrl('/start');

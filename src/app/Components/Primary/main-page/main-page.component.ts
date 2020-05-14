@@ -1,20 +1,68 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {MovieAPI} from '../../Class/MovieAPI/movie-api';
+import { Component } from '@angular/core';
+import { Movie } from '../../Class/Movie/movie';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { User } from 'firebase';
+import { MovieAPI } from '../../Class/MovieAPI/movie-api';
 
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss']
 })
-export class MainPageComponent implements OnInit {
+export class MainPageComponent {
 
+  movies: Movie[] = [];
+  user: User;
   input = '';
 
-  constructor( ) {
+  selectedGenre = '';
+  recommendations: Movie[] = [];
+
+  constructor(
+    private db: AngularFirestore,
+    private auth: AngularFireAuth) {
+    auth.currentUser.then(value => {
+      if (value) {
+        this.user = value;
+
+        this.db.collection('users').doc(this.user.uid).get().subscribe(item => {
+          const lists = item.data().lists;
+          const ids = [];
+          lists.forEach(list => {
+            list.movieIDs.forEach(id => {
+              ids.push(id);
+            });
+          });
+          MovieAPI.getMovieByIds(item.data().recommendations).then(movies => {
+            this.recommendations = movies;
+            for (const movie of movies){
+              this.recommendations = this.recommendations.filter(x => !ids.includes(x.id));
+            }
+            this.movies = this.recommendations;
+          });
+        });
+      }
+    });
   }
 
-  ngOnInit(): void {
+  genreButton(){
+    if (this.selectedGenre === ''){
+      this.selectedGenre = 'Genres';
+    } else {
+      this.selectedGenre = '';
+      this.movies = this.recommendations;
+    }
+  }
+
+  loadGenres(){
+    return MovieAPI.genres.map(genre => genre.name).filter(genre => genre !== 'TV Movie');
+  }
+  getMovies(genres){
+    MovieAPI.getMoviesOfGenre(genres).then(movies => {
+      this.movies = movies;
+    });
+    this.selectedGenre = genres;
   }
 
   updateInput(input) {

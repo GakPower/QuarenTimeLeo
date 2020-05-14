@@ -233,7 +233,7 @@ img.cover:hover {
   margin-top: 4px;
   margin-right: 4px;
   line-height: 20px;
-  cursor: pointer;
+  cursor: default;
 }
 
 .tag:hover {
@@ -241,10 +241,11 @@ img.cover:hover {
 }
 
 .column2 {
-  padding-left: 50px;
-  padding-top: 30px;
+  padding-top: 10px;
   margin-left: 20px;
   width: 480px;
+  max-height: 250px;
+  overflow-y: auto;
   float: left;
 }
 
@@ -280,7 +281,7 @@ label {
 .rating > label:before {
   margin: 5px;
   margin-top: 0;
-  font-size: 1em;
+  font-size: 1.8em;
   font-family: FontAwesome;
   display: inline-block;
   content: "";
@@ -292,7 +293,7 @@ label {
 }
 
 .rating > label {
-  color: #ddd;
+  color: var(--text);
   float: right;
 }
 

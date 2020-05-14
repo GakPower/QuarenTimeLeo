@@ -161,11 +161,13 @@
   display: flex;
   align-items: center;
   margin-bottom: 50px;
-  overflow-x: auto;
   width: 90%;
   border: 2px solid white;
   border-radius: 10px;
   background-color: var(--background-dark);
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #706f6f transparent;
 }
 #container #myList #cards > .movie-card {
   flex-shrink: 0;
@@ -199,9 +201,6 @@
   align-self: flex-start;
   width: 90%;
   overflow-x: auto;
-}
-#container #myList #favourite > app-card {
-  flex-shrink: 0;
 }
 #container #settingsDiv {
   display: flex;
@@ -335,7 +334,9 @@ a {
   cursor: pointer;
 }
 
-.settings-btn:hover, .settings-btn:active, .settings-btn:focus {
+.settings-btn:hover,
+.settings-btn:active,
+.settings-btn:focus {
   background: var(--primary);
 }
 
@@ -343,6 +344,73 @@ a {
   border-color: var(--accentDisabled);
   background-color: transparent;
   cursor: default;
+}
+
+#login-form {
+  position: absolute;
+  float: right;
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  height: 100%;
+  background: var(--background-dark);
+  border-radius: 0 9px 9px 0;
+  right: 0;
+  text-align: center;
+  z-index: 10;
+}
+#login-form #emoji-container {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 5px;
+  background: var(--background-dark);
+  border-radius: 20px;
+  height: 120px;
+  width: 240px;
+  display: grid;
+  flex-direction: row;
+  overflow-x: auto;
+  scrollbar-color: transparent #252525;
+  scrollbar-width: thin;
+  flex-shrink: 0;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  scroll-margin: 0;
+}
+#login-form #emoji-container .emoji {
+  width: 48px;
+  height: 48px;
+  margin: 3px;
+  cursor: pointer;
+}
+#login-form #emoji-container .emoji:focus, #login-form #emoji-container .emoji:active, #login-form #emoji-container .emoji:hover {
+  background-color: #aaa9a9;
+}
+#login-form #emoji-container .emoji span {
+  font-size: 2rem;
+}
+#login-form input {
+  margin: 10px 20px 15px;
+  padding: 15px;
+  background: var(--background-light);
+  border-radius: 20px;
+  font-size: 14px;
+  font-family: var(--contentFont);
+}
+#login-form button {
+  padding: 15px;
+  margin: 0 20px 10px;
+  background: var(--accent);
+  border-radius: 20px;
+  color: var(--text);
+  font-family: var(--contentFont);
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 300ms ease;
+}
+#login-form button:hover, #login-form button:active, #login-form button:focus {
+  background: var(--primary);
 }
 
 /*# sourceMappingURL=profile.component.css.map */

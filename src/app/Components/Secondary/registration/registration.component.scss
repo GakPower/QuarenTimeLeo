@@ -123,6 +123,13 @@
 }
 
 @media only screen and (max-width: 300px) {
+  #title {
+    font-size: 1rem;
+
+    #waste-time {
+      font-size: .1rem;
+    }
+  }
   #login-form {
     width: calc(95vw - 40px);
   }

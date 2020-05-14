@@ -19,7 +19,8 @@ export class WatchItComponent implements OnInit {
   user: User;
   movieIDs: number[];
 
-  constructor(private db: AngularFirestore,
+  constructor(
+    private db: AngularFirestore,
     private auth: AngularFireAuth) {
     auth.currentUser.then(value => {
       this.user = value;
@@ -32,19 +33,17 @@ export class WatchItComponent implements OnInit {
       const ids = [];
       lists.forEach(list => {
         list.movieIDs.forEach(id => {
-          ids.push(id)
-        })
+          ids.push(id);
+        });
       });
       MovieAPI.getMovieByIds(item.data().recommendations).then(movies => {
-        this.movies = movies
-        for(const movie of movies){
-          this.movies = this.movies.filter(movie => !ids.includes(movie.id))
+        this.movies = movies;
+        for (const movie of movies){
+          this.movies = this.movies.filter(x => !ids.includes(x.id));
         }
-      })
+      });
 
-    })
+    });
   }
-
-
 
 }
