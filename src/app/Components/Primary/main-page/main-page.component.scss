@@ -1,7 +1,6 @@
 #mainContent {
   display: grid;
   grid-template-columns: 70% 30%;
-
   height: calc(100% - 110px);
 }
 
@@ -11,9 +10,7 @@
   align-items: center;
 
   margin: 20px;
-
   max-height: calc(100vh - 120px - 70px);
-
   #watchmeMenu {
     width: 100%;
     min-height: 38px;
@@ -39,9 +36,7 @@
       top: 50%;
       right: 10px;
       transform: translateY(-50%);
-
       font-size: 1rem;
-
       cursor: pointer;
     }
   }
@@ -54,7 +49,6 @@
     align-items: center;
     text-align: center;
     white-space: nowrap;
-
     #genre{
       width: 90px;
       background: var(--text);
@@ -66,21 +60,17 @@
       margin: 2px;
       cursor: pointer;
     }
-
     #genre:hover {
       background: #b9b7b7;
     }
   }
-
   #wrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-
     background-color: var(--background-dark);
     box-shadow: inset 0 0 20px black;
     border-radius: 10px;
-
     overflow: auto;
     scrollbar-color: var(--background-dark) var(--background) !important;
     scrollbar-width: thin !important;

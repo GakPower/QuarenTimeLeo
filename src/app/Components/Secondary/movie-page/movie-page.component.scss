@@ -39,19 +39,17 @@ a:hover {
   border-radius: 5px;
   position: relative;
 
-
- .add-list{
+  .add-list {
     position: absolute;
     bottom: 0;
     right: 0;
-    z-index:10;
+    z-index: 10;
     width: 30%;
     height: 45%;
     //background-color: #f0a3a3;
     overflow-y: scroll;
 
-
-    #list{
+    #list {
       cursor: pointer;
       //transform: rotate(180deg);
       float: right;
@@ -59,14 +57,14 @@ a:hover {
       //background-color: #DFDFDF;
       width: 120px;
       height: 45px;
-      margin: 5px 10px 5px 30px;  //top-right-bottom-left
+      margin: 5px 10px 5px 30px; //top-right-bottom-left
       transition: width 0.5s;
-      transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.7);
+      transition-timing-function: cubic-bezier(0.1, 0.7, 1, 0.7);
       display: flex;
       justify-content: center;
       align-items: center;
       p {
-        font-size: 14px;
+        font-size: 12px;
         font-family: var(--secondaryFont);
         color: white;
         transition-duration: 1s;
@@ -76,17 +74,16 @@ a:hover {
       font-family: var(--secondaryFont);
       padding: 5px;
       text-align: center;
-      color: var(--primary)
+      color: var(--primary);
     }
-    #list:hover{
+    #list:hover {
       width: 150px;
-      background-color: #A9A9A9;
-      p{
+      background-color: #a9a9a9;
+      p {
         font-size: 18px;
       }
-
     }
- }
+  }
 }
 
 .hero {
@@ -100,9 +97,8 @@ a:hover {
 
   .circle:hover {
     color: var(--accent);
-    i{
-
-      font-size: 2.3rem  !important;
+    i {
+      font-size: 2.3rem !important;
     }
   }
   .circle {
@@ -112,25 +108,22 @@ a:hover {
     bottom: 0;
     cursor: pointer;
     transition: opacity 300ms;
-    i{
-
+    i {
       width: 50px !important;
       height: 50px !important;
-      font-size: 2rem  !important;
+      font-size: 2rem !important;
     }
   }
-  p{
+  p {
     color: var(--accent);
     position: absolute;
     right: 65px;
     bottom: 25px;
     // width: 50px !important;
     // height: 50px !important;
-    font-size: 1rem  !important;
+    font-size: 1rem !important;
   }
 }
-
-
 
 .hero:before {
   content: "";
@@ -169,7 +162,6 @@ img.cover {
   z-index: 5;
   top: 230px;
   left: 45px;
-
   opacity: 0.3;
   transition-duration: 1s;
   transition-property: opacity;
@@ -240,8 +232,7 @@ img.cover:hover {
   width: 200px;
   float: left;
   text-align: center;
-  white-space: nowrap
-
+  white-space: nowrap;
 }
 
 .tag {
@@ -385,4 +376,152 @@ a[data-tooltip][data-placement="top"]::after {
   bottom: 50px;
   left: 20px;
   margin-bottom: 4px;
+}
+
+@media only screen and (max-width: 1100px) {
+  .container {
+    width: 100%;
+    height: 100%;
+    .add-list {
+      width: 25%;
+      height: 35%;
+    }
+  }
+  .column2 {
+    width: 300px;
+    p {
+      height: 200px;
+      overflow-y: auto;
+    }
+  }
+  .description {
+    font-size: 1.5vw;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .container {
+    width: 100%;
+    height: 100%;
+    .add-list {
+      width: 30%;
+      height: 35%;
+    }
+  }
+  .column2 {
+    width: 300px;
+    p {
+      height: 200px;
+      overflow-y: auto;
+    }
+  }
+  .description {
+    font-size: 2vw;
+  }
+  .details {
+   
+    .title1{
+      font-size: 3vw;
+    }
+  }
+}
+@media only screen and (max-width: 720px) {
+  .cover {
+    top: 7vh;
+    left: 2vw;
+  }
+  #play-icon {
+    width: 20vw;
+    height: 20vh;
+    top: 12vh;
+    left: 3vw;
+    opacity: 0.5;
+  }
+  .details {
+    padding: 24vh 0 0 30vw;
+    .title1{
+      font-size: 3.5vw;
+    }
+  }
+  img.cover {
+    max-width: 26vw;
+    max-height: 40vh;
+  }
+  img.cover:hover {
+    max-width: 26vw;
+    max-height: 40vh;
+  }
+  .column1 {
+    margin-left: 3vw;
+    margin-top: 2vh;
+  }
+  .description {
+    font-size: 2.5vw;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .container {
+    width: 100%;
+    height: 100%;
+    .add-list {
+      width: 30%;
+      height: 35%;
+      bottom: 6vh;
+
+      #list{
+        width: 20vw;
+        height: 4vh;
+      }
+    }
+  }
+  .hero{
+    height: 200px;
+    .circle{
+      right: -20px;
+      bottom: -20px;
+    }
+  }
+  .cover {
+    top: 7vh;
+    left: 2vw;
+  }
+  #play-icon {
+    width: 20vw;
+    height: 20vh;
+    top: 12vh;
+    left: 3vw;
+    opacity: 0.5;
+  }
+  .details {
+    padding: 10vh 0 0 30vw;
+   
+    .title1{
+      font-size: 5vw;
+      line-height: 2.4vh;
+    }
+  }
+  img.cover {
+    max-width: 26vw;
+    max-height: 40vh;
+  }
+  img.cover:hover {
+    max-width: 26vw;
+    max-height: 40vh;
+  }
+  .column1 {
+    margin-left: 3vw;
+    margin-top: 2vh;
+  }
+  .column2{
+    width: 88%;
+  }
+  .description {
+    font-size: 4vw;
+  }
+  .rating > label:before {
+    margin: 3px;
+    font-size: 1.1em;
+    
+  }
+}
+@media only screen and (max-width: 400px) {
 }

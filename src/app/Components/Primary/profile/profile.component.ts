@@ -15,6 +15,7 @@ export class ProfileComponent {
   @Input() immutable = false;
 
   editing = false;
+  resetPassword = false; 
 
   user = {
     fireUser: null,
@@ -142,7 +143,6 @@ export class ProfileComponent {
   movies: Movie[] = [];
   selectedTopic = -1;
 
-
   sendEmail = false;
   disabledSendButton = false;
 
@@ -197,12 +197,14 @@ export class ProfileComponent {
     if (this.topics[index].movieIDs.length === 0) {
       this.movies = [];
     }
+    const temp: Movie[] = [];
     this.topics[index].movieIDs.forEach(movieID => {
-      const temp: Movie[] = [];
+      console.log(movieID); 
+      
       MovieAPI.getMovie(movieID).then(result => {
         temp.push(result);
         if (this.topics[index].movieIDs.length - 1 === this.topics[index].movieIDs.indexOf(movieID)) {
-          this.movies = temp;
+          this.movies = temp; 
         }
       });
     });
@@ -238,6 +240,7 @@ export class ProfileComponent {
         this.sendEmail = false;
         this.disabledSendButton = false;
       });
+      this.resetPassword = !this.resetPassword; 
   }
   selectEmoji(emojiIndex: number) {
     this.selectedEmoji = emojiIndex;

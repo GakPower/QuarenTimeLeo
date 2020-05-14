@@ -379,7 +379,7 @@ export abstract class Recommendation {
   }
 
 
-  static async initMatrix() {
+  /*static async initMatrix() {
 
     console.log("wat");
     await this.createMatrix().then((matrii) => {
@@ -388,7 +388,7 @@ export abstract class Recommendation {
     });
     console.log(this.Matrix);
 
-  }
+  }*/
 
 
   static getUsers() {

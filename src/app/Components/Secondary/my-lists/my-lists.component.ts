@@ -3,9 +3,11 @@ import { Movie } from '../../Class/Movie/movie';
 import { MovieAPI } from '../../Class/MovieAPI/movie-api';
 import { MatDialog } from '@angular/material/dialog';
 import { MoviePageComponent } from '../movie-page/movie-page.component';
+import { ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-my-lists',
+  encapsulation: ViewEncapsulation.None ,
   templateUrl: './my-lists.component.html',
   styleUrls: ['./my-lists.component.scss']
 })
@@ -32,6 +34,7 @@ export class MyListsComponent implements OnInit {
     this.dialog.open(MoviePageComponent, {
       data: movie
     });
+    console.log('my-lists')
   }
 
   changeSelectedCategory(index: number) {

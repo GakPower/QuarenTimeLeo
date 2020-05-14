@@ -9,6 +9,7 @@ export class TopNavBarComponent {
 
   @Output() searchInputChange: EventEmitter<string> = new EventEmitter<string>();
   @Input() hideButtons = false;
+  @Input() hideSearch = false; 
 
   constructor() {}
 

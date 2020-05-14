@@ -2,10 +2,12 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MoviePageComponent } from '../movie-page/movie-page.component';
 import { Movie } from '../../Class/Movie/movie';
+import { ViewEncapsulation} from '@angular/core';
 
 
 @Component({
   selector: 'app-picture-card',
+  
   templateUrl: './picture-card.component.html',
   styleUrls: ['./picture-card.component.scss']
 })
